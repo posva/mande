@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - node/install:
-          - install-yarn: true
+          install-yarn: true
       - run: yarn run test
       - codecov/upload:
           file: {{ coverage_report_filepath }}
