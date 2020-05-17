@@ -24,6 +24,7 @@
     "test": "yarn run test:unit && yarn run build",
     "build": "rollup -c rollup.config.js",
     "build:dts": "api-extractor run --local --verbose",
+    "docs": "api-documenter markdown -i temp -o docs",
     "prepublishOnly": "yarn run build"
   },
   "files": [

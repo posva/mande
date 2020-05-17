@@ -10,7 +10,8 @@ then
   echo "Releasing v$VERSION ..."
 
   yarn run build
-  # yarn run build:dts
+  yarn run build:dts
+  yarn run docs
 
   # generate the version so that the changelog can be generated too
   yarn version --no-git-tag-version --no-commit-hooks --new-version $VERSION
@@ -21,7 +22,7 @@ then
   read OKAY
 
   # commit and tag
-  git add CHANGELOG.md package.json
+  git add CHANGELOG.md docs package.json
   git commit -m "release: v$VERSION"
   git tag "v$VERSION"
 
