@@ -26,14 +26,14 @@ export interface MandeInstance {
 }
 
 function stringifyQuery(query: any): string {
-  let arr = Object.keys(query).map((k) =>
+  let searchParams = Object.keys(query).map((k) =>
     [k, query[k]].map(encodeURIComponent).join('=')
-  )
-  return '?' + arr.join('&')
+  ).join('&')
+  return searchParams ? '?' + searchParams : ''
 }
 
 // use a short base url to parse
-let newURL = (url: string, base: string = '') =>
+let newURL = (url: string, base: string) =>
   new URL(url, 'http://e.e' + base)
 
 export function mande(
@@ -81,18 +81,18 @@ export function mande(
     // TODO:
     // if (__DEV__ && query && urlInstance.search)
 
-    if (query) url += stringifyQuery(query)
+    url += stringifyQuery(query)
 
     if (data) mergedOptions.body = JSON.stringify(data)
 
     return fetch(url, mergedOptions).then((response) => {
-      if (response.ok) {
+      if (response.status >= 200 && response.status < 300) {
         if (responseAs === 'response') return response
         return response.status == 204 ? null : response[responseAs]()
       }
       let err = new Error(response.statusText) as MandeError
       err.response = response
-      return Promise.reject(err)
+      throw err
     })
   }
 
