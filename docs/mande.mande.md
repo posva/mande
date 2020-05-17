@@ -4,6 +4,8 @@
 
 ## mande() function
 
+Create a Mande instance
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,10 +16,21 @@ export declare function mande(baseURL: string, globalOptions?: Options): MandeIn
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  baseURL | string |  |
-|  globalOptions | [Options](./mande.options.md) |  |
+|  baseURL | string | absolute url with a leading slash |
+|  globalOptions | [Options](./mande.options.md) | optional global options that will be applied to every other request |
 
 <b>Returns:</b>
 
 [MandeInstance](./mande.mandeinstance.md)
+
+## Example
+
+
+```js
+const users = mande('/api/users/')
+users.get('2').then(user => {
+  // do something
+})
+
+```
 

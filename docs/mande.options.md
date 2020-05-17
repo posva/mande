@@ -4,6 +4,8 @@
 
 ## Options interface
 
+Allowed options for a request. Extends native `RequestInit`<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,6 +16,6 @@ export interface Options extends RequestInit
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [query](./mande.options.query.md) | any |  |
+|  [query](./mande.options.query.md) | any | Optional query object. Does not support arrays. Will get stringified |
 |  [responseAs](./mande.options.responseas.md) | 'json' \| 'text' \| 'response' | What kind of response is expected. Defaults to <code>json</code>. <code>response</code> will return the raw response from <code>fetch</code>. |
 

@@ -4,6 +4,8 @@
 
 ## MandeInstance.options property
 
+Writable options.
+
 <b>Signature:</b>
 
 ```typescript

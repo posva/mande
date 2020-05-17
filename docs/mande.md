@@ -8,13 +8,13 @@
 
 |  Function | Description |
 |  --- | --- |
-|  [mande(baseURL, globalOptions)](./mande.mande.md) |  |
+|  [mande(baseURL, globalOptions)](./mande.mande.md) | Create a Mande instance |
 
 ## Interfaces
 
 |  Interface | Description |
 |  --- | --- |
-|  [MandeError](./mande.mandeerror.md) |  |
-|  [MandeInstance](./mande.mandeinstance.md) |  |
-|  [Options](./mande.options.md) |  |
+|  [MandeError](./mande.mandeerror.md) | Extended Error with the raw <code>Response</code> object. |
+|  [MandeInstance](./mande.mandeinstance.md) | Object returned by [mande()](./mande.mande.md) |
+|  [Options](./mande.options.md) | Allowed options for a request. Extends native <code>RequestInit</code>. |
 

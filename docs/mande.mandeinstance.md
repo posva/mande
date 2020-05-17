@@ -4,6 +4,8 @@
 
 ## MandeInstance interface
 
+Object returned by [mande()](./mande.mande.md)
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,15 +16,15 @@ export interface MandeInstance
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [options](./mande.mandeinstance.options.md) | [Options](./mande.options.md) &amp; Pick&lt;RequiredRequestInit, 'headers'&gt; |  |
+|  [options](./mande.mandeinstance.options.md) | [Options](./mande.options.md) &amp; Pick&lt;RequiredRequestInit, 'headers'&gt; | Writable options. |
 
 ## Methods
 
 |  Method | Description |
 |  --- | --- |
-|  [delete(url, options)](./mande.mandeinstance.delete.md) |  |
-|  [get(url, options)](./mande.mandeinstance.get.md) |  |
-|  [patch(url, data, options)](./mande.mandeinstance.patch.md) |  |
-|  [post(url, data, options)](./mande.mandeinstance.post.md) |  |
-|  [put(url, data, options)](./mande.mandeinstance.put.md) |  |
+|  [delete(url, options)](./mande.mandeinstance.delete.md) | Sends a DELETE request to the given url. |
+|  [get(url, options)](./mande.mandeinstance.get.md) | Sends a GET request to the given url. |
+|  [patch(url, data, options)](./mande.mandeinstance.patch.md) | Sends a PATCH request to the given url. |
+|  [post(url, data, options)](./mande.mandeinstance.post.md) | Sends a POST request to the given url. |
+|  [put(url, data, options)](./mande.mandeinstance.put.md) | Sends a PUT request to the given url. |
 

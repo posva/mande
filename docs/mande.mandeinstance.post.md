@@ -4,6 +4,8 @@
 
 ## MandeInstance.post() method
 
+Sends a POST request to the given url.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,11 +16,21 @@ post(url: string, data?: any, options?: Options): Promise<unknown>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string |  |
-|  data | any |  |
-|  options | [Options](./mande.options.md) |  |
+|  url | string | relative url to send the request to |
+|  data | any | optional body of the request |
+|  options | [Options](./mande.options.md) | optional [Options](./mande.options.md) |
 
 <b>Returns:</b>
 
 Promise&lt;unknown&gt;
+
+## Example
+
+
+```js
+users.post('', { name: 'Eduardo' }).then(user => {
+  // do something
+})
+
+```
 

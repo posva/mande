@@ -4,6 +4,8 @@
 
 ## MandeInstance.get() method
 
+Sends a GET request to the given url.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,10 +16,20 @@ get(url: string, options?: Options): Promise<unknown>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string |  |
-|  options | [Options](./mande.options.md) |  |
+|  url | string | relative url to send the request to |
+|  options | [Options](./mande.options.md) | optional [Options](./mande.options.md) |
 
 <b>Returns:</b>
 
 Promise&lt;unknown&gt;
+
+## Example
+
+
+```js
+users.get('2').then(user => {
+  // do something
+})
+
+```
 

@@ -4,6 +4,8 @@
 
 ## Options.query property
 
+Optional query object. Does not support arrays. Will get stringified
+
 <b>Signature:</b>
 
 ```typescript

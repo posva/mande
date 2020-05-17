@@ -4,6 +4,8 @@
 
 ## MandeError interface
 
+Extended Error with the raw `Response` object.
+
 <b>Signature:</b>
 
 ```typescript
