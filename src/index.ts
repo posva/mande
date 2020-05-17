@@ -90,7 +90,6 @@ export interface MandeInstance {
    */
   patch(url: string, data?: any, options?: Options): Promise<unknown>
 
-
   /**
    * Sends a DELETE request to the given url.
    *
