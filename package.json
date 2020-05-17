@@ -5,6 +5,7 @@
   "main": "dist/mande.common.js",
   "module": "dist/mande.esm.js",
   "unpkg": "dist/mande.js",
+  "jsdelivr": "dist/mande.js",
   "browser": "dist/mande.esm.js",
   "types": "dist/mande/src",
   "sideEffects": false,
@@ -22,16 +23,19 @@
     "pretest": "yarn run lint",
     "test": "yarn run test:unit && yarn run build",
     "build": "rollup -c rollup.config.js",
+    "build:dts": "api-extractor run --local --verbose",
     "prepublishOnly": "yarn run build"
   },
   "files": [
-    "dist",
-    "LICENSE",
+    "dist/*.js",
+    "dist/mande.d.ts",
     "README.md"
   ],
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
+    "@microsoft/api-documenter": "^7.8.0",
+    "@microsoft/api-extractor": "^7.8.0",
     "@rollup/plugin-alias": "^3.0.0",
     "@rollup/plugin-replace": "^2.2.1",
     "@types/jest": "^25.2.2",
