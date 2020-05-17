@@ -2,6 +2,8 @@
 
 > Simple, light and easy to use wrapper around fetch
 
+**Requires [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) support.**
+
 ## Installation
 
 ```sh
