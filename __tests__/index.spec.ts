@@ -25,6 +25,20 @@ describe('mande', () => {
     expect(fetchMock).toHaveFetched('/api/')
   })
 
+  it('works with non trailing slashes', async () => {
+    let api = mande('/api')
+    fetchMock.mock('/api/2', { status: 200, body: {} })
+    await expect(api.get('/2')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/2')
+  })
+
+  it('allows an absolute base', async () => {
+    let api = mande('http://example.com/api/')
+    fetchMock.mock('http://example.com/api/', { status: 200, body: {} })
+    await expect(api.get('')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('http://example.com/api/')
+  })
+
   it('returns null on 204', async () => {
     let api = mande('/api/')
     fetchMock.mock('/api/', 204)

@@ -43,7 +43,7 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
-  get(url: string, options?: Options): Promise<unknown>
+  get(url: string | number, options?: Options): Promise<unknown>
 
   /**
    * Sends a POST request to the given url.
@@ -58,7 +58,7 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  post(url: string, data?: any, options?: Options): Promise<unknown>
+  post(url: string | number, data?: any, options?: Options): Promise<unknown>
 
   /**
    * Sends a PUT request to the given url.
@@ -73,7 +73,7 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  put(url: string, data?: any, options?: Options): Promise<unknown>
+  put(url: string | number, data?: any, options?: Options): Promise<unknown>
 
   /**
    * Sends a PATCH request to the given url.
@@ -88,7 +88,7 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  patch(url: string, data?: any, options?: Options): Promise<unknown>
+  patch(url: string | number, data?: any, options?: Options): Promise<unknown>
 
   /**
    * Sends a DELETE request to the given url.
@@ -102,7 +102,7 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
-  delete(url: string, options?: Options): Promise<unknown>
+  delete(url: string | number, options?: Options): Promise<unknown>
 }
 
 function stringifyQuery(query: any): string {
@@ -112,20 +112,26 @@ function stringifyQuery(query: any): string {
   return searchParams ? '?' + searchParams : ''
 }
 
-// use a short base url to parse
-let newURL = (url: string, base: string) => new URL(url, 'http://e.e' + base)
+let trailingSlashRE = /\/+$/
+let leadingSlashRE = /^\/+/
+
+function joinURL(base: string, url: string): string {
+  return (
+    base.replace(trailingSlashRE, '') + '/' + url.replace(leadingSlashRE, '')
+  )
+}
 
 /**
  * Create a Mande instance
  *
  * @example
  * ```js
- * const users = mande('/api/users/')
+ * const users = mande('/api/users')
  * users.get('2').then(user => {
  *   // do something
  * })
  * ```
- * @param baseURL - absolute url with a leading slash
+ * @param baseURL - absolute url
  * @param globalOptions - optional global options that will be applied to every
  * other request
  */
@@ -141,7 +147,7 @@ export function mande(
 
   function _fetch(
     method: string,
-    url?: string,
+    url?: string | number,
     data?: any,
     localOptions: Options = {}
   ) {
@@ -165,8 +171,7 @@ export function mande(
       ...localOptions.headers,
     }
 
-    let urlInstance = newURL(url || '', baseURL)
-    url = urlInstance.pathname + urlInstance.search
+    url = joinURL(baseURL, typeof url === 'number' ? '' + url : url || '')
 
     // TODO:
     // if (__DEV__ && url.startsWith('/'))

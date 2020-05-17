@@ -2,7 +2,7 @@
 
 > Simple, light and easy to use wrapper around fetch
 
-**Requires [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) support.**
+**Requires [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) support.**
 
 ## Installation
 
@@ -16,10 +16,8 @@ yarn add mande
 ```js
 import { mande } from 'mande'
 
-// make sure to add the leading slash
-const users = mande('/api/users/', globalOptions)
+const users = mande('/api/users', globalOptions)
 
-// no leading slash before the url
 users.get('2').then(user => {
   // do something with user
 })
