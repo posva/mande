@@ -9,14 +9,14 @@ Sends a PUT request to the given url.
 <b>Signature:</b>
 
 ```typescript
-put(url: string, data?: any, options?: Options): Promise<unknown>;
+put(url: string | number, data?: any, options?: Options): Promise<unknown>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string | relative url to send the request to |
+|  url | string \| number | relative url to send the request to |
 |  data | any | optional body of the request |
 |  options | [Options](./mande.options.md) | optional [Options](./mande.options.md) |
 

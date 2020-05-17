@@ -16,7 +16,7 @@ export declare function mande(baseURL: string, globalOptions?: Options): MandeIn
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  baseURL | string | absolute url with a leading slash |
+|  baseURL | string | absolute url |
 |  globalOptions | [Options](./mande.options.md) | optional global options that will be applied to every other request |
 
 <b>Returns:</b>
@@ -27,7 +27,7 @@ export declare function mande(baseURL: string, globalOptions?: Options): MandeIn
 
 
 ```js
-const users = mande('/api/users/')
+const users = mande('/api/users')
 users.get('2').then(user => {
   // do something
 })

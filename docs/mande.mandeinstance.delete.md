@@ -9,14 +9,14 @@ Sends a DELETE request to the given url.
 <b>Signature:</b>
 
 ```typescript
-delete(url: string, options?: Options): Promise<unknown>;
+delete(url: string | number, options?: Options): Promise<unknown>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string | relative url to send the request to |
+|  url | string \| number | relative url to send the request to |
 |  options | [Options](./mande.options.md) | optional [Options](./mande.options.md) |
 
 <b>Returns:</b>
