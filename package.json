@@ -1,12 +1,12 @@
 {
-  "name": "lib-boilerplate-ts",
+  "name": "mande",
   "version": "0.0.0",
   "description": "Some awesome description",
-  "main": "dist/lib-boilerplate-ts.common.js",
-  "module": "dist/lib-boilerplate-ts.esm.js",
-  "unpkg": "dist/lib-boilerplate-ts.js",
-  "browser": "dist/lib-boilerplate-ts.esm.js",
-  "types": "dist/lib-boilerplate-ts/src",
+  "main": "dist/mande.common.js",
+  "module": "dist/mande.esm.js",
+  "unpkg": "dist/mande.js",
+  "browser": "dist/mande.esm.js",
+  "types": "dist/mande/src",
   "sideEffects": false,
   "author": {
     "name": "Eduardo San Martin Morote",
@@ -53,10 +53,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/posva/lib-boilerplate-ts.git"
+    "url": "git+https://github.com/posva/mande.git"
   },
   "bugs": {
-    "url": "https://github.com/posva/lib-boilerplate-ts/issues"
+    "url": "https://github.com/posva/mande/issues"
   },
-  "homepage": "https://github.com/posva/lib-boilerplate-ts#readme"
+  "homepage": "https://github.com/posva/mande#readme"
 }
