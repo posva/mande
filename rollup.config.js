@@ -83,7 +83,7 @@ function createEntry(
         compilerOptions: {
           // same for d.ts files
           declaration: format === 'es' && isBrowser && !minify,
-          target: format === 'es' && !isBrowser ? 'esnext' : 'es5',
+          target: format === 'es' && !isBrowser ? 'esnext' : 'es2015',
         },
       },
     })
@@ -93,9 +93,6 @@ function createEntry(
     config.plugins.push(
       terser({
         module: format === 'es',
-        output: {
-          preamble: banner,
-        },
       })
     )
     config.output.file = config.output.file.replace(/\.js$/i, '.min.js')
