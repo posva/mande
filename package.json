@@ -1,6 +1,6 @@
 {
   "name": "mande",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Some awesome description",
   "main": "dist/mande.common.js",
   "module": "dist/mande.esm.js",
