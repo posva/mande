@@ -40,8 +40,8 @@ export interface MandeInstance {
    *   // do something
    * })
    * ```
-   * @param url relative url to send the request to
-   * @param options optional {@link Options}
+   * @param url - relative url to send the request to
+   * @param options - optional {@link Options}
    */
   get(url: string, options?: Options): Promise<unknown>
 
@@ -54,9 +54,9 @@ export interface MandeInstance {
    *   // do something
    * })
    * ```
-   * @param url relative url to send the request to
-   * @param data optional body of the request
-   * @param options optional {@link Options}
+   * @param url - relative url to send the request to
+   * @param data - optional body of the request
+   * @param options - optional {@link Options}
    */
   post(url: string, data?: any, options?: Options): Promise<unknown>
 
@@ -69,9 +69,9 @@ export interface MandeInstance {
    *   // do something
    * })
    * ```
-   * @param url relative url to send the request to
-   * @param data optional body of the request
-   * @param options optional {@link Options}
+   * @param url - relative url to send the request to
+   * @param data - optional body of the request
+   * @param options - optional {@link Options}
    */
   put(url: string, data?: any, options?: Options): Promise<unknown>
 
@@ -84,9 +84,9 @@ export interface MandeInstance {
    *   // do something
    * })
    * ```
-   * @param url relative url to send the request to
-   * @param data optional body of the request
-   * @param options optional {@link Options}
+   * @param url - relative url to send the request to
+   * @param data - optional body of the request
+   * @param options - optional {@link Options}
    */
   patch(url: string, data?: any, options?: Options): Promise<unknown>
 
@@ -100,8 +100,8 @@ export interface MandeInstance {
    *   // do something
    * })
    * ```
-   * @param url relative url to send the request to
-   * @param options optional {@link Options}
+   * @param url - relative url to send the request to
+   * @param options - optional {@link Options}
    */
   delete(url: string, options?: Options): Promise<unknown>
 }
@@ -126,8 +126,8 @@ let newURL = (url: string, base: string) => new URL(url, 'http://e.e' + base)
  *   // do something
  * })
  * ```
- * @param baseURL absolute url with a leading slash
- * @param globalOptions optional global options that will be applied to every
+ * @param baseURL - absolute url with a leading slash
+ * @param globalOptions - optional global options that will be applied to every
  * other request
  */
 export function mande(
