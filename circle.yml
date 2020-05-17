@@ -1,16 +1,18 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
+  codecov: codecov/codecov@1.0.5
 jobs:
   build-and-test:
     executor:
       name: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn install
-            - run: yarn run test
+      - node/install:
+          - install-yarn: true
+      - run: yarn run test
+      - codecov/upload:
+          file: {{ coverage_report_filepath }}
 workflows:
   build-and-test:
     jobs:
