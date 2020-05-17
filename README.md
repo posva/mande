@@ -11,7 +11,21 @@ yarn add mande
 
 ## Usage
 
+```js
+import { mande } from 'mande'
+
+// make sure to add the leading slash
+const users = mande('/api/users/', globalOptions)
+
+// no leading slash before the url
+users.get('2').then(user => {
+  // do something with user
+})
+```
+
 ## API
+
+Most of the code can be discovered through the autocompletion but the API documentation is available at https://posva.net/mande/.
 
 ## Related
 
