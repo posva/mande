@@ -26,15 +26,14 @@ export interface MandeInstance {
 }
 
 function stringifyQuery(query: any): string {
-  let searchParams = Object.keys(query).map((k) =>
-    [k, query[k]].map(encodeURIComponent).join('=')
-  ).join('&')
+  let searchParams = Object.keys(query)
+    .map((k) => [k, query[k]].map(encodeURIComponent).join('='))
+    .join('&')
   return searchParams ? '?' + searchParams : ''
 }
 
 // use a short base url to parse
-let newURL = (url: string, base: string) =>
-  new URL(url, 'http://e.e' + base)
+let newURL = (url: string, base: string) => new URL(url, 'http://e.e' + base)
 
 export function mande(
   baseURL: string,

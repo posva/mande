@@ -71,7 +71,7 @@ describe('mande', () => {
   it('can return a raw response', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
-    await (api.get('', { responseAs: 'response' }))
+    await api.get('', { responseAs: 'response' })
     // cannot check the result for some reason...
   })
 })
