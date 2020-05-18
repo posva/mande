@@ -25,6 +25,13 @@ describe('mande', () => {
     expect(fetchMock).toHaveFetched('/api/')
   })
 
+  it('can use a number', async () => {
+    let api = mande('/api')
+    fetchMock.mock('/api/0', { status: 200, body: {} })
+    await expect(api.get(0)).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/0')
+  })
+
   it('works with non trailing slashes', async () => {
     let api = mande('/api')
     fetchMock.mock('/api/2', { status: 200, body: {} })
@@ -94,7 +101,7 @@ describe('mande', () => {
   it('can add custom headers', async () => {
     let api = mande('/api')
     fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
-    await api.get(2, { headers: { Authorization: 'Bearer foo' } })
+    await api.get('2', { headers: { Authorization: 'Bearer foo' } })
     expect(fetchMock).toHaveFetched('/api/2', {
       headers: {
         Accept: 'application/json',
