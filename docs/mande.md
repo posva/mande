@@ -8,7 +8,7 @@
 
 |  Function | Description |
 |  --- | --- |
-|  [mande(baseURL, globalOptions)](./mande.mande.md) | Create a Mande instance |
+|  [mande(baseURL, instanceOptions)](./mande.mande.md) | Create a Mande instance |
 
 ## Interfaces
 
@@ -17,4 +17,10 @@
 |  [MandeError](./mande.mandeerror.md) | Extended Error with the raw <code>Response</code> object. |
 |  [MandeInstance](./mande.mandeinstance.md) | Object returned by [mande()](./mande.mande.md) |
 |  [Options](./mande.options.md) | Allowed options for a request. Extends native <code>RequestInit</code>. |
+
+## Variables
+
+|  Variable | Description |
+|  --- | --- |
+|  [defaults](./mande.defaults.md) | Global default options as [Options](./mande.options.md) that are applied to \*\*all\*\* mande instances. Always contain an initialized <code>headers</code> property with the default headers: - Accept: 'application/json' - 'Content-Type': 'application/json' |
 

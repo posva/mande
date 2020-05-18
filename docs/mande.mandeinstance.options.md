@@ -9,5 +9,5 @@ Writable options.
 <b>Signature:</b>
 
 ```typescript
-options: Options & Pick<RequiredRequestInit, 'headers'>;
+options: Options;
 ```

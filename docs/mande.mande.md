@@ -9,7 +9,7 @@ Create a Mande instance
 <b>Signature:</b>
 
 ```typescript
-export declare function mande(baseURL: string, globalOptions?: Options): MandeInstance;
+export declare function mande(baseURL: string, instanceOptions?: Options): MandeInstance;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ export declare function mande(baseURL: string, globalOptions?: Options): MandeIn
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  baseURL | string | absolute url |
-|  globalOptions | [Options](./mande.options.md) | optional global options that will be applied to every other request |
+|  instanceOptions | [Options](./mande.options.md) | optional options that will be applied to every other request for this instance |
 
 <b>Returns:</b>
 

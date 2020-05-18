@@ -16,7 +16,7 @@ export interface MandeInstance
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [options](./mande.mandeinstance.options.md) | [Options](./mande.options.md) &amp; Pick&lt;RequiredRequestInit, 'headers'&gt; | Writable options. |
+|  [options](./mande.mandeinstance.options.md) | [Options](./mande.options.md) | Writable options. |
 
 ## Methods
 

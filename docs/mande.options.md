@@ -16,6 +16,7 @@ export interface Options extends RequestInit
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [headers](./mande.options.headers.md) | Record&lt;string, string&gt; | Headers sent alongside the request |
 |  [query](./mande.options.query.md) | any | Optional query object. Does not support arrays. Will get stringified |
 |  [responseAs](./mande.options.responseas.md) | 'json' \| 'text' \| 'response' | What kind of response is expected. Defaults to <code>json</code>. <code>response</code> will return the raw response from <code>fetch</code>. |
 

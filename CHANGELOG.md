@@ -1,3 +1,13 @@
+## [0.0.6](https://github.com/posva/mande/compare/v0.0.5...v0.0.6) (2020-05-18)
+
+### Bug Fixes
+
+- use options when providing only body ([e5a9bef](https://github.com/posva/mande/commit/e5a9bef007439d42d6d6a2a7ddeffb18dd8bc34b))
+
+### Features
+
+- allow global defaults ([a87fdda](https://github.com/posva/mande/commit/a87fddaa1c2aea4ae05ca39bbe911d80f19cecb5))
+
 ## [0.0.5](https://github.com/posva/mande/compare/v0.0.4...v0.0.5) (2020-05-18)
 
 ### Features
