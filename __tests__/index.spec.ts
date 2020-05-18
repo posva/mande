@@ -94,7 +94,7 @@ describe('mande', () => {
   it('can add custom headers', async () => {
     let api = mande('/api')
     fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
-    await api.get('2', { headers: { Authorization: 'Bearer foo' } })
+    await api.get(2, { headers: { Authorization: 'Bearer foo' } })
     expect(fetchMock).toHaveFetched('/api/2', {
       headers: {
         Accept: 'application/json',
