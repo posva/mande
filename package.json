@@ -22,6 +22,7 @@
     "dev": "yarn run unit --watchAll",
     "pretest": "yarn run lint",
     "test": "yarn run test:unit && yarn run build",
+    "size": "size-limit",
     "build": "rollup -c rollup.config.js",
     "build:dts": "api-extractor run --local --verbose",
     "docs": "api-documenter markdown -i temp -o docs"
@@ -31,13 +32,30 @@
     "dist/mande.d.ts",
     "README.md"
   ],
-  "keywords": [],
+  "keywords": [
+    "fetch",
+    "browser",
+    "client",
+    "request",
+    "api",
+    "get",
+    "ajax",
+    "fetchival",
+    "axios",
+    "alternative"
+  ],
+  "size-limit": [
+    {
+      "path": "size-check/index.js"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "@microsoft/api-documenter": "^7.8.0",
     "@microsoft/api-extractor": "^7.8.0",
     "@rollup/plugin-alias": "^3.0.0",
     "@rollup/plugin-replace": "^2.2.1",
+    "@size-limit/preset-small-lib": "^4.5.0",
     "@types/jest": "^25.2.2",
     "codecov": "^3.6.1",
     "conventional-changelog-cli": "^2.0.34",
@@ -52,6 +70,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript2": "^0.27.1",
+    "size-limit": "^4.5.0",
     "ts-jest": "^26.0.0",
     "typescript": "^3.6.3"
   },
