@@ -82,6 +82,13 @@ describe('mande', () => {
     expect(fetchMock).toHaveFetched('/api/', { body: { foo: 'a', bar: 'b' } })
   })
 
+  it('can omit the url', async () => {
+    let api = mande('/api/users')
+    fetchMock.put('/api/users/', { body: {} })
+    await expect(api.put({ foo: 'a', bar: 'b' })).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/users/', { body: { foo: 'a', bar: 'b' } })
+  })
+
   it('can return a raw response', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })

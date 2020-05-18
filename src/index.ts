@@ -59,6 +59,7 @@ export interface MandeInstance {
    * @param options - optional {@link Options}
    */
   post(url: string | number, data?: any, options?: Options): Promise<unknown>
+  post(data?: any, options?: Options): Promise<unknown>
 
   /**
    * Sends a PUT request to the given url.
@@ -74,6 +75,7 @@ export interface MandeInstance {
    * @param options - optional {@link Options}
    */
   put(url: string | number, data?: any, options?: Options): Promise<unknown>
+  put(data?: any, options?: Options): Promise<unknown>
 
   /**
    * Sends a PATCH request to the given url.
@@ -89,6 +91,7 @@ export interface MandeInstance {
    * @param options - optional {@link Options}
    */
   patch(url: string | number, data?: any, options?: Options): Promise<unknown>
+  patch(data?: any, options?: Options): Promise<unknown>
 
   /**
    * Sends a DELETE request to the given url.
@@ -147,10 +150,20 @@ export function mande(
 
   function _fetch(
     method: string,
-    url?: string | number,
-    data?: any,
+    urlOrData?: string | number | any,
+    dataOrOptions?: Options | any,
     localOptions: Options = {}
   ) {
+    let url: string | number
+    let data: any
+    if (typeof urlOrData === 'object') {
+      url = ''
+      data = urlOrData
+    } else {
+      url = urlOrData
+      data = dataOrOptions
+    }
+
     let mergedOptions = {
       ...options,
       method,
