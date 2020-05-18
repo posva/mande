@@ -102,6 +102,14 @@ onAuthChange((user) => {
 })
 ```
 
+You can also globally add default options to all _mande_ instances:
+
+```js
+import { defaults } from 'mande'
+
+defaults.headers.Authorization = 'Bearer token'
+```
+
 ## API
 
 Most of the code can be discovered through the autocompletion but the API documentation is available at https://posva.net/mande/.
