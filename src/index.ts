@@ -6,11 +6,17 @@ export interface Options extends RequestInit {
    * Optional query object. Does not support arrays. Will get stringified
    */
   query?: any
+
   /**
    * What kind of response is expected. Defaults to `json`. `response` will
    * return the raw response from `fetch`.
    */
   responseAs?: 'json' | 'text' | 'response'
+
+  /**
+   * Headers sent alongside the request
+   */
+  headers?: Record<string, string>
 }
 
 /**
@@ -19,8 +25,6 @@ export interface Options extends RequestInit {
 export interface MandeError extends Error {
   response: Response
 }
-
-type RequiredRequestInit = Required<RequestInit>
 
 /**
  * Object returned by {@link mande}
@@ -124,8 +128,16 @@ function joinURL(base: string, url: string): string {
   )
 }
 
-export const defaults: Options & Pick<RequiredRequestInit, 'headers'> = {
-  responseAs: 'json' as Options['responseAs'],
+/**
+ * Global default options as {@link Options} that are applied to **all** mande
+ * instances. Always contain an initialized `headers` property with the default
+ * headers:
+ * - Accept: 'application/json'
+ * - 'Content-Type': 'application/json'
+ */
+export const defaults: Options &
+  Pick<Required<Options>, 'headers' | 'responseAs'> = {
+  responseAs: 'json',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -148,7 +160,7 @@ export const defaults: Options & Pick<RequiredRequestInit, 'headers'> = {
  */
 export function mande(
   baseURL: string,
-  instanceOptions: Options
+  instanceOptions: Options = {}
 ): MandeInstance {
   function _fetch(
     method: string,
@@ -161,7 +173,7 @@ export function mande(
     if (typeof urlOrData === 'object') {
       url = ''
       data = urlOrData
-      localOptions = dataOrOptions
+      localOptions = dataOrOptions || {}
     } else {
       url = urlOrData
       data = dataOrOptions
@@ -190,10 +202,7 @@ export function mande(
 
     url = joinURL(baseURL, typeof url === 'number' ? '' + url : url || '')
 
-    // TODO:
-    // if (__DEV__ && url.startsWith('/'))
-
-    // TODO:
+    // TODO: warn about multiple queries provided not supported
     // if (__DEV__ && query && urlInstance.search)
 
     url += stringifyQuery(query)
@@ -210,9 +219,6 @@ export function mande(
       throw err
     })
   }
-
-  // TODO:
-  // if (__DEV__ && !baseURL.endsWith('/'))
 
   return {
     options: instanceOptions,

@@ -1,4 +1,4 @@
-import { mande } from '../src'
+import { mande, defaults } from '../src'
 import { FetchMockStatic } from 'fetch-mock'
 import './global.d.ts'
 jest.mock('node-fetch', () => require('fetch-mock-jest').sandbox())
@@ -91,10 +91,32 @@ describe('mande', () => {
     })
   })
 
+  it('can add custom headers', async () => {
+    let api = mande('/api')
+    fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
+    await api.get('2', { headers: { Authorization: 'Bearer foo' } })
+    expect(fetchMock).toHaveFetched('/api/2', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer foo',
+      },
+    })
+  })
+
   it('can return a raw response', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
     await api.get('', { responseAs: 'response' })
     // cannot check the result for some reason...
+  })
+
+  it('can add global defaults', async () => {
+    let api = mande('/api/')
+    defaults.query = { foo: 'bar' }
+    // defaults.headers.Authorization = { foo: 'bar' }
+    fetchMock.mock('/api/2?foo=bar', { status: 200, body: {} })
+    await expect(api.get('2')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/2?foo=bar')
   })
 })
