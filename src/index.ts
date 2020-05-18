@@ -29,7 +29,7 @@ export interface MandeInstance {
   /**
    * Writable options.
    */
-  options: Options & Pick<RequiredRequestInit, 'headers'>
+  options: Options
 
   /**
    * Sends a GET request to the given url.
@@ -124,6 +124,14 @@ function joinURL(base: string, url: string): string {
   )
 }
 
+export const defaults: Options & Pick<RequiredRequestInit, 'headers'> = {
+  responseAs: 'json' as Options['responseAs'],
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+}
+
 /**
  * Create a Mande instance
  *
@@ -135,19 +143,13 @@ function joinURL(base: string, url: string): string {
  * })
  * ```
  * @param baseURL - absolute url
- * @param globalOptions - optional global options that will be applied to every
- * other request
+ * @param instanceOptions - optional options that will be applied to every
+ * other request for this instance
  */
 export function mande(
   baseURL: string,
-  globalOptions: Options = {}
+  instanceOptions: Options
 ): MandeInstance {
-  let options = {
-    responseAs: 'json' as Options['responseAs'],
-    headers: {},
-    ...globalOptions,
-  }
-
   function _fetch(
     method: string,
     urlOrData?: string | number | any,
@@ -159,28 +161,30 @@ export function mande(
     if (typeof urlOrData === 'object') {
       url = ''
       data = urlOrData
+      localOptions = dataOrOptions
     } else {
       url = urlOrData
       data = dataOrOptions
     }
 
     let mergedOptions = {
-      ...options,
+      ...defaults,
+      ...instanceOptions,
       method,
       ...localOptions,
     }
 
     let query = {
-      ...options.query,
+      ...defaults.query,
+      ...instanceOptions.query,
       ...localOptions.query,
     }
 
     let { responseAs } = mergedOptions as Required<Options>
 
     mergedOptions.headers = {
-      ...options.headers,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      ...defaults.headers,
+      ...instanceOptions.headers,
       ...localOptions.headers,
     }
 
@@ -211,7 +215,7 @@ export function mande(
   // if (__DEV__ && !baseURL.endsWith('/'))
 
   return {
-    options,
+    options: instanceOptions,
     post: _fetch.bind(null, 'POST'),
     put: _fetch.bind(null, 'PUT'),
     patch: _fetch.bind(null, 'PATCH'),
