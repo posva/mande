@@ -46,7 +46,8 @@
   ],
   "size-limit": [
     {
-      "path": "size-check/index.js"
+      "path": "size-check/index.js",
+      "limit": "0.6KB"
     }
   ],
   "license": "MIT",
