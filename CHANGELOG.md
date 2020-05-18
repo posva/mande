@@ -1,3 +1,9 @@
+## [0.0.5](https://github.com/posva/mande/compare/v0.0.4...v0.0.5) (2020-05-18)
+
+### Features
+
+- allow omitting the url in post, put, patch ([bbcdad4](https://github.com/posva/mande/commit/bbcdad4b6d99725e7ee5fe81dfcda85389950841))
+
 ## [0.0.4](https://github.com/posva/mande/compare/v0.0.3...v0.0.4) (2020-05-17)
 
 ### Bug Fixes

@@ -25,6 +25,9 @@ export interface MandeInstance
 |  [delete(url, options)](./mande.mandeinstance.delete.md) | Sends a DELETE request to the given url. |
 |  [get(url, options)](./mande.mandeinstance.get.md) | Sends a GET request to the given url. |
 |  [patch(url, data, options)](./mande.mandeinstance.patch.md) | Sends a PATCH request to the given url. |
+|  [patch(data, options)](./mande.mandeinstance.patch_1.md) |  |
 |  [post(url, data, options)](./mande.mandeinstance.post.md) | Sends a POST request to the given url. |
+|  [post(data, options)](./mande.mandeinstance.post_1.md) |  |
 |  [put(url, data, options)](./mande.mandeinstance.put.md) | Sends a PUT request to the given url. |
+|  [put(data, options)](./mande.mandeinstance.put_1.md) |  |
 
