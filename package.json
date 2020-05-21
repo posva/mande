@@ -7,7 +7,7 @@
   "unpkg": "dist/mande.js",
   "jsdelivr": "dist/mande.js",
   "browser": "dist/mande.esm.js",
-  "types": "dist/mande/src",
+  "types": "dist/mande.d.ts",
   "sideEffects": false,
   "author": {
     "name": "Eduardo San Martin Morote",
