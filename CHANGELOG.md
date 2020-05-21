@@ -1,3 +1,9 @@
+## [0.0.7](https://github.com/posva/mande/compare/v0.0.6...v0.0.7) (2020-05-21)
+
+### Bug Fixes
+
+- **types:** point to the generated d.ts ([61729e2](https://github.com/posva/mande/commit/61729e209168c1ae3de034f134b292d4f5cbbca2))
+
 ## [0.0.6](https://github.com/posva/mande/compare/v0.0.5...v0.0.6) (2020-05-18)
 
 ### Bug Fixes
