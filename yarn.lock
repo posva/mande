@@ -469,14 +469,6 @@
     js-yaml "~3.13.1"
     resolve "~1.17.0"
 
-"@microsoft/api-extractor-model@7.8.7":
-  version "7.8.7"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.8.7.tgz#1e25de466be5e4a9ef929e8842316a8844720349"
-  integrity sha512-fTGiQuwFny3a5U6z8iJxygC72uYhaOM4e+YXtvSDLedoAX5ySsdhX98BemqouHm3pjbLHVcD8uTPfrE1F2DuLw==
-  dependencies:
-    "@microsoft/tsdoc" "0.12.19"
-    "@rushstack/node-core-library" "3.24.0"
-
 "@microsoft/api-extractor-model@7.8.8":
   version "7.8.8"
   resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.8.8.tgz#4ba1974c9b1e2d6b65daf56f6149c88d0a784680"
@@ -549,19 +541,6 @@
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
-
-"@rushstack/node-core-library@3.24.0":
-  version "3.24.0"
-  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-3.24.0.tgz#8a22612a2dd3805049027427384c6f1a123a6610"
-  integrity sha512-0UnaRKwjprJ4LJkdp6fjuiRuKbtH8PqomKT3RiNPK0p1cEnSTs5vSQxw47bAKQVqERoV7im+rbryc4onYgLFcw==
-  dependencies:
-    "@types/node" "10.17.13"
-    colors "~1.2.1"
-    fs-extra "~7.0.1"
-    jju "~1.4.0"
-    semver "~5.3.0"
-    timsort "~0.3.0"
-    z-schema "~3.18.3"
 
 "@rushstack/node-core-library@3.24.1":
   version "3.24.1"
@@ -6614,9 +6593,9 @@ rollup-pluginutils@^2.8.1:
     estree-walker "^0.6.1"
 
 rollup@^2.10.2:
-  version "2.16.1"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.16.1.tgz#97805e88071e2c6727bd0b64904976d14495c873"
-  integrity sha512-UYupMcbFtoWLB6ZtL4hPZNUTlkXjJfGT33Mmhz3hYLNmRj/cOvX2B26ZxDQuEpwtLdcyyyraBGQ7EfzmMJnXXg==
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.18.0.tgz#f03801e5dd01415e5675dcf61c824ea493ca0392"
+  integrity sha512-LhuQQp3WpnHo3HlKCRrdMXpB6jdLsGOoXXSfMjbv74s5VdV3WZhkYJT0Z6w/EH3UgPH+g/S9T4GJrKW/5iD8TA==
   optionalDependencies:
     fsevents "~2.1.2"
 
