@@ -109,6 +109,21 @@ describe('mande', () => {
         Authorization: 'Bearer foo',
       },
     })
+  })
+
+  it('can add custom headers through instance', async () => {
+    let api = mande('/api')
+    api.options.headers.Authorization = 'token secret'
+    fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
+    await api.get('2', { headers: { other: 'foo' } })
+    expect(fetchMock).toHaveFetched('/api/2', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'token secret',
+        other: 'foo',
+      },
+    })
     // should not fail in TS
     api.options.headers.Authorization = 'token secret'
   })

@@ -172,13 +172,13 @@ export const defaults: Options &
  */
 export function mande(
   baseURL: string,
-  instanceOptions: Partial<Options> = {}
+  passedInstanceOptions: Options = {}
 ): MandeInstance {
   function _fetch(
     method: string,
     urlOrData?: string | number | any,
     dataOrOptions?: Options | any,
-    localOptions: Partial<Options> = {}
+    localOptions: Options = {}
   ) {
     let url: string | number
     let data: any
@@ -232,8 +232,13 @@ export function mande(
     })
   }
 
+  const instanceOptions: MandeInstance['options'] = {
+    headers: {},
+    ...passedInstanceOptions,
+  }
+
   return {
-    options: { headers: {}, ...instanceOptions },
+    options: instanceOptions,
     post: _fetch.bind(null, 'POST'),
     put: _fetch.bind(null, 'PUT'),
     patch: _fetch.bind(null, 'PATCH'),
