@@ -1,3 +1,9 @@
+## [0.0.9](https://github.com/posva/mande/compare/v0.0.8...v0.0.9) (2020-06-25)
+
+### Bug Fixes
+
+- missing instance options ([007171e](https://github.com/posva/mande/commit/007171ef3cf9f1fb0741d0c2d573ca1532b883b6))
+
 ## [0.0.8](https://github.com/posva/mande/compare/v0.0.7...v0.0.8) (2020-06-25)
 
 ### Features
