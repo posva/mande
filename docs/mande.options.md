@@ -11,6 +11,7 @@ Allowed options for a request. Extends native `RequestInit`<!-- -->.
 ```typescript
 export interface Options extends RequestInit 
 ```
+<b>Extends:</b> RequestInit
 
 ## Properties
 

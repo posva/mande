@@ -9,5 +9,7 @@ Writable options.
 <b>Signature:</b>
 
 ```typescript
-options: Options;
+options: Options & {
+        headers: Required<Options>['headers'];
+    };
 ```

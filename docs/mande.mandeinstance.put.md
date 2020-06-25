@@ -9,7 +9,7 @@ Sends a PUT request to the given url.
 <b>Signature:</b>
 
 ```typescript
-put(url: string | number, data?: any, options?: Options): Promise<unknown>;
+put<T = unknown>(url: string | number, data?: any, options?: Options): Promise<T>;
 ```
 
 ## Parameters
@@ -22,7 +22,7 @@ put(url: string | number, data?: any, options?: Options): Promise<unknown>;
 
 <b>Returns:</b>
 
-Promise&lt;unknown&gt;
+Promise&lt;T&gt;
 
 ## Example
 

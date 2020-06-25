@@ -9,7 +9,7 @@ Sends a DELETE request to the given url.
 <b>Signature:</b>
 
 ```typescript
-delete(url: string | number, options?: Options): Promise<unknown>;
+delete<T = unknown>(url: string | number, options?: Options): Promise<T>;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ delete(url: string | number, options?: Options): Promise<unknown>;
 
 <b>Returns:</b>
 
-Promise&lt;unknown&gt;
+Promise&lt;T&gt;
 
 ## Example
 

@@ -9,7 +9,7 @@ Sends a POST request to the given url.
 <b>Signature:</b>
 
 ```typescript
-post(url: string | number, data?: any, options?: Options): Promise<unknown>;
+post<T = unknown>(url: string | number, data?: any, options?: Options): Promise<T>;
 ```
 
 ## Parameters
@@ -22,7 +22,7 @@ post(url: string | number, data?: any, options?: Options): Promise<unknown>;
 
 <b>Returns:</b>
 
-Promise&lt;unknown&gt;
+Promise&lt;T&gt;
 
 ## Example
 

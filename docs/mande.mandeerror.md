@@ -11,6 +11,7 @@ Extended Error with the raw `Response` object.
 ```typescript
 export interface MandeError extends Error 
 ```
+<b>Extends:</b> Error
 
 ## Properties
 

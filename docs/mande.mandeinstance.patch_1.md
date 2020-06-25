@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-patch(data?: any, options?: Options): Promise<unknown>;
+patch<T = unknown>(data?: any, options?: Options): Promise<T>;
 ```
 
 ## Parameters
@@ -19,5 +19,5 @@ patch(data?: any, options?: Options): Promise<unknown>;
 
 <b>Returns:</b>
 
-Promise&lt;unknown&gt;
+Promise&lt;T&gt;
 

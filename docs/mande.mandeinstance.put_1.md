@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-put(data?: any, options?: Options): Promise<unknown>;
+put<T = unknown>(data?: any, options?: Options): Promise<T>;
 ```
 
 ## Parameters
@@ -19,5 +19,5 @@ put(data?: any, options?: Options): Promise<unknown>;
 
 <b>Returns:</b>
 
-Promise&lt;unknown&gt;
+Promise&lt;T&gt;
 

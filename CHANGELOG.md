@@ -1,3 +1,9 @@
+## [0.0.8](https://github.com/posva/mande/compare/v0.0.7...v0.0.8) (2020-06-25)
+
+### Features
+
+- allow passing promise type through generic ([3696cd8](https://github.com/posva/mande/commit/3696cd80b5ed1f17a4acf9fa36fad85fd6332e95))
+
 ## [0.0.7](https://github.com/posva/mande/compare/v0.0.6...v0.0.7) (2020-05-21)
 
 ### Bug Fixes
