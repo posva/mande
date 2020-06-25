@@ -109,6 +109,8 @@ describe('mande', () => {
         Authorization: 'Bearer foo',
       },
     })
+    // should not fail in TS
+    api.options.headers.Authorization = 'token secret'
   })
 
   it('can return a raw response', async () => {

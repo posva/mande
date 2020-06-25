@@ -33,7 +33,7 @@ export interface MandeInstance {
   /**
    * Writable options.
    */
-  options: Options
+  options: Options & { headers: Required<Options>['headers'] }
 
   /**
    * Sends a GET request to the given url.
@@ -47,7 +47,7 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
-  get(url: string | number, options?: Options): Promise<unknown>
+  get<T = unknown>(url: string | number, options?: Options): Promise<T>
 
   /**
    * Sends a POST request to the given url.
@@ -62,8 +62,12 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  post(url: string | number, data?: any, options?: Options): Promise<unknown>
-  post(data?: any, options?: Options): Promise<unknown>
+  post<T = unknown>(
+    url: string | number,
+    data?: any,
+    options?: Options
+  ): Promise<T>
+  post<T = unknown>(data?: any, options?: Options): Promise<T>
 
   /**
    * Sends a PUT request to the given url.
@@ -78,8 +82,12 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  put(url: string | number, data?: any, options?: Options): Promise<unknown>
-  put(data?: any, options?: Options): Promise<unknown>
+  put<T = unknown>(
+    url: string | number,
+    data?: any,
+    options?: Options
+  ): Promise<T>
+  put<T = unknown>(data?: any, options?: Options): Promise<T>
 
   /**
    * Sends a PATCH request to the given url.
@@ -94,8 +102,12 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  patch(url: string | number, data?: any, options?: Options): Promise<unknown>
-  patch(data?: any, options?: Options): Promise<unknown>
+  patch<T = unknown>(
+    url: string | number,
+    data?: any,
+    options?: Options
+  ): Promise<T>
+  patch<T = unknown>(data?: any, options?: Options): Promise<T>
 
   /**
    * Sends a DELETE request to the given url.
@@ -109,7 +121,7 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
-  delete(url: string | number, options?: Options): Promise<unknown>
+  delete<T = unknown>(url: string | number, options?: Options): Promise<T>
 }
 
 function stringifyQuery(query: any): string {
@@ -160,13 +172,13 @@ export const defaults: Options &
  */
 export function mande(
   baseURL: string,
-  instanceOptions: Options = {}
+  instanceOptions: Partial<Options> = {}
 ): MandeInstance {
   function _fetch(
     method: string,
     urlOrData?: string | number | any,
     dataOrOptions?: Options | any,
-    localOptions: Options = {}
+    localOptions: Partial<Options> = {}
   ) {
     let url: string | number
     let data: any
@@ -221,7 +233,7 @@ export function mande(
   }
 
   return {
-    options: instanceOptions,
+    options: { headers: {}, ...instanceOptions },
     post: _fetch.bind(null, 'POST'),
     put: _fetch.bind(null, 'PUT'),
     patch: _fetch.bind(null, 'PATCH'),
