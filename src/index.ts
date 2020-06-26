@@ -172,7 +172,8 @@ export const defaults: Options &
  */
 export function mande(
   baseURL: string,
-  passedInstanceOptions: Options = {}
+  passedInstanceOptions: Options = {},
+  fetchPolyfill?: Window['fetch']
 ): MandeInstance {
   function _fetch(
     method: string,
@@ -221,7 +222,7 @@ export function mande(
 
     if (data) mergedOptions.body = JSON.stringify(data)
 
-    return fetch(url, mergedOptions).then((response) => {
+    return localFetch(url, mergedOptions).then((response) => {
       if (response.status >= 200 && response.status < 300) {
         if (responseAs === 'response') return response
         return response.status == 204 ? null : response[responseAs]()
@@ -230,6 +231,12 @@ export function mande(
       err.response = response
       throw err
     })
+  }
+
+  const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
+
+  if (!localFetch) {
+    throw new Error('No fetch function exists. Make sure to include a polyfill on Node.js.')
   }
 
   const instanceOptions: MandeInstance['options'] = {
