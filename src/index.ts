@@ -236,7 +236,9 @@ export function mande(
   const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
 
   if (!localFetch) {
-    throw new Error('No fetch function exists. Make sure to include a polyfill on Node.js.')
+    throw new Error(
+      'No fetch function exists. Make sure to include a polyfill on Node.js.'
+    )
   }
 
   const instanceOptions: MandeInstance['options'] = {
