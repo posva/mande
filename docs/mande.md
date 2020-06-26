@@ -8,7 +8,7 @@
 
 |  Function | Description |
 |  --- | --- |
-|  [mande(baseURL, passedInstanceOptions)](./mande.mande.md) | Create a Mande instance |
+|  [mande(baseURL, passedInstanceOptions, fetchPolyfill)](./mande.mande.md) | Create a Mande instance |
 
 ## Interfaces
 

@@ -1,3 +1,9 @@
+## [0.0.10](https://github.com/posva/mande/compare/v0.0.9...v0.0.10) (2020-06-26)
+
+### Features
+
+- allow fetch polyfill ([a6bb3f4](https://github.com/posva/mande/commit/a6bb3f4859bb7629382b88091a32bb29fa15f695))
+
 ## [0.0.9](https://github.com/posva/mande/compare/v0.0.8...v0.0.9) (2020-06-25)
 
 ### Bug Fixes
