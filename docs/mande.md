@@ -9,6 +9,7 @@
 |  Function | Description |
 |  --- | --- |
 |  [mande(baseURL, passedInstanceOptions, fetchPolyfill)](./mande.mande.md) | Create a Mande instance |
+|  [nuxtWrap(api, fn)](./mande.nuxtwrap.md) |  |
 
 ## Interfaces
 

@@ -1,3 +1,9 @@
+## [0.0.11](https://github.com/posva/mande/compare/v0.0.10...v0.0.11) (2020-07-23)
+
+### Features
+
+- **nuxt:** add nuxt plugin to copy headers ([060fe9d](https://github.com/posva/mande/commit/060fe9da2e93be8b3db3a6399bdeb4c3f03876b2))
+
 ## [0.0.10](https://github.com/posva/mande/compare/v0.0.9...v0.0.10) (2020-06-26)
 
 ### Features
