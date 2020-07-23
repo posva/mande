@@ -257,3 +257,35 @@ export function mande(
     delete: (url, options) => _fetch('DELETE', url, null, options),
   }
 }
+
+type InferArgs<F> = F extends (api: MandeInstance, ...args: infer A) => any
+  ? A
+  : never
+
+export function nuxtWrap<
+  M extends MandeInstance,
+  F extends (api: M, ...args: any[]) => any
+>(api: M, fn: F): (...args: InferArgs<F>) => ReturnType<F> {
+  const argsAmount = fn.length
+
+  const wrappedCall: (
+    ...args: InferArgs<F>
+  ) => ReturnType<F> = function _wrappedCall() {
+    let apiInstance: M = api
+    let args = Array.from(arguments) as InferArgs<F>
+    // call from nuxt server
+    if (arguments.length === argsAmount) {
+      apiInstance = { ...api }
+      // remove the first argument
+      const [augmentApiInstance] = args.splice(0, 1) as [(api: M) => void]
+
+      // let the caller augment the instance
+      augmentApiInstance(apiInstance)
+      apiInstance.options.headers = { ...apiInstance.options.headers }
+    }
+
+    return fn.call(null, apiInstance, ...args)
+  }
+
+  return wrappedCall
+}

@@ -30,6 +30,8 @@
   "files": [
     "dist/*.js",
     "dist/mande.d.ts",
+    "nuxt/*.js",
+    "nuxt/types.d.js",
     "README.md"
   ],
   "keywords": [
@@ -54,6 +56,7 @@
   "devDependencies": {
     "@microsoft/api-documenter": "^7.8.0",
     "@microsoft/api-extractor": "^7.8.0",
+    "@nuxt/types": "^2.13.3",
     "@rollup/plugin-alias": "^3.0.0",
     "@rollup/plugin-replace": "^2.2.1",
     "@size-limit/preset-small-lib": "^4.5.0",
