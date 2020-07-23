@@ -110,6 +110,16 @@ import { defaults } from 'mande'
 defaults.headers.Authorization = 'Bearer token'
 ```
 
+## Nuxt
+
+Automatically proxy cookies and headers on the server.
+
+```js
+// nuxt.config.js
+module.exports = {
+  buildModules: ['mande/nuxt']
+}
+
 ## API
 
 Most of the code can be discovered through the autocompletion but the API documentation is available at https://posva.net/mande/.
@@ -122,3 +132,4 @@ Most of the code can be discovered through the autocompletion but the API docume
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
+```
