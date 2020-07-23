@@ -1,3 +1,9 @@
+## [0.0.12](https://github.com/posva/mande/compare/v0.0.11...v0.0.12) (2020-07-23)
+
+### Features
+
+- **nuxt:** add buildModule ([1a5b6df](https://github.com/posva/mande/commit/1a5b6df7872f3c504a6948158b21cceed5dd3da6))
+
 ## [0.0.11](https://github.com/posva/mande/compare/v0.0.10...v0.0.11) (2020-07-23)
 
 ### Features
