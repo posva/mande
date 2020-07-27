@@ -1,10 +1,8 @@
-import { MandeInstance } from '../src'
-
 declare module '@nuxt/types' {
   interface Context {
-    mande: <F extends (api: MandeInstance, ...args: any[]) => any>(
-      api: MandeInstance,
-      fn: F
+    mande: <F extends (...args: any[]) => any>(
+      fn: F,
+      ...args: Parameters<F>
     ) => ReturnType<F>
   }
 }
