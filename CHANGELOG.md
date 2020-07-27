@@ -1,3 +1,9 @@
+## [0.0.14](https://github.com/posva/mande/compare/v0.0.13...v0.0.14) (2020-07-27)
+
+### Bug Fixes
+
+- **nuxt:** pass correct array ([ecb88ce](https://github.com/posva/mande/commit/ecb88ce8aebb18cde2c9c3b23257f1480297157c))
+
 ## [0.0.13](https://github.com/posva/mande/compare/v0.0.12...v0.0.13) (2020-07-27)
 
 ### Bug Fixes
