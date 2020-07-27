@@ -1,4 +1,3 @@
-
 /** @type {import('@nuxt/types').Plugin} */
 export default (ctx, inject) => {
   function mande(wrappedFn, ...args) {
@@ -10,8 +9,18 @@ export default (ctx, inject) => {
 
         const reqHeaders = { ...ctx.req.headers }
 
+        const proxyHeadersIgnore = <%= serialize(options.proxyHeadersIgnore) %> || [
+          'accept',
+          'host',
+          'cf-ray',
+          'cf-connecting-ip',
+          'content-length',
+          'content-md5',
+          'content-type',
+        ]
+
         // @ts-ignore
-        for (let header of <%= serialize(options.proxyHeadersIgnore) %>) {
+        for (let header of proxyHeadersIgnore) {
           delete reqHeaders[header]
         }
 

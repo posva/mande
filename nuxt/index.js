@@ -23,6 +23,7 @@ const MandeModule = function NuxtMandeModule(localOptions) {
   this.addPlugin({
     src: path.resolve(__dirname, 'plugin.js'),
     fileName: 'mande.js',
+    // FIXME: figure out why options end up being undefined
     options,
   })
 }
