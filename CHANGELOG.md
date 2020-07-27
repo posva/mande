@@ -1,3 +1,10 @@
+## [0.0.13](https://github.com/posva/mande/compare/v0.0.12...v0.0.13) (2020-07-27)
+
+### Bug Fixes
+
+- **nuxt:** avoid hot reload error ([d47e46d](https://github.com/posva/mande/commit/d47e46d6a8817c075be9398d0102aa9d886af29e))
+- ignore some headers when proxying ([f99d313](https://github.com/posva/mande/commit/f99d313c61e360ea5e6a5f19ce4d198e1fd4875a))
+
 ## [0.0.12](https://github.com/posva/mande/compare/v0.0.11...v0.0.12) (2020-07-23)
 
 ### Features
