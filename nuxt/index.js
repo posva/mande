@@ -27,3 +27,5 @@ const MandeModule = function NuxtMandeModule(localOptions) {
     options,
   })
 }
+
+module.exports = MandeModule
