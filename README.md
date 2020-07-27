@@ -119,6 +119,21 @@ Automatically proxy cookies and headers on the server.
 module.exports = {
   buildModules: ['mande/nuxt']
 }
+```
+
+To make Mande work on Server, make sure to provide a `fetch` polyfill and to use full URLs and not absolute URLs starting with `/`. For example, using `node-fetch`, you can do:
+
+```js
+export const BASE_URL = process.server
+  ? process.env.NODE_ENV !== 'production'
+    ? 'http://localhost:3000'
+    : 'https://example.com'
+    // on client, do not add the domain, so urls end up like `/api/something`
+  : ''
+
+const fetchPolyfill = process.server ? require('node-fetch') : fetch
+const contents = mande(BASE_URL + '/api', {}, fetchPolyfill)
+```
 
 ## API
 
