@@ -5,6 +5,9 @@ export default (ctx, inject) => {
     return wrappedFn(
       /** @type {import('../src').MandeInstance} */
       (api) => {
+        // the plugin can be called during dev in client side with no context
+        if (!ctx.req) return
+
         const reqHeaders = { ...ctx.req.headers }
 
         // @ts-ignore
