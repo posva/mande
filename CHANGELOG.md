@@ -1,3 +1,9 @@
+## [0.0.16](https://github.com/posva/mande/compare/v0.0.15...v0.0.16) (2020-07-27)
+
+### Bug Fixes
+
+- missing type ([ab46705](https://github.com/posva/mande/commit/ab46705bd2d83a3085f9b64b35ecb99c283e068c))
+
 ## [0.0.15](https://github.com/posva/mande/compare/v0.0.14...v0.0.15) (2020-07-27)
 
 ### Bug Fixes
