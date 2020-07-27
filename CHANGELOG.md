@@ -1,3 +1,9 @@
+## [0.0.15](https://github.com/posva/mande/compare/v0.0.14...v0.0.15) (2020-07-27)
+
+### Bug Fixes
+
+- **nuxt:** missing export ([ed3534f](https://github.com/posva/mande/commit/ed3534fccc5ee3a5cf41fc2c219f9b5efcda0939))
+
 ## [0.0.14](https://github.com/posva/mande/compare/v0.0.13...v0.0.14) (2020-07-27)
 
 ### Bug Fixes
