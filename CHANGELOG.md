@@ -1,3 +1,9 @@
+## [0.0.18](https://github.com/posva/mande/compare/v0.0.17...v0.0.18) (2020-07-28)
+
+### Bug Fixes
+
+- **types:** correct nuxt types + docs ([5d08bdb](https://github.com/posva/mande/commit/5d08bdb61c6199daa6d75caf9a0332cf9bc7ff9a))
+
 ## [0.0.17](https://github.com/posva/mande/compare/v0.0.16...v0.0.17) (2020-07-27)
 
 ### Bug Fixes
