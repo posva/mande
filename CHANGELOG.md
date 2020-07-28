@@ -1,3 +1,9 @@
+## [0.0.20](https://github.com/posva/mande/compare/v0.0.19...v0.0.20) (2020-07-28)
+
+### Features
+
+- **nuxt:** pass errros to ctx.error ([b71b043](https://github.com/posva/mande/commit/b71b043a526d7d1719d072f4f60e86d632b46082))
+
 ## [0.0.19](https://github.com/posva/mande/compare/v0.0.18...v0.0.19) (2020-07-28)
 
 ### Bug Fixes
