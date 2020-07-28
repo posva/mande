@@ -31,7 +31,7 @@
     "dist/*.js",
     "dist/mande.d.ts",
     "nuxt/*.js",
-    "nuxt/types.d.ts",
+    "nuxt/*.d.ts",
     "README.md"
   ],
   "keywords": [
