@@ -1,3 +1,9 @@
+## [0.0.19](https://github.com/posva/mande/compare/v0.0.18...v0.0.19) (2020-07-28)
+
+### Bug Fixes
+
+- **types:** missing rename ([f1574a0](https://github.com/posva/mande/commit/f1574a067a8e890b5e4c7a4a676205ff8f0ec7a8))
+
 ## [0.0.18](https://github.com/posva/mande/compare/v0.0.17...v0.0.18) (2020-07-28)
 
 ### Bug Fixes
