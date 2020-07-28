@@ -1,6 +1,7 @@
 import path from 'path'
 
 const DEFAULT_OPTIONS = {
+  callError: true,
   proxyHeadersIgnore: [
     'accept',
     'host',
