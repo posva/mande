@@ -110,16 +110,7 @@ import { defaults } from 'mande'
 defaults.headers.Authorization = 'Bearer token'
 ```
 
-## Nuxt
-
-Automatically proxy cookies and headers on the server.
-
-```js
-// nuxt.config.js
-module.exports = {
-  buildModules: ['mande/nuxt']
-}
-```
+## SSR (and Nuxt in Universal mode)
 
 To make Mande work on Server, make sure to provide a `fetch` polyfill and to use full URLs and not absolute URLs starting with `/`. For example, using `node-fetch`, you can do:
 
@@ -128,11 +119,43 @@ export const BASE_URL = process.server
   ? process.env.NODE_ENV !== 'production'
     ? 'http://localhost:3000'
     : 'https://example.com'
-    // on client, do not add the domain, so urls end up like `/api/something`
-  : ''
+  : // on client, do not add the domain, so urls end up like `/api/something`
+    ''
 
 const fetchPolyfill = process.server ? require('node-fetch') : fetch
 const contents = mande(BASE_URL + '/api', {}, fetchPolyfill)
+```
+
+### Nuxt
+
+When using with Nuxt **and SSR**, you must wrap exported functions so they automatically proxy cookies and headers on the server:
+
+```js
+const fetchPolyfill = process.server ? require('node-fetch') : fetch
+const users = mande(BASE_URL + '/api/users', {}, fetchPolyfill)
+
+export const getUserById = nuxtWrap(users, (api, id: string) => api.get(id))
+```
+
+Make sure to add it as a buildModule as well:
+
+```js
+// nuxt.config.js
+module.exports = {
+  buildModules: ['mande/nuxt'],
+}
+```
+
+This prevents requests from accidentally sharing headers or bearer tokens.
+
+#### TypeScript
+
+Make sure to include `mande/nuxt` in your `tsconfig.json`:
+
+```json
+{
+  "types": ["@types/node", "@nuxt/types", "mande/nuxt"]
+}
 ```
 
 ## API
@@ -147,4 +170,3 @@ Most of the code can be discovered through the autocompletion but the API docume
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-```
