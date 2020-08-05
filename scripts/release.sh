@@ -5,8 +5,7 @@ read VERSION
 
 read -p "Releasing v$VERSION - are you sure? (y/n)" -n 1 -r
 echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "Releasing v$VERSION ..."
 
   yarn run build
@@ -18,6 +17,7 @@ then
 
   # changelog
   yarn run changelog
+  yarn prettier --write CHANGELOG.md
   echo "Please check the git history and the changelog and press enter"
   read OKAY
 
