@@ -42,7 +42,7 @@ export default (ctx, inject) => {
           return err.response.json().then((body) => {
             const errorObject = { statusCode: err.response.status, message: err.message, body }
             ctx.error(errorObject)
-            return errorObject
+            return Promise.reject(errorObject)
           })
         })
       <% } %>
