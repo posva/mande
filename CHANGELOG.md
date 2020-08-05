@@ -1,3 +1,9 @@
+## [0.0.21](https://github.com/posva/mande/compare/v0.0.20...v0.0.21) (2020-08-05)
+
+### Bug Fixes
+
+- **nuxt:** reject the call if failed ([62b00da](https://github.com/posva/mande/commit/62b00da12b49d3986ffb217ad5bcf9ef17f0f6da))
+
 ## [0.0.20](https://github.com/posva/mande/compare/v0.0.19...v0.0.20) (2020-07-28)
 
 ### Features
