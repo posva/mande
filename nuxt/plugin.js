@@ -39,11 +39,13 @@ export default (ctx, inject) => {
       )
       <% if (options.callError) { %>
         .catch((err) => {
-          return err.response.json().then((body) => {
-            const errorObject = { statusCode: err.response.status, message: err.message, body }
-            ctx.error(errorObject)
-            return Promise.reject(errorObject)
-          })
+          const errorObject = {
+            statusCode: err.response.status,
+            message: err.message,
+            body: err.body,
+          }
+          ctx.error(errorObject)
+          return Promise.reject(errorObject)
         })
       <% } %>
     )

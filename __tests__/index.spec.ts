@@ -68,6 +68,24 @@ describe('mande', () => {
     })
   })
 
+  it('serializes body on error', async () => {
+    let api = mande('/api/')
+    fetchMock.mock('/api/', { status: 404, body: { message: 'nope' } })
+    await expect(api.get('')).rejects.toMatchObject({
+      response: expect.anything(),
+      body: { message: 'nope' }
+    })
+  })
+
+  it('works with empty failed request', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/', 404)
+    await expect(api.get('')).rejects.toMatchObject({
+      response: expect.anything(),
+      body: null
+    })
+  })
+
   it('can pass a query', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/?foo=a&bar=b', { body: {} })

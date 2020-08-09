@@ -22,7 +22,8 @@ export interface Options extends RequestInit {
 /**
  * Extended Error with the raw `Response` object.
  */
-export interface MandeError extends Error {
+export interface MandeError<T = any> extends Error {
+  body: T
   response: Response
 }
 
@@ -222,15 +223,24 @@ export function mande(
 
     if (data) mergedOptions.body = JSON.stringify(data)
 
-    return localFetch(url, mergedOptions).then((response) => {
-      if (response.status >= 200 && response.status < 300) {
-        if (responseAs === 'response') return response
-        return response.status == 204 ? null : response[responseAs]()
-      }
-      let err = new Error(response.statusText) as MandeError
-      err.response = response
-      throw err
-    })
+    return localFetch(url, mergedOptions)
+      .then((response) =>
+        Promise.all([
+          response,
+          responseAs === 'response'
+            ? response
+            : response[responseAs]().catch(() => null),
+        ])
+      )
+      .then(([response, data]) => {
+        if (response.status >= 200 && response.status < 300) {
+          return response.status == 204 ? null : data
+        }
+        let err = new Error(response.statusText) as MandeError
+        err.response = response
+        err.body = data
+        throw err
+      })
   }
 
   const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
@@ -276,6 +286,10 @@ export function nuxtWrap<
     // call from nuxt server
     if (arguments.length === argsAmount) {
       apiInstance = { ...api }
+      apiInstance.options = {
+        ...apiInstance.options,
+        headers: { ...apiInstance.options.headers },
+      }
       // remove the first argument
       const [augmentApiInstance] = args.splice(0, 1) as [(api: M) => void]
 
