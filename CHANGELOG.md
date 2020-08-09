@@ -1,3 +1,9 @@
+## [0.0.22](https://github.com/posva/mande/compare/v0.0.21...v0.0.22) (2020-08-09)
+
+### Features
+
+- serialize errors body in body ([e2757d5](https://github.com/posva/mande/commit/e2757d581d5a8821bc0842d462a7832341b93f71))
+
 ## [0.0.21](https://github.com/posva/mande/compare/v0.0.20...v0.0.21) (2020-08-05)
 
 ### Bug Fixes

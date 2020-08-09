@@ -9,7 +9,7 @@ Extended Error with the raw `Response` object.
 <b>Signature:</b>
 
 ```typescript
-export interface MandeError extends Error 
+export interface MandeError<T = any> extends Error 
 ```
 <b>Extends:</b> Error
 
@@ -17,5 +17,6 @@ export interface MandeError extends Error
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [body](./mande.mandeerror.body.md) | T |  |
 |  [response](./mande.mandeerror.response.md) | Response |  |
 
