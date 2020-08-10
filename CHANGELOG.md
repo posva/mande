@@ -1,3 +1,9 @@
+## [0.0.23](https://github.com/posva/mande/compare/v0.0.22...v0.0.23) (2020-08-10)
+
+### Bug Fixes
+
+- **nuxt:** missign cookies ([c9b02d2](https://github.com/posva/mande/commit/c9b02d25ce4511e1611b4f38972038c144c2428e))
+
 ## [0.0.22](https://github.com/posva/mande/compare/v0.0.21...v0.0.22) (2020-08-09)
 
 ### Features
