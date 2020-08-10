@@ -28,7 +28,8 @@ export default (ctx, inject) => {
             delete reqHeaders[header]
           }
 
-          api.options.headers = { ...api.options.headers, ...reqHeaders }
+          // force clear any existing cookie
+          api.options.headers = { ...api.options.headers, cookie: null, ...reqHeaders }
 
           if (process.server) {
             // Don't accept brotli encoding because Node can't parse it

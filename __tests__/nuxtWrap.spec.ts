@@ -25,24 +25,4 @@ describe('Nuxt wrapping', () => {
     await expect(wrapped(20)).resolves.toEqual({})
     expect(fetchMock).toHaveFetched('/api/20')
   })
-
-  it('creates a copy', async () => {
-    let api = mande('/api/')
-    fetchMock.mock('/api/20', { status: 200, body: {} })
-    api.options.headers.before = 'true'
-    const wrapped = nuxtWrap(api, (local, n: number) => {
-      local.options.headers.other = 'true'
-      expect(local.options.headers).toEqual({
-        before: 'true',
-        other: 'true',
-        after: 'true',
-      })
-      return local.get<{}>(n)
-    })
-    api.options.headers.after = 'true'
-    // @ts-ignore: simulate the nuxt plugin
-    await expect(wrapped(() => { }, 20)).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/20')
-    expect(api.options.headers).toEqual({ before: 'true', after: 'true' })
-  })
 })

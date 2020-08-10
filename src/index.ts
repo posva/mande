@@ -276,6 +276,7 @@ export function nuxtWrap<
   M extends MandeInstance,
   F extends (api: M, ...args: any[]) => any
 >(api: M, fn: F): (...args: InferArgs<F>) => ReturnType<F> {
+  // args for the api call + 1 because of api parameter
   const argsAmount = fn.length
 
   const wrappedCall: (
@@ -283,19 +284,15 @@ export function nuxtWrap<
   ) => ReturnType<F> = function _wrappedCall() {
     let apiInstance: M = api
     let args = Array.from(arguments) as InferArgs<F>
-    // call from nuxt server
+    // call from nuxt server with a function to augment the api instance
     if (arguments.length === argsAmount) {
       apiInstance = { ...api }
-      apiInstance.options = {
-        ...apiInstance.options,
-        headers: { ...apiInstance.options.headers },
-      }
+
       // remove the first argument
       const [augmentApiInstance] = args.splice(0, 1) as [(api: M) => void]
 
       // let the caller augment the instance
       augmentApiInstance(apiInstance)
-      apiInstance.options.headers = { ...apiInstance.options.headers }
     }
 
     return fn.call(null, apiInstance, ...args)

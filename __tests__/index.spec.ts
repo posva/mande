@@ -73,7 +73,7 @@ describe('mande', () => {
     fetchMock.mock('/api/', { status: 404, body: { message: 'nope' } })
     await expect(api.get('')).rejects.toMatchObject({
       response: expect.anything(),
-      body: { message: 'nope' }
+      body: { message: 'nope' },
     })
   })
 
@@ -82,7 +82,7 @@ describe('mande', () => {
     fetchMock.get('/api/', 404)
     await expect(api.get('')).rejects.toMatchObject({
       response: expect.anything(),
-      body: null
+      body: null,
     })
   })
 
