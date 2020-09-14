@@ -491,14 +491,6 @@
     js-yaml "~3.13.1"
     resolve "~1.17.0"
 
-"@microsoft/api-extractor-model@7.8.20":
-  version "7.8.20"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.8.20.tgz#844fac9e0695d7de97036687d801a2fc040bae1e"
-  integrity sha512-2nf1N9gco613JxjykAeyADP7Ihdi/UXuLRwjCV2x0441VBwy52BkJjgnTHTqQycWn0zhWf7BPT/uOtUF3lF8lw==
-  dependencies:
-    "@microsoft/tsdoc" "0.12.19"
-    "@rushstack/node-core-library" "3.30.0"
-
 "@microsoft/api-extractor-model@7.9.0":
   version "7.9.0"
   resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.9.0.tgz#9b0c0db3821937454bbd5d1441c0634801dacd31"
@@ -508,13 +500,13 @@
     "@rushstack/node-core-library" "3.32.0"
 
 "@microsoft/api-extractor@^7.8.0":
-  version "7.9.12"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.9.12.tgz#19def4227ad4db6e37e13a0d410417d39efa93ae"
-  integrity sha512-Zco89bqXc6lWWwA8etQ/ROlNIdOuBAoKDfe1DpuTG5d8KNjrCbzntWrXnnPGBffNkhFVMOa6O0yKwTRaT0UJ7w==
+  version "7.9.15"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.9.15.tgz#72fe4ccc2fe40c5114546b11d2aa3e8eb2bd6c19"
+  integrity sha512-j3BrAXTc3M51vUe32hC47i4JoJBqbR2iJaV6Vhew1+BzBkg4bJJziT6V3EbCdKt60rbEWSV/30EMwwdXVyqL5A==
   dependencies:
-    "@microsoft/api-extractor-model" "7.8.20"
+    "@microsoft/api-extractor-model" "7.9.0"
     "@microsoft/tsdoc" "0.12.19"
-    "@rushstack/node-core-library" "3.30.0"
+    "@rushstack/node-core-library" "3.32.0"
     "@rushstack/ts-command-line" "4.6.4"
     colors "~1.2.1"
     lodash "~4.17.15"
@@ -596,21 +588,6 @@
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
-
-"@rushstack/node-core-library@3.30.0":
-  version "3.30.0"
-  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-3.30.0.tgz#a2b814a611a040ac69d6c31ffc92bf9155c983fb"
-  integrity sha512-vZo1fi/ObL3CmRXlQUX/E1xL9KL9arBfCJ7pYf3O/vFrD8ffSfpQ6+6lhgAsKrCIM5Epddsgeb2REPxMwYZX1g==
-  dependencies:
-    "@types/node" "10.17.13"
-    colors "~1.2.1"
-    fs-extra "~7.0.1"
-    import-lazy "~4.0.0"
-    jju "~1.4.0"
-    resolve "~1.17.0"
-    semver "~7.3.0"
-    timsort "~0.3.0"
-    z-schema "~3.18.3"
 
 "@rushstack/node-core-library@3.32.0":
   version "3.32.0"
