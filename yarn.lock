@@ -487,11 +487,11 @@
     chalk "^4.0.0"
 
 "@microsoft/api-documenter@^7.8.0":
-  version "7.9.32"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.9.32.tgz#c988c24864cd113c3037e325e49469338ea6fe2b"
-  integrity sha512-LHR2cg4x98/OvCZ1QeqPsIOZ+mvNNC/PDNwRv+h1aWkYlTscVxa47oB32yR36x7O+m52B7MJlXP39norcUQE7A==
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.11.0.tgz#ea09d22647a7585be9fc396cd707043f8ab1fa77"
+  integrity sha512-PT2cg5Lii7v7WJC/Xlm+4onpwT5NL2rj6dXuBOJzDLd5YO6QvEEoFZWPkdrMfcR3OWwrRZ9PaCxQ/nF3SSkaIA==
   dependencies:
-    "@microsoft/api-extractor-model" "7.10.10"
+    "@microsoft/api-extractor-model" "7.12.0"
     "@microsoft/tsdoc" "0.12.19"
     "@rushstack/node-core-library" "3.35.1"
     "@rushstack/ts-command-line" "4.7.7"
@@ -503,6 +503,14 @@
   version "7.10.10"
   resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.10.10.tgz#d7d3e0b28319370c46eb5b30314e087bf95c9a45"
   integrity sha512-Sy3kjAQARyW54YneYdf1c7vKZAQbFSZA1Px9TekkcKCOGER8h5trplTSCQWwTgWOKarQaNNSnlkHII0CNMoMjA==
+  dependencies:
+    "@microsoft/tsdoc" "0.12.19"
+    "@rushstack/node-core-library" "3.35.1"
+
+"@microsoft/api-extractor-model@7.12.0":
+  version "7.12.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.12.0.tgz#ad5589c166b31dad3c8669b46b050f8bc4056f1b"
+  integrity sha512-TxoAbL/lauS3k/brBWVsiQTnyHBwHrAGJhTuiD0tWS/eu4dLNULchcSQfcOaFS91OgDEz4lMMbClgChFuo+53Q==
   dependencies:
     "@microsoft/tsdoc" "0.12.19"
     "@rushstack/node-core-library" "3.35.1"
