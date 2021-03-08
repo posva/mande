@@ -637,9 +637,9 @@
     chalk "^4.0.0"
 
 "@microsoft/api-documenter@^7.8.0":
-  version "7.12.7"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.12.7.tgz#7b1742999bc083a237f78e658b3351e92012b3f7"
-  integrity sha512-GD3Z52yzDz8ZN3efB0mL2ogXLoL/I/cpoZmwLm8KiXL6o5g9K25fQ7HrFt4fvk9XTvcYX/EvZw4TBjrWz7cj5A==
+  version "7.12.9"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.12.9.tgz#04f4b959a7dfc3e923f8468081b150d978193a6c"
+  integrity sha512-Z33gze1at8IeO12lDyGRWdf7mA1hDZhFI8KAQWA2Ixq8lRztlNFh3vyfYPKiJa4xz5feLmDZ75ufAW9l0VftQA==
   dependencies:
     "@microsoft/api-extractor-model" "7.12.2"
     "@microsoft/tsdoc" "0.12.24"
