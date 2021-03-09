@@ -146,6 +146,21 @@ describe('mande', () => {
     api.options.headers.Authorization = 'token secret'
   })
 
+  // TODO: the empty headers matches anything...
+  it('can remove a default header', async () => {
+    let api = mande('/api', { headers: { 'Content-Type': '' }})
+    fetchMock.get('/api/2', { body: {} })
+    await api.get('2')
+    expect(fetchMock).toHaveFetched('/api/2', {
+      headers: {
+        Accept: 'application/json'
+        // no Content-Type
+        // 'Content-Type': 'application/json',
+      },
+    })
+  })
+
+
   it('can return a raw response', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
