@@ -1,3 +1,9 @@
+# [1.0.0](https://github.com/posva/mande/compare/v0.0.23...v1.0.0) (2021-03-24)
+
+### Bug Fixes
+
+- remove null headers ([#210](https://github.com/posva/mande/issues/210)) ([32fcd3e](https://github.com/posva/mande/commit/32fcd3ec83f6bd07c68e0b25ef5c222dc08b258d))
+
 ## [0.0.23](https://github.com/posva/mande/compare/v0.0.22...v0.0.23) (2020-08-10)
 
 ### Bug Fixes
