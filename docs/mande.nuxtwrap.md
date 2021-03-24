@@ -4,6 +4,8 @@
 
 ## nuxtWrap() function
 
+Creates an Nuxt SSR compatible function that automatically proxies cookies to requests and works transparently on the server and client (it still requires a fetch polyfill on Node).
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,10 +16,23 @@ export declare function nuxtWrap<M extends MandeInstance, F extends (api: M, ...
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  api | M |  |
-|  fn | F |  |
+|  api | M | Mande instance to wrap |
+|  fn | F | function to be wrapped |
 
 <b>Returns:</b>
 
 (...args: InferArgs&lt;F&gt;) =&gt; ReturnType&lt;F&gt;
+
+## Example
+
+
+```js
+import { mande, nuxtWrap } from 'mande'
+
+const fetchPolyfill = process.server ? require('node-fetch') : fetch
+const users = mande(BASE_URL + '/api/users', {}, fetchPolyfill)
+
+export const getUserById = nuxtWrap(users, (api, id: string) => api.get(id))
+
+```
 

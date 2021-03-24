@@ -9,7 +9,5 @@ Writable options.
 <b>Signature:</b>
 
 ```typescript
-options: Options & {
-        headers: Required<Options>['headers'];
-    };
+options: Required<Pick<OptionsRaw, 'headers'>> & Pick<OptionsRaw, 'responseAs' | 'query'>;
 ```

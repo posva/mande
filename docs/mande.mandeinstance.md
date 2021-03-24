@@ -16,7 +16,7 @@ export interface MandeInstance
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [options](./mande.mandeinstance.options.md) | [Options](./mande.options.md) &amp; { headers: Required&lt;[Options](./mande.options.md)<!-- -->&gt;\['headers'\]; } | Writable options. |
+|  [options](./mande.mandeinstance.options.md) | Required&lt;Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'headers'&gt;&gt; &amp; Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'responseAs' \| 'query'&gt; | Writable options. |
 
 ## Methods
 

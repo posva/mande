@@ -9,7 +9,7 @@
 |  Function | Description |
 |  --- | --- |
 |  [mande(baseURL, passedInstanceOptions, fetchPolyfill)](./mande.mande.md) | Create a Mande instance |
-|  [nuxtWrap(api, fn)](./mande.nuxtwrap.md) |  |
+|  [nuxtWrap(api, fn)](./mande.nuxtwrap.md) | Creates an Nuxt SSR compatible function that automatically proxies cookies to requests and works transparently on the server and client (it still requires a fetch polyfill on Node). |
 
 ## Interfaces
 
@@ -18,6 +18,7 @@
 |  [MandeError](./mande.mandeerror.md) | Extended Error with the raw <code>Response</code> object. |
 |  [MandeInstance](./mande.mandeinstance.md) | Object returned by [mande()](./mande.mande.md) |
 |  [Options](./mande.options.md) | Allowed options for a request. Extends native <code>RequestInit</code>. |
+|  [OptionsRaw](./mande.optionsraw.md) |  |
 
 ## Variables
 

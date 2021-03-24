@@ -9,7 +9,7 @@ Create a Mande instance
 <b>Signature:</b>
 
 ```typescript
-export declare function mande(baseURL: string, passedInstanceOptions?: Options, fetchPolyfill?: Window['fetch']): MandeInstance;
+export declare function mande(baseURL: string, passedInstanceOptions?: OptionsRaw, fetchPolyfill?: Window['fetch']): MandeInstance;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ export declare function mande(baseURL: string, passedInstanceOptions?: Options, 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  baseURL | string | absolute url |
-|  passedInstanceOptions | [Options](./mande.options.md) |  |
+|  passedInstanceOptions | [OptionsRaw](./mande.optionsraw.md) |  |
 |  fetchPolyfill | Window\['fetch'\] |  |
 
 <b>Returns:</b>

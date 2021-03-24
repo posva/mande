@@ -44,11 +44,14 @@ function createEntry(
     input,
     plugins: [
       replace({
-        __VERSION__: pkg.version,
-        'process.env.NODE_ENV': `'${env}'`,
+        preventAssignment: true,
+        values: {
+          __VERSION__: pkg.version,
+          'process.env.NODE_ENV': `'${env}'`,
+        },
       }),
       alias({
-        resolve: ['.ts', '.js'],
+        // resolve: ['.ts', '.js'],
         // entries: [{ find: 'firebase', replacement: path.join(__dirname, './stub') }],
       }),
     ],
