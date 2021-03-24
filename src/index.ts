@@ -19,6 +19,13 @@ export interface Options extends RequestInit {
   headers?: Record<string, string>
 }
 
+export interface OptionsRaw extends Omit<Options, 'headers'> {
+  /**
+   * Headers sent alongside the request. Set any header to null to remove it.
+   */
+  headers?: Record<string, string | null>
+}
+
 /**
  * Extended Error with the raw `Response` object.
  */
@@ -34,7 +41,8 @@ export interface MandeInstance {
   /**
    * Writable options.
    */
-  options: Options & { headers: Required<Options>['headers'] }
+  options: Required<Pick<OptionsRaw, 'headers'>> &
+    Pick<OptionsRaw, 'responseAs' | 'query'>
 
   /**
    * Sends a GET request to the given url.
@@ -141,6 +149,18 @@ function joinURL(base: string, url: string): string {
   )
 }
 
+function removeNullishValues(
+  headers: Exclude<OptionsRaw['headers'], undefined>
+): Exclude<Options['headers'], undefined> {
+  return Object.keys(headers).reduce((newHeaders, headerName) => {
+    if (headers[headerName] != null) {
+      // @ts-ignore
+      newHeaders[headerName] = headers[headerName]
+    }
+    return newHeaders
+  }, {} as Exclude<Options['headers'], undefined>)
+}
+
 /**
  * Global default options as {@link Options} that are applied to **all** mande
  * instances. Always contain an initialized `headers` property with the default
@@ -173,7 +193,7 @@ export const defaults: Options &
  */
 export function mande(
   baseURL: string,
-  passedInstanceOptions: Options = {},
+  passedInstanceOptions: OptionsRaw = {},
   fetchPolyfill?: Window['fetch']
 ): MandeInstance {
   function _fetch(
@@ -193,11 +213,17 @@ export function mande(
       data = dataOrOptions
     }
 
-    let mergedOptions = {
+    let mergedOptions: Options = {
       ...defaults,
       ...instanceOptions,
       method,
       ...localOptions,
+      // we need to ditch nullish headers
+      headers: removeNullishValues({
+        ...defaults.headers,
+        ...instanceOptions.headers,
+        ...localOptions.headers,
+      }),
     }
 
     let query = {
@@ -207,12 +233,6 @@ export function mande(
     }
 
     let { responseAs } = mergedOptions as Required<Options>
-
-    mergedOptions.headers = {
-      ...defaults.headers,
-      ...instanceOptions.headers,
-      ...localOptions.headers,
-    }
 
     url = joinURL(baseURL, typeof url === 'number' ? '' + url : url || '')
 
@@ -252,6 +272,7 @@ export function mande(
   }
 
   const instanceOptions: MandeInstance['options'] = {
+    query: {},
     headers: {},
     ...passedInstanceOptions,
   }

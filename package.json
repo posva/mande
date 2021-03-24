@@ -19,7 +19,7 @@
     "test:unit": "jest",
     "release": "bash scripts/release.sh",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
-    "dev": "yarn run unit --watchAll",
+    "dev": "yarn run test:unit --watchAll",
     "pretest": "yarn run lint",
     "test": "yarn run test:unit && yarn run build",
     "size": "size-limit",
