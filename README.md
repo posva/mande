@@ -1,6 +1,6 @@
 # mande [![Build Status](https://badgen.net/circleci/github/posva/mande/master)](https://circleci.com/gh/posva/mande) [![npm package](https://badgen.net/npm/v/mande)](https://www.npmjs.com/package/mande) [![coverage](https://badgen.net/codecov/c/github/posva/mande/master)](https://codecov.io/github/posva/mande) [![thanks](https://badgen.net/badge/thanks/♥/pink)](https://github.com/posva/thanks)
 
-> Simple, light and easy to use wrapper around fetch
+> Simple, light and extensible wrapper around fetch with smart defaults
 
 **Requires [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) support.**
 
