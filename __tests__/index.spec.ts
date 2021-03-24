@@ -147,7 +147,7 @@ describe('mande', () => {
   })
 
   // TODO: the empty headers matches anything...
-  it.only('can remove a default header', async () => {
+  it('can remove a default header', async () => {
     let api = mande('/api', { headers: { 'Content-Type': null } })
     fetchMock.get('/api/2', { body: {} })
     await api.get('2')
@@ -160,7 +160,7 @@ describe('mande', () => {
     })
   })
 
-  it.only('keeps empty strings headers', async () => {
+  it('keeps empty strings headers', async () => {
     let api = mande('/api', { headers: { 'Content-Type': '' } })
     fetchMock.get('/api/2', { body: {} })
     await api.get('2')
