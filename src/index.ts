@@ -293,6 +293,23 @@ type InferArgs<F> = F extends (api: MandeInstance, ...args: infer A) => any
   ? A
   : never
 
+  /**
+   * Creates an Nuxt SSR compatible function that automatically proxies cookies
+   * to requests and works transparently on the server and client (it still
+   * requires a fetch polyfill on Node).
+   * @example
+   * ```js
+   * import { mande, nuxtWrap } from 'mande'
+   *
+   * const fetchPolyfill = process.server ? require('node-fetch') : fetch
+   * const users = mande(BASE_URL + '/api/users', {}, fetchPolyfill)
+   *
+   * export const getUserById = nuxtWrap(users, (api, id: string) => api.get(id))
+   * ```
+   *
+   * @param api - Mande instance to wrap
+   * @param fn - function to be wrapped
+   */
 export function nuxtWrap<
   M extends MandeInstance,
   F extends (api: M, ...args: any[]) => any

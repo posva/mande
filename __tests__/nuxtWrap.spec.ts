@@ -1,4 +1,4 @@
-import { mande, defaults, nuxtWrap } from '../src'
+import { mande, nuxtWrap } from '../src'
 import { FetchMockStatic } from 'fetch-mock'
 import './global.d.ts'
 jest.mock('node-fetch', () => require('fetch-mock-jest').sandbox())

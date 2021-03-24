@@ -131,6 +131,7 @@ const contents = mande(BASE_URL + '/api', {}, fetchPolyfill)
 When using with Nuxt **and SSR**, you must wrap exported functions so they automatically proxy cookies and headers on the server:
 
 ```js
+import { mande, nuxtWrap } from 'mande'
 const fetchPolyfill = process.server ? require('node-fetch') : fetch
 const users = mande(BASE_URL + '/api/users', {}, fetchPolyfill)
 
