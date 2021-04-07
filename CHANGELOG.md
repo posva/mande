@@ -1,5 +1,7 @@
 # [1.0.0](https://github.com/posva/mande/compare/v0.0.23...v1.0.0) (2021-03-24)
 
+This version has no breaking changes. `mande` has reached a stable state and it makes sense to have a v1 now.
+
 ### Bug Fixes
 
 - remove null headers ([#210](https://github.com/posva/mande/issues/210)) ([32fcd3e](https://github.com/posva/mande/commit/32fcd3ec83f6bd07c68e0b25ef5c222dc08b258d))
