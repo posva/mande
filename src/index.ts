@@ -317,24 +317,23 @@ export function nuxtWrap<
   // args for the api call + 1 because of api parameter
   const argsAmount = fn.length
 
-  const wrappedCall: (
-    ...args: InferArgs<F>
-  ) => ReturnType<F> = function _wrappedCall() {
-    let apiInstance: M = api
-    let args = Array.from(arguments) as InferArgs<F>
-    // call from nuxt server with a function to augment the api instance
-    if (arguments.length === argsAmount) {
-      apiInstance = { ...api }
+  const wrappedCall: (...args: InferArgs<F>) => ReturnType<F> =
+    function _wrappedCall() {
+      let apiInstance: M = api
+      let args = Array.from(arguments) as InferArgs<F>
+      // call from nuxt server with a function to augment the api instance
+      if (arguments.length === argsAmount) {
+        apiInstance = { ...api }
 
-      // remove the first argument
-      const [augmentApiInstance] = args.splice(0, 1) as [(api: M) => void]
+        // remove the first argument
+        const [augmentApiInstance] = args.splice(0, 1) as [(api: M) => void]
 
-      // let the caller augment the instance
-      augmentApiInstance(apiInstance)
+        // let the caller augment the instance
+        augmentApiInstance(apiInstance)
+      }
+
+      return fn.call(null, apiInstance, ...args)
     }
-
-    return fn.call(null, apiInstance, ...args)
-  }
 
   return wrappedCall
 }
