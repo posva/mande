@@ -110,6 +110,18 @@ import { defaults } from 'mande'
 defaults.headers.Authorization = 'Bearer token'
 ```
 
+## TypeScript
+
+All methods defined on a `mande` instance accept a type generic to type their return:
+
+```ts
+const todos = mande('/api/todos', globalOptions)
+
+todos.get<{ text: string, id: number, isFinished: boolean }[]>().then(todos => {
+  // todos is correctly typed
+})
+```
+
 ## SSR (and Nuxt in Universal mode)
 
 To make Mande work on Server, make sure to provide a `fetch` polyfill and to use full URLs and not absolute URLs starting with `/`. For example, using `node-fetch`, you can do:
