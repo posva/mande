@@ -189,7 +189,8 @@ describe('mande', () => {
     delete defaults.query
   })
 
-  it('can be aborted with signal', async () => {
+  // FIXME: the test works but it logs out errors
+  it.skip('can be aborted with signal', async () => {
     const controller = new AbortController()
     const { signal } = controller
 
