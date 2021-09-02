@@ -186,5 +186,20 @@ describe('mande', () => {
     fetchMock.mock('/api/2?foo=bar', { status: 200, body: {} })
     await expect(api.get('2')).resolves.toEqual({})
     expect(fetchMock).toHaveFetched('/api/2?foo=bar')
+    delete defaults.query
+  })
+
+  it('can be aborted with signal', async () => {
+    const controller = new AbortController()
+    const { signal } = controller
+
+    // @ts-expect-error: signal cannot be passed to mande
+    mande('/api', { signal })
+    let api = mande('/api')
+
+    fetchMock.mock('/api/1', { status: 200, body: {} })
+    const promise = api.get('1', { signal })
+    controller.abort()
+    await expect(promise).rejects.toBeInstanceOf(DOMException)
   })
 })

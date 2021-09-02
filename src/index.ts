@@ -19,11 +19,17 @@ export interface Options extends RequestInit {
   headers?: Record<string, string>
 }
 
-export interface OptionsRaw extends Omit<Options, 'headers'> {
+export interface OptionsRaw extends Omit<Options, 'headers' | 'signal'> {
   /**
    * Headers sent alongside the request. Set any header to null to remove it.
    */
   headers?: Record<string, string | null>
+
+  /**
+   * AbortSignal can only be passed to requests, not to a mande instance
+   * because it can only be used once.
+   */
+  signal?: never
 }
 
 /**
