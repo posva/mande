@@ -33,6 +33,5 @@ const fetchPolyfill = process.server ? require('node-fetch') : fetch
 const users = mande(BASE_URL + '/api/users', {}, fetchPolyfill)
 
 export const getUserById = nuxtWrap(users, (api, id: string) => api.get(id))
-
 ```
 

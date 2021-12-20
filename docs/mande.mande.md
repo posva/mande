@@ -32,6 +32,5 @@ const users = mande('/api/users')
 users.get('2').then(user => {
   // do something
 })
-
 ```
 

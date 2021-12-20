@@ -1,3 +1,13 @@
+## [1.0.1](https://github.com/posva/mande/compare/v1.0.0...v1.0.1) (2021-12-20)
+
+### Bug Fixes
+
+- **types:** handle responseAs ([725ab77](https://github.com/posva/mande/commit/725ab770546b43720133f27a202c089c393742d0))
+
+### Features
+
+- explicitly forbid AbortSignal to mande ([b34c5cb](https://github.com/posva/mande/commit/b34c5cb36ed83ff2c16fab1d4d7a53b1cc2a9607))
+
 # [1.0.0](https://github.com/posva/mande/compare/v0.0.23...v1.0.0) (2021-03-24)
 
 This version has no breaking changes. `mande` has reached a stable state and it makes sense to have a v1 now.

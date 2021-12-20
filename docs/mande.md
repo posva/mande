@@ -26,3 +26,9 @@
 |  --- | --- |
 |  [defaults](./mande.defaults.md) | Global default options as [Options](./mande.options.md) that are applied to \*\*all\*\* mande instances. Always contain an initialized <code>headers</code> property with the default headers: - Accept: 'application/json' - 'Content-Type': 'application/json' |
 
+## Type Aliases
+
+|  Type Alias | Description |
+|  --- | --- |
+|  [ResponseAsTypes](./mande.responseastypes.md) |  |
+

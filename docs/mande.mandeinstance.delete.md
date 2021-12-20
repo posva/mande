@@ -30,6 +30,5 @@ Promise&lt;T&gt;
 users.delete('2').then(user => {
   // do something
 })
-
 ```
 

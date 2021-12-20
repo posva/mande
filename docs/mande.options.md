@@ -9,7 +9,7 @@ Allowed options for a request. Extends native `RequestInit`<!-- -->.
 <b>Signature:</b>
 
 ```typescript
-export interface Options extends RequestInit 
+export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes> extends RequestInit 
 ```
 <b>Extends:</b> RequestInit
 
@@ -19,5 +19,5 @@ export interface Options extends RequestInit
 |  --- | --- | --- |
 |  [headers?](./mande.options.headers.md) | Record&lt;string, string&gt; | <i>(Optional)</i> Headers sent alongside the request |
 |  [query?](./mande.options.query.md) | any | <i>(Optional)</i> Optional query object. Does not support arrays. Will get stringified |
-|  [responseAs?](./mande.options.responseas.md) | 'json' \| 'text' \| 'response' | <i>(Optional)</i> What kind of response is expected. Defaults to <code>json</code>. <code>response</code> will return the raw response from <code>fetch</code>. |
+|  [responseAs?](./mande.options.responseas.md) | ResponseAs | <i>(Optional)</i> What kind of response is expected. Defaults to <code>json</code>. <code>response</code> will return the raw response from <code>fetch</code>. |
 

@@ -9,5 +9,5 @@ What kind of response is expected. Defaults to `json`<!-- -->. `response` will r
 <b>Signature:</b>
 
 ```typescript
-responseAs?: 'json' | 'text' | 'response';
+responseAs?: ResponseAs;
 ```

@@ -31,6 +31,5 @@ Promise&lt;T&gt;
 users.post('', { name: 'Eduardo' }).then(user => {
   // do something
 })
-
 ```
 

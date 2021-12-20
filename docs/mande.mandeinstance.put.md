@@ -31,6 +31,5 @@ Promise&lt;T&gt;
 users.put('2', { name: 'Eduardo' }).then(user => {
   // do something
 })
-
 ```
 

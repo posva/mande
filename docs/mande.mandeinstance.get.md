@@ -9,7 +9,7 @@ Sends a GET request to the given url.
 <b>Signature:</b>
 
 ```typescript
-get<T = unknown>(url: string | number, options?: Options): Promise<T>;
+get(url: string | number, options?: Options<'response'>): Promise<Response>;
 ```
 
 ## Parameters
@@ -17,11 +17,11 @@ get<T = unknown>(url: string | number, options?: Options): Promise<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string \| number | relative url to send the request to |
-|  options | [Options](./mande.options.md) | optional [Options](./mande.options.md) |
+|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; | optional [Options](./mande.options.md) |
 
 <b>Returns:</b>
 
-Promise&lt;T&gt;
+Promise&lt;Response&gt;
 
 ## Example
 
@@ -30,6 +30,5 @@ Promise&lt;T&gt;
 users.get('2').then(user => {
   // do something
 })
-
 ```
 
