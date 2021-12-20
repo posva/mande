@@ -4,6 +4,8 @@ import './global.d.ts'
 jest.mock('node-fetch', () => require('fetch-mock-jest').sandbox())
 const fetchMock: FetchMockStatic = require('node-fetch')
 
+function expectType<T>(_value: T): void {}
+
 describe('mande', () => {
   // @ts-ignore
   global.fetch = fetchMock
@@ -146,7 +148,6 @@ describe('mande', () => {
     api.options.headers.Authorization = 'token secret'
   })
 
-  // TODO: the empty headers matches anything...
   it('can remove a default header', async () => {
     let api = mande('/api', { headers: { 'Content-Type': null } })
     fetchMock.get('/api/2', { body: {} })
@@ -155,7 +156,8 @@ describe('mande', () => {
       headers: {
         Accept: 'application/json',
         // no Content-Type
-        // 'Content-Type': 'application/json',
+        // @ts-expect-error: not a valid possibility
+        'Content-Type': undefined,
       },
     })
   })
@@ -175,8 +177,13 @@ describe('mande', () => {
   it('can return a raw response', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
-    await api.get('', { responseAs: 'response' })
+    await api.get('', { responseAs: 'response' }).then((res) => {
+      expectType<Response>(res)
+    })
     // cannot check the result for some reason...
+    function tds() {
+      expectType<Promise<{ value: number }>>(api.get<{ value: number }>('/api'))
+    }
   })
 
   it('can add global defaults', async () => {

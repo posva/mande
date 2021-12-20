@@ -1,7 +1,8 @@
 /**
  * Allowed options for a request. Extends native `RequestInit`.
  */
-export interface Options extends RequestInit {
+export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes>
+  extends RequestInit {
   /**
    * Optional query object. Does not support arrays. Will get stringified
    */
@@ -11,7 +12,7 @@ export interface Options extends RequestInit {
    * What kind of response is expected. Defaults to `json`. `response` will
    * return the raw response from `fetch`.
    */
-  responseAs?: 'json' | 'text' | 'response'
+  responseAs?: ResponseAs
 
   /**
    * Headers sent alongside the request
@@ -19,7 +20,10 @@ export interface Options extends RequestInit {
   headers?: Record<string, string>
 }
 
-export interface OptionsRaw extends Omit<Options, 'headers' | 'signal'> {
+export type ResponseAsTypes = 'json' | 'text' | 'response'
+
+export interface OptionsRaw<R extends ResponseAsTypes = ResponseAsTypes>
+  extends Omit<Options<R>, 'headers' | 'signal'> {
   /**
    * Headers sent alongside the request. Set any header to null to remove it.
    */
@@ -62,6 +66,8 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
+  get(url: string | number, options?: Options<'response'>): Promise<Response>
+  get(url: string | number, options?: Options<'text'>): Promise<string>
   get<T = unknown>(url: string | number, options?: Options): Promise<T>
 
   /**
@@ -83,6 +89,18 @@ export interface MandeInstance {
     options?: Options
   ): Promise<T>
   post<T = unknown>(data?: any, options?: Options): Promise<T>
+  post(
+    url: string | number,
+    data?: any,
+    options?: Options<'text'>
+  ): Promise<string>
+  post(data?: any, options?: Options<'text'>): Promise<string>
+  post(
+    url: string | number,
+    data?: any,
+    options?: Options<'response'>
+  ): Promise<Response>
+  post(data?: any, options?: Options<'response'>): Promise<Response>
 
   /**
    * Sends a PUT request to the given url.
@@ -103,6 +121,18 @@ export interface MandeInstance {
     options?: Options
   ): Promise<T>
   put<T = unknown>(data?: any, options?: Options): Promise<T>
+  put(
+    url: string | number,
+    data?: any,
+    options?: Options<'text'>
+  ): Promise<string>
+  put(data?: any, options?: Options<'text'>): Promise<string>
+  put(
+    url: string | number,
+    data?: any,
+    options?: Options<'response'>
+  ): Promise<Response>
+  put(data?: any, options?: Options<'response'>): Promise<Response>
 
   /**
    * Sends a PATCH request to the given url.
@@ -123,6 +153,18 @@ export interface MandeInstance {
     options?: Options
   ): Promise<T>
   patch<T = unknown>(data?: any, options?: Options): Promise<T>
+  patch(
+    url: string | number,
+    data?: any,
+    options?: Options<'response'>
+  ): Promise<Response>
+  patch(data?: any, options?: Options<'response'>): Promise<Response>
+  patch(
+    url: string | number,
+    data?: any,
+    options?: Options<'text'>
+  ): Promise<string>
+  patch(data?: any, options?: Options<'text'>): Promise<string>
 
   /**
    * Sends a DELETE request to the given url.
@@ -137,6 +179,8 @@ export interface MandeInstance {
    * @param options - optional {@link Options}
    */
   delete<T = unknown>(url: string | number, options?: Options): Promise<T>
+  delete(url: string | number, options?: Options<'response'>): Promise<Response>
+  delete(url: string | number, options?: Options<'text'>): Promise<string>
 }
 
 function stringifyQuery(query: any): string {
@@ -290,8 +334,9 @@ export function mande(
     patch: _fetch.bind(null, 'PATCH'),
 
     // these two have no body
-    get: (url, options) => _fetch('GET', url, null, options),
-    delete: (url, options) => _fetch('DELETE', url, null, options),
+    get: (url: string, options?: Options) => _fetch('GET', url, null, options),
+    delete: (url: string, options?: Options) =>
+      _fetch('DELETE', url, null, options),
   }
 }
 
