@@ -2,13 +2,31 @@
   "name": "mande",
   "version": "1.0.1",
   "description": "Some awesome description",
-  "main": "dist/mande.common.js",
-  "module": "dist/mande.esm.js",
-  "unpkg": "dist/mande.js",
-  "jsdelivr": "dist/mande.js",
-  "browser": "dist/mande.esm.js",
+  "main": "index.js",
+  "module": "dist/mande.mjs",
+  "unpkg": "dist/mande.iife.js",
+  "jsdelivr": "dist/mande.iife.js",
   "types": "dist/mande.d.ts",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "node": {
+        "import": {
+          "production": "./dist/mande.prod.cjs",
+          "development": "./dist/mande.mjs",
+          "default": "./dist/mande.mjs"
+        },
+        "require": {
+          "production": "./dist/mande.prod.cjs",
+          "development": "./dist/mande.cjs",
+          "default": "./index.js"
+        }
+      },
+      "import": "./dist/mande.mjs"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
   "author": {
     "name": "Eduardo San Martin Morote",
     "email": "posva13@gmail.com"
@@ -28,7 +46,11 @@
     "docs": "api-documenter markdown -i temp -o docs"
   },
   "files": [
+    "index.js",
+    "index.cjs",
     "dist/*.js",
+    "dist/*.mjs",
+    "dist/*.cjs",
     "dist/mande.d.ts",
     "nuxt/*.js",
     "nuxt/*.d.ts",

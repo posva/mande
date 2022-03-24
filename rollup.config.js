@@ -66,9 +66,9 @@ function createEntry(
     config.output.file = pkg.unpkg
     config.output.name = exportName
   } else if (format === 'es') {
-    config.output.file = isBrowser ? pkg.browser : pkg.module
+    config.output.file = pkg.module
   } else if (format === 'cjs') {
-    config.output.file = pkg.main
+    config.output.file = pkg.module.replace('mjs', 'cjs')
   }
 
   if (!external) {
@@ -80,17 +80,19 @@ function createEntry(
   config.plugins.push(
     ts({
       // only check once, during the es version with browser (it includes external libs)
-      check: format === 'es' && isBrowser && !minify,
+      check: !tsChecked,
       tsconfigOverride: {
         exclude: ['__tests__'],
         compilerOptions: {
           // same for d.ts files
-          declaration: format === 'es' && isBrowser && !minify,
+          declaration: !tsChecked,
           target: format === 'es' && !isBrowser ? 'esnext' : 'es2015',
         },
       },
     })
   )
+
+  tsChecked = true
 
   if (minify) {
     config.plugins.push(
@@ -98,22 +100,25 @@ function createEntry(
         module: format === 'es',
       })
     )
-    config.output.file = config.output.file.replace(/\.js$/i, '.min.js')
+    config.output.file = config.output.file.replace(/\.([mc]?js)$/i, '.prod.$1')
   }
 
   return config
 }
 
+let tsChecked = false
+
 const builds = [
   createEntry({ format: 'cjs' }),
-  createEntry({ format: 'es', isBrowser: true }),
+  createEntry({ format: 'es' }),
+  createEntry({ format: 'cjs', minify: true }),
 ]
 
 if (pkg.unpkg)
   builds.push(
     createEntry({ format: 'iife' }),
     createEntry({ format: 'iife', minify: true }),
-    createEntry({ format: 'es', isBrowser: true, minify: true })
+    createEntry({ format: 'es', minify: true })
   )
 
 export default builds
