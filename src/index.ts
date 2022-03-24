@@ -304,7 +304,7 @@ export function mande(
       )
       .then(([response, data]) => {
         if (response.status >= 200 && response.status < 300) {
-          return response.status == 204 ? null : data
+          return responseAs !== 'response' && response.status == 204 ? null : data
         }
         let err = new Error(response.statusText) as MandeError
         err.response = response
