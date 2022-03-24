@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/posva/mande/compare/v1.0.1...v2.0.0) (2022-03-24)
+
+### Build System
+
+- module build with mjs and cjs ([9026756](https://github.com/posva/mande/commit/90267563338fc85a4755051c6dd8d56b59f543f6))
+
+### BREAKING CHANGES
+
+- dist files have been renamed with cjs/mjs extensions.
+  If you were explicitly referring dist files, you need to update the
+  imports. Otherwise, you probably don't need to change anything.
+
 ## [1.0.1](https://github.com/posva/mande/compare/v1.0.0...v1.0.1) (2021-12-20)
 
 ### Bug Fixes
