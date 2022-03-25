@@ -188,15 +188,11 @@ describe('mande', () => {
 
   it('can return a raw response with status code 204', async () => {
     let api = mande('/api/')
-    fetchMock.get('/api/', { status: 204, body: { foo: 'a', bar: 'b' } })
+    fetchMock.get('/api/', { status: 204 })
     await api.get('', { responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<Response>(res)
     })
-    // cannot check the result for some reason...
-    function tds() {
-      expectType<Promise<{ value: number }>>(api.get<{ value: number }>('/api'))
-    }
   })
 
   it('can add global defaults', async () => {
