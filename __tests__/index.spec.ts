@@ -186,6 +186,15 @@ describe('mande', () => {
     }
   })
 
+  it('can return a raw response with status code 204', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/', { status: 204 })
+    await api.get('', { responseAs: 'response' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<Response>(res)
+    })
+  })
+
   it('can add global defaults', async () => {
     let api = mande('/api/')
     defaults.query = { foo: 'bar' }
