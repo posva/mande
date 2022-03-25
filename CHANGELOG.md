@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/posva/mande/compare/v2.0.0...v2.0.1) (2022-03-25)
+
+### Bug Fixes
+
+- return raw response with status 204 and responseAs response ([#316](https://github.com/posva/mande/issues/316)) ([8a24d69](https://github.com/posva/mande/commit/8a24d699eddcd8557bc21e31e98487066d32b383))
+
 # [2.0.0](https://github.com/posva/mande/compare/v1.0.1...v2.0.0) (2022-03-24)
 
 ### Build System
