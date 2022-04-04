@@ -682,12 +682,12 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@microsoft/api-documenter@^7.16.0":
-  version "7.16.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.16.0.tgz#0d3ea6cf1e73e9250859872e75819605eb94d12a"
-  integrity sha512-dAZRTqjoSrnSUlXhhbAqWBm+x9CfaHj8E7VyxLdNDGQPHc5nDC9jSUxm4hJ6Rk3KmlbCDYKyRo6odBu2Usa6wg==
+"@microsoft/api-documenter@^7.17.0":
+  version "7.17.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.17.0.tgz#7d2b7775b37775fc7491b94cb5fa13ee8271fcc3"
+  integrity sha512-rIZcfDkBsWsflvN1n0tVgIUdivV7slBIsN0WyK8gUG1MjK7dv+rbAB5QPLhg3dPvbXLgPLanJCFwoO2yFdxs+A==
   dependencies:
-    "@microsoft/api-extractor-model" "7.15.4"
+    "@microsoft/api-extractor-model" "7.16.0"
     "@microsoft/tsdoc" "0.13.2"
     "@rushstack/node-core-library" "3.45.1"
     "@rushstack/ts-command-line" "4.10.7"
@@ -695,21 +695,21 @@
     js-yaml "~3.13.1"
     resolve "~1.17.0"
 
-"@microsoft/api-extractor-model@7.15.4":
-  version "7.15.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.15.4.tgz#59fc1e00530b7a604c719221a59dc265c76e9bc5"
-  integrity sha512-9bIXQKKQr5jAH1c9atXrukr4ua30fhqxMwWIOOjEnexPBPu3nhy9lC4/GpE0kPUp1Al3wSXgFnOEGzEH+HFz+w==
+"@microsoft/api-extractor-model@7.16.0":
+  version "7.16.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.16.0.tgz#3db7360897115f26a857f1f684fb5af82b0ef9f6"
+  integrity sha512-0FOrbNIny8mzBrzQnSIkEjAXk0JMSnPmWYxt3ZDTPVg9S8xIPzB6lfgTg9+Mimu0RKCpGKBpd+v2WcR5vGzyUQ==
   dependencies:
     "@microsoft/tsdoc" "0.13.2"
     "@microsoft/tsdoc-config" "~0.15.2"
     "@rushstack/node-core-library" "3.45.1"
 
-"@microsoft/api-extractor@^7.19.5":
-  version "7.19.5"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.19.5.tgz#85b2404135a4158864d448fde8991ef7dc39b6a7"
-  integrity sha512-ra5r8P7PocOpemrZRccI3Tf1+wukI0gT6ncRB448QSxSYlmqKuvez95YUSYPwHIN/ztKL0cn5PfMOauU1lZfGQ==
+"@microsoft/api-extractor@^7.20.0":
+  version "7.20.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.20.0.tgz#5dfd8a2cc6a22a7b3baa5e30224672db1de43bbb"
+  integrity sha512-WKAu5JpkRXWKL3AyxmFXuwNNPpBlsAefwZIDl8M5mhEqRji4w+gexb0pku3Waa0flm3vm0Cwpm+kGYYJ4/gzAA==
   dependencies:
-    "@microsoft/api-extractor-model" "7.15.4"
+    "@microsoft/api-extractor-model" "7.16.0"
     "@microsoft/tsdoc" "0.13.2"
     "@microsoft/tsdoc-config" "~0.15.2"
     "@rushstack/node-core-library" "3.45.1"
@@ -3957,10 +3957,10 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.1.tgz#d472797e0d7461605c1609808e27b80c0f9cfe17"
-  integrity sha512-8UVbTBYGwN37Bs9LERmxCPjdvPxlEowx2urIL6urHzdb3SDq4B/Z6xLFCblrSnE4iKWcS6ziJ3aOYrc1kz/E2A==
+prettier@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
+  integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
 
 pretty-format@^27.0.0:
   version "27.3.0"
