@@ -9,7 +9,7 @@ Sends a PATCH request to the given url.
 <b>Signature:</b>
 
 ```typescript
-patch<T = unknown>(url: string | number, data?: any, options?: Options): Promise<T>;
+patch(url: string | number, data: any, options: Options<'response'>): Promise<Response>;
 ```
 
 ## Parameters
@@ -18,11 +18,11 @@ patch<T = unknown>(url: string | number, data?: any, options?: Options): Promise
 |  --- | --- | --- |
 |  url | string \| number | relative url to send the request to |
 |  data | any | optional body of the request |
-|  options | [Options](./mande.options.md) | optional [Options](./mande.options.md) |
+|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; | optional [Options](./mande.options.md) |
 
 <b>Returns:</b>
 
-Promise&lt;T&gt;
+Promise&lt;Response&gt;
 
 ## Example
 

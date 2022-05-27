@@ -1,3 +1,9 @@
+## [2.0.2](https://github.com/posva/mande/compare/v2.0.1...v2.0.2) (2022-05-27)
+
+### Bug Fixes
+
+- **types:** better overrides ([9e276eb](https://github.com/posva/mande/commit/9e276eb476283a9e54eaec09c783ea0b6204db62)), closes [#324](https://github.com/posva/mande/issues/324)
+
 ## [2.0.1](https://github.com/posva/mande/compare/v2.0.0...v2.0.1) (2022-03-25)
 
 ### Bug Fixes

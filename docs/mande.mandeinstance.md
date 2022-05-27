@@ -38,8 +38,8 @@ export interface MandeInstance
 |  [post(data, options)](./mande.mandeinstance.post_1.md) |  |
 |  [post(url, data, options)](./mande.mandeinstance.post_2.md) |  |
 |  [post(data, options)](./mande.mandeinstance.post_3.md) |  |
-|  [post(url, data, options)](./mande.mandeinstance.post_4.md) |  |
-|  [post(data, options)](./mande.mandeinstance.post_5.md) |  |
+|  [post(data, options)](./mande.mandeinstance.post_4.md) |  |
+|  [post(url, data, options)](./mande.mandeinstance.post_5.md) |  |
 |  [put(url, data, options)](./mande.mandeinstance.put.md) | Sends a PUT request to the given url. |
 |  [put(data, options)](./mande.mandeinstance.put_1.md) |  |
 |  [put(url, data, options)](./mande.mandeinstance.put_2.md) |  |

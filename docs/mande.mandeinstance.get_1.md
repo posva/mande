@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-get(url: string | number, options?: Options<'text'>): Promise<string>;
+get(url: string | number, options: Options<'text'>): Promise<string>;
 ```
 
 ## Parameters

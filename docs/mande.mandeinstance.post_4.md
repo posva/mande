@@ -7,18 +7,17 @@
 <b>Signature:</b>
 
 ```typescript
-post(url: string | number, data?: any, options?: Options<'response'>): Promise<Response>;
+post<T = unknown>(data?: any, options?: Options): Promise<T>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string \| number |  |
-|  data | any |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; |  |
+|  data | any | <i>(Optional)</i> |
+|  options | [Options](./mande.options.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
-Promise&lt;Response&gt;
+Promise&lt;T&gt;
 

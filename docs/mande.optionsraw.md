@@ -9,7 +9,7 @@
 ```typescript
 export interface OptionsRaw<R extends ResponseAsTypes = ResponseAsTypes> extends Omit<Options<R>, 'headers' | 'signal'> 
 ```
-<b>Extends:</b> Omit&lt;[Options](./mande.options.md)<!-- -->&lt;R&gt;, 'headers' \| 'signal'&gt;
+<b>Extends:</b> Omit&lt;[Options](./mande.options.md)
 
 ## Properties
 

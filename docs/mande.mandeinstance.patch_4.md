@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-patch(url: string | number, data?: any, options?: Options<'text'>): Promise<string>;
+patch<T = unknown>(url: string | number, data?: any, options?: Options): Promise<T>;
 ```
 
 ## Parameters
@@ -15,10 +15,10 @@ patch(url: string | number, data?: any, options?: Options<'text'>): Promise<stri
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string \| number |  |
-|  data | any |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'text'&gt; |  |
+|  data | any | <i>(Optional)</i> |
+|  options | [Options](./mande.options.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
-Promise&lt;string&gt;
+Promise&lt;T&gt;
 

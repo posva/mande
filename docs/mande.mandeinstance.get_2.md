@@ -15,7 +15,7 @@ get<T = unknown>(url: string | number, options?: Options): Promise<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string \| number |  |
-|  options | [Options](./mande.options.md) |  |
+|  options | [Options](./mande.options.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

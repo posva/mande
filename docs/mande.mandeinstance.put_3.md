@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-put(data?: any, options?: Options<'text'>): Promise<string>;
+put(data: any, options: Options<'response'>): Promise<Response>;
 ```
 
 ## Parameters
@@ -15,9 +15,9 @@ put(data?: any, options?: Options<'text'>): Promise<string>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  data | any |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'text'&gt; |  |
+|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; |  |
 
 <b>Returns:</b>
 
-Promise&lt;string&gt;
+Promise&lt;Response&gt;
 

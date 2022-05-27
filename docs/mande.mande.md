@@ -17,8 +17,8 @@ export declare function mande(baseURL: string, passedInstanceOptions?: OptionsRa
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  baseURL | string | absolute url |
-|  passedInstanceOptions | [OptionsRaw](./mande.optionsraw.md) |  |
-|  fetchPolyfill | Window\['fetch'\] |  |
+|  passedInstanceOptions | [OptionsRaw](./mande.optionsraw.md) | <i>(Optional)</i> |
+|  fetchPolyfill | Window\['fetch'\] | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

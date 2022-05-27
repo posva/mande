@@ -9,7 +9,7 @@ Sends a GET request to the given url.
 <b>Signature:</b>
 
 ```typescript
-get(url: string | number, options?: Options<'response'>): Promise<Response>;
+get(url: string | number, options: Options<'response'>): Promise<Response>;
 ```
 
 ## Parameters

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-delete(url: string | number, options?: Options<'response'>): Promise<Response>;
+delete(url: string | number, options: Options<'text'>): Promise<string>;
 ```
 
 ## Parameters
@@ -15,9 +15,9 @@ delete(url: string | number, options?: Options<'response'>): Promise<Response>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string \| number |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; |  |
+|  options | [Options](./mande.options.md)<!-- -->&lt;'text'&gt; |  |
 
 <b>Returns:</b>
 
-Promise&lt;Response&gt;
+Promise&lt;string&gt;
 

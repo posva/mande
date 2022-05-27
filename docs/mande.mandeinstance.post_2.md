@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-post(url: string | number, data?: any, options?: Options<'text'>): Promise<string>;
+post(url: string | number, data: any, options: Options<'response'>): Promise<Response>;
 ```
 
 ## Parameters
@@ -16,9 +16,9 @@ post(url: string | number, data?: any, options?: Options<'text'>): Promise<strin
 |  --- | --- | --- |
 |  url | string \| number |  |
 |  data | any |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'text'&gt; |  |
+|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; |  |
 
 <b>Returns:</b>
 
-Promise&lt;string&gt;
+Promise&lt;Response&gt;
 

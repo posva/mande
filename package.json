@@ -1,6 +1,6 @@
 {
   "name": "mande",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Some awesome description",
   "main": "index.js",
   "module": "dist/mande.mjs",

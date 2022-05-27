@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-put(url: string | number, data?: any, options?: Options<'response'>): Promise<Response>;
+put<T = unknown>(url: string | number, data?: any, options?: Options): Promise<T>;
 ```
 
 ## Parameters
@@ -15,10 +15,10 @@ put(url: string | number, data?: any, options?: Options<'response'>): Promise<Re
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string \| number |  |
-|  data | any |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; |  |
+|  data | any | <i>(Optional)</i> |
+|  options | [Options](./mande.options.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
-Promise&lt;Response&gt;
+Promise&lt;T&gt;
 
