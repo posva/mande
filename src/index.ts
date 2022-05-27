@@ -66,8 +66,8 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
-  get(url: string | number, options?: Options<'response'>): Promise<Response>
-  get(url: string | number, options?: Options<'text'>): Promise<string>
+  get(url: string | number, options: Options<'response'>): Promise<Response>
+  get(url: string | number, options: Options<'text'>): Promise<string>
   get<T = unknown>(url: string | number, options?: Options): Promise<T>
 
   /**
@@ -83,24 +83,24 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
+  post(
+    url: string | number,
+    data: any,
+    options: Options<'text'>
+  ): Promise<string>
+  post(data: any, options: Options<'text'>): Promise<string>
+  post(
+    url: string | number,
+    data: any,
+    options: Options<'response'>
+  ): Promise<Response>
+  post(data: any, options: Options<'response'>): Promise<Response>
+  post<T = unknown>(data?: any, options?: Options): Promise<T>
   post<T = unknown>(
     url: string | number,
     data?: any,
     options?: Options
   ): Promise<T>
-  post<T = unknown>(data?: any, options?: Options): Promise<T>
-  post(
-    url: string | number,
-    data?: any,
-    options?: Options<'text'>
-  ): Promise<string>
-  post(data?: any, options?: Options<'text'>): Promise<string>
-  post(
-    url: string | number,
-    data?: any,
-    options?: Options<'response'>
-  ): Promise<Response>
-  post(data?: any, options?: Options<'response'>): Promise<Response>
 
   /**
    * Sends a PUT request to the given url.
@@ -115,24 +115,24 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
+  put(
+    url: string | number,
+    data: any,
+    options: Options<'text'>
+  ): Promise<string>
+  put(data: any, options: Options<'text'>): Promise<string>
+  put(
+    url: string | number,
+    data: any,
+    options: Options<'response'>
+  ): Promise<Response>
+  put(data: any, options: Options<'response'>): Promise<Response>
   put<T = unknown>(
     url: string | number,
     data?: any,
     options?: Options
   ): Promise<T>
   put<T = unknown>(data?: any, options?: Options): Promise<T>
-  put(
-    url: string | number,
-    data?: any,
-    options?: Options<'text'>
-  ): Promise<string>
-  put(data?: any, options?: Options<'text'>): Promise<string>
-  put(
-    url: string | number,
-    data?: any,
-    options?: Options<'response'>
-  ): Promise<Response>
-  put(data?: any, options?: Options<'response'>): Promise<Response>
 
   /**
    * Sends a PATCH request to the given url.
@@ -147,24 +147,24 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
+  patch(
+    url: string | number,
+    data: any,
+    options: Options<'response'>
+  ): Promise<Response>
+  patch(data: any, options: Options<'response'>): Promise<Response>
+  patch(
+    url: string | number,
+    data: any,
+    options: Options<'text'>
+  ): Promise<string>
+  patch(data: any, options: Options<'text'>): Promise<string>
   patch<T = unknown>(
     url: string | number,
     data?: any,
     options?: Options
   ): Promise<T>
   patch<T = unknown>(data?: any, options?: Options): Promise<T>
-  patch(
-    url: string | number,
-    data?: any,
-    options?: Options<'response'>
-  ): Promise<Response>
-  patch(data?: any, options?: Options<'response'>): Promise<Response>
-  patch(
-    url: string | number,
-    data?: any,
-    options?: Options<'text'>
-  ): Promise<string>
-  patch(data?: any, options?: Options<'text'>): Promise<string>
 
   /**
    * Sends a DELETE request to the given url.
@@ -178,9 +178,9 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
+  delete(url: string | number, options: Options<'response'>): Promise<Response>
+  delete(url: string | number, options: Options<'text'>): Promise<string>
   delete<T = unknown>(url: string | number, options?: Options): Promise<T>
-  delete(url: string | number, options?: Options<'response'>): Promise<Response>
-  delete(url: string | number, options?: Options<'text'>): Promise<string>
 }
 
 function stringifyQuery(query: any): string {

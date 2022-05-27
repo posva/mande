@@ -182,7 +182,37 @@ describe('mande', () => {
     })
     // cannot check the result for some reason...
     function tds() {
-      expectType<Promise<{ value: number }>>(api.get<{ value: number }>('/api'))
+      const noDataMethods = ['get', 'delete'] as const
+      const dataMethods = ['post', 'put', 'patch'] as const
+      for (const method of dataMethods) {
+        expectType<Promise<{ value: number }>>(
+          api[method]<{ value: number }>('/api')
+        )
+        api[method]('/api').then((r) => {
+          expectType<unknown>(r)
+          // @ts-expect-error: r is unknown
+          r.stuff
+        })
+        expectType<Promise<Response>>(
+          api[method](2, { responseAs: 'response' })
+        )
+        expectType<Promise<string>>(api[method](2, { responseAs: 'text' }))
+      }
+
+      for (const method of noDataMethods) {
+        expectType<Promise<{ value: number }>>(
+          api[method]<{ value: number }>('/api')
+        )
+        api[method]('/api').then((r) => {
+          expectType<unknown>(r)
+          // @ts-expect-error: r is unknown
+          r.stuff
+        })
+        expectType<Promise<Response>>(
+          api[method](2, { responseAs: 'response' })
+        )
+        expectType<Promise<string>>(api[method](2, { responseAs: 'text' }))
+      }
     }
   })
 
