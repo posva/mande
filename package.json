@@ -75,8 +75,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/api-documenter": "^7.17.23",
-    "@microsoft/api-extractor": "^7.27.0",
+    "@microsoft/api-documenter": "^7.18.0",
+    "@microsoft/api-extractor": "^7.28.2",
     "@nuxt/types": "^2.15.8",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-replace": "^3.1.0",
