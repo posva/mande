@@ -682,10 +682,10 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@microsoft/api-documenter@^7.18.0":
-  version "7.18.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.18.0.tgz#d81de81dab98b675d23adf2868d16da84fb36dee"
-  integrity sha512-O2IlE1G6xpa5xoTw1fDflSJBrTT5zMkZj9nMNFXhIYpU5YgpCet+ugnC/cGTjH+0W2lu69asBWJZiMUZ7F1a4w==
+"@microsoft/api-documenter@^7.18.2":
+  version "7.18.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.18.2.tgz#4a9302aaab0e03c80beaf98807ac75fb55f363a6"
+  integrity sha512-ePnid6NpWNVwjgcXmXumIJL6WEKU3gJJdYyx02hqc51urNBnwkbtufi3n/U9krVDWPArZ5OSV2E4mJB6wRCiMw==
   dependencies:
     "@microsoft/api-extractor-model" "7.21.0"
     "@microsoft/tsdoc" "0.14.1"
@@ -704,10 +704,10 @@
     "@microsoft/tsdoc-config" "~0.16.1"
     "@rushstack/node-core-library" "3.49.0"
 
-"@microsoft/api-extractor@^7.28.2":
-  version "7.28.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.28.2.tgz#41612a15d98b46fc5aeadd3e27198f572bafb770"
-  integrity sha512-sl97erZ5Zh3ov5dvV/rMSt45//dYf7C5Y6PCpIXpFidDYMyRwN+pizZ543g2d8D5/WbthGvsZoYcYSzG7CkjHQ==
+"@microsoft/api-extractor@^7.28.4":
+  version "7.28.4"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.28.4.tgz#8e67a69edb4937beda516d42d4f325e6e1258445"
+  integrity sha512-7JeROBGYTUt4/4HPnpMscsQgLzX0OfGTQR2qOQzzh3kdkMyxmiv2mzpuhoMnwbubb1GvPcyFm+NguoqOqkCVaw==
   dependencies:
     "@microsoft/api-extractor-model" "7.21.0"
     "@microsoft/tsdoc" "0.14.1"
@@ -4153,10 +4153,10 @@ rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^2.75.7:
-  version "2.75.7"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.75.7.tgz#221ff11887ae271e37dcc649ba32ce1590aaa0b9"
-  integrity sha512-VSE1iy0eaAYNCxEXaleThdFXqZJ42qDBatAwrfnPlENEZ8erQ+0LYX4JXOLPceWfZpV1VtZwZ3dFCuOZiSyFtQ==
+rollup@^2.76.0:
+  version "2.76.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.76.0.tgz#c69fe03db530ac53fcb9523b3caa0d3c0b9491a1"
+  integrity sha512-9jwRIEY1jOzKLj3nsY/yot41r19ITdQrhs+q3ggNWhr9TQgduHqANvPpS32RNpzGklJu3G1AJfvlZLi/6wFgWA==
   optionalDependencies:
     fsevents "~2.3.2"
 
