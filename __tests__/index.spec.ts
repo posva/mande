@@ -111,9 +111,9 @@ describe('mande', () => {
 
   it('can omit the url', async () => {
     let api = mande('/api/users')
-    fetchMock.put('/api/users/', { body: {} })
+    fetchMock.put('/api/users', { body: {} })
     await expect(api.put({ foo: 'a', bar: 'b' })).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/users/', {
+    expect(fetchMock).toHaveFetched('/api/users', {
       body: { foo: 'a', bar: 'b' },
     })
   })
@@ -233,6 +233,13 @@ describe('mande', () => {
     await expect(api.get('2')).resolves.toEqual({})
     expect(fetchMock).toHaveFetched('/api/2?foo=bar')
     delete defaults.query
+  })
+
+  it('omits trailing slash on empty url', async () => {
+    let api = mande('/api/users')
+    fetchMock.mock('/api/users', { status: 200, body: {} })
+    await expect(api.get('')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/users')
   })
 
   // FIXME: the test works but it logs out errors

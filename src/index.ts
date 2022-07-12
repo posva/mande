@@ -194,9 +194,13 @@ let trailingSlashRE = /\/+$/
 let leadingSlashRE = /^\/+/
 
 function joinURL(base: string, url: string): string {
-  return (
-    base.replace(trailingSlashRE, '') + '/' + url.replace(leadingSlashRE, '')
-  )
+  if (url.trim() === '') {
+    return base
+  } else {
+    return (
+        base.replace(trailingSlashRE, '') + '/' + url.replace(leadingSlashRE, '')
+    )
+  }
 }
 
 function removeNullishValues(
