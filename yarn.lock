@@ -682,10 +682,10 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@microsoft/api-documenter@^7.18.2":
-  version "7.18.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.18.2.tgz#4a9302aaab0e03c80beaf98807ac75fb55f363a6"
-  integrity sha512-ePnid6NpWNVwjgcXmXumIJL6WEKU3gJJdYyx02hqc51urNBnwkbtufi3n/U9krVDWPArZ5OSV2E4mJB6wRCiMw==
+"@microsoft/api-documenter@^7.18.3":
+  version "7.18.3"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.18.3.tgz#84e66ca2974379cec211125e664850a2b6f8a92d"
+  integrity sha512-B3quZHJ3ZRDO3iw+8NfTCHxQwmWltTz0GN3rCBBqNS2CpLgIUHM+lC7vUtb3VFkMeLAOK5eKB88qRNUqKA24pg==
   dependencies:
     "@microsoft/api-extractor-model" "7.21.0"
     "@microsoft/tsdoc" "0.14.1"
@@ -4153,10 +4153,10 @@ rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^2.76.0:
-  version "2.76.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.76.0.tgz#c69fe03db530ac53fcb9523b3caa0d3c0b9491a1"
-  integrity sha512-9jwRIEY1jOzKLj3nsY/yot41r19ITdQrhs+q3ggNWhr9TQgduHqANvPpS32RNpzGklJu3G1AJfvlZLi/6wFgWA==
+rollup@^2.77.0:
+  version "2.77.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.77.0.tgz#749eaa5ac09b6baa52acc076bc46613eddfd53f4"
+  integrity sha512-vL8xjY4yOQEw79DvyXLijhnhh+R/O9zpF/LEgkCebZFtb6ELeN9H3/2T0r8+mp+fFTBHZ5qGpOpW2ela2zRt3g==
   optionalDependencies:
     fsevents "~2.3.2"
 
