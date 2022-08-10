@@ -15,8 +15,8 @@ export interface MandeError<T = any> extends Error
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./mande.mandeerror.body.md) | T |  |
-|  [response](./mande.mandeerror.response.md) | Response |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./mande.mandeerror.body.md) |  | T |  |
+|  [response](./mande.mandeerror.response.md) |  | Response |  |
 

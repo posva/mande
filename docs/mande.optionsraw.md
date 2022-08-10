@@ -13,8 +13,8 @@ export interface OptionsRaw<R extends ResponseAsTypes = ResponseAsTypes> extends
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [headers?](./mande.optionsraw.headers.md) | Record&lt;string, string \| null&gt; | <i>(Optional)</i> Headers sent alongside the request. Set any header to null to remove it. |
-|  [signal?](./mande.optionsraw.signal.md) | never | <i>(Optional)</i> AbortSignal can only be passed to requests, not to a mande instance because it can only be used once. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [headers?](./mande.optionsraw.headers.md) |  | Record&lt;string, string \| null&gt; | <i>(Optional)</i> Headers sent alongside the request. Set any header to null to remove it. |
+|  [signal?](./mande.optionsraw.signal.md) |  | never | <i>(Optional)</i> AbortSignal can only be passed to requests, not to a mande instance because it can only be used once. |
 

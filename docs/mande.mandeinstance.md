@@ -14,9 +14,9 @@ export interface MandeInstance
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [options](./mande.mandeinstance.options.md) | Required&lt;Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'headers'&gt;&gt; &amp; Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'responseAs' \| 'query'&gt; | Writable options. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [options](./mande.mandeinstance.options.md) |  | Required&lt;Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'headers'&gt;&gt; &amp; Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'responseAs' \| 'query'&gt; | Writable options. |
 
 ## Methods
 

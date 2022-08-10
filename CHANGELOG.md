@@ -1,3 +1,9 @@
+## [2.0.3](https://github.com/posva/mande/compare/v2.0.2...v2.0.3) (2022-08-10)
+
+### Bug Fixes
+
+- **url:** do not add trailing slashes ([264d3bf](https://github.com/posva/mande/commit/264d3bfd63626dc94c0b5395ca879eb5540064f5)), closes [#328](https://github.com/posva/mande/issues/328) [#333](https://github.com/posva/mande/issues/333)
+
 ## [2.0.2](https://github.com/posva/mande/compare/v2.0.1...v2.0.2) (2022-05-27)
 
 ### Bug Fixes
