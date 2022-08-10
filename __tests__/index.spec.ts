@@ -28,14 +28,14 @@ describe('mande', () => {
   })
 
   it('can use a number', async () => {
-    let api = mande('/api')
+    let api = mande('/api/')
     fetchMock.mock('/api/0', { status: 200, body: {} })
     await expect(api.get(0)).resolves.toEqual({})
     expect(fetchMock).toHaveFetched('/api/0')
   })
 
   it('works with non trailing slashes', async () => {
-    let api = mande('/api')
+    let api = mande('/api/')
     fetchMock.mock('/api/2', { status: 200, body: {} })
     await expect(api.get('/2')).resolves.toEqual({})
     expect(fetchMock).toHaveFetched('/api/2')
@@ -119,7 +119,7 @@ describe('mande', () => {
   })
 
   it('can add custom headers', async () => {
-    let api = mande('/api')
+    let api = mande('/api/')
     fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
     await api.get('2', { headers: { Authorization: 'Bearer foo' } })
     expect(fetchMock).toHaveFetched('/api/2', {
@@ -132,7 +132,7 @@ describe('mande', () => {
   })
 
   it('can add custom headers through instance', async () => {
-    let api = mande('/api')
+    let api = mande('/api/')
     api.options.headers.Authorization = 'token secret'
     fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
     await api.get('2', { headers: { other: 'foo' } })
@@ -149,7 +149,7 @@ describe('mande', () => {
   })
 
   it('can remove a default header', async () => {
-    let api = mande('/api', { headers: { 'Content-Type': null } })
+    let api = mande('/api/', { headers: { 'Content-Type': null } })
     fetchMock.get('/api/2', { body: {} })
     await api.get('2')
     expect(fetchMock).toHaveFetched('/api/2', {
@@ -163,7 +163,7 @@ describe('mande', () => {
   })
 
   it('keeps empty strings headers', async () => {
-    let api = mande('/api', { headers: { 'Content-Type': '' } })
+    let api = mande('/api/', { headers: { 'Content-Type': '' } })
     fetchMock.get('/api/2', { body: {} })
     await api.get('2')
     expect(fetchMock).toHaveFetched('/api/2', {
