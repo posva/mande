@@ -1,3 +1,3 @@
-import { mande } from '../dist/mande.esm'
+import { mande } from '../dist/mande.mjs'
 
 mande('/api/')
