@@ -111,9 +111,9 @@ describe('mande', () => {
 
   it('can omit the url', async () => {
     let api = mande('/api/users')
-    fetchMock.put('/api/users/', { body: {} })
+    fetchMock.put('/api/users', { body: {} })
     await expect(api.put({ foo: 'a', bar: 'b' })).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/users/', {
+    expect(fetchMock).toHaveFetched('/api/users', {
       body: { foo: 'a', bar: 'b' },
     })
   })
@@ -248,5 +248,33 @@ describe('mande', () => {
     const promise = api.get('1', { signal })
     controller.abort()
     await expect(promise).rejects.toBeInstanceOf(DOMException)
+  })
+
+  it('does not add trailing slashes', async () => {
+    let api = mande('/api')
+    fetchMock.mock('/api', { status: 200, body: {} })
+    await expect(api.get('')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api')
+  })
+
+  it('ensure in between slashes', async () => {
+    let api = mande('/api')
+    fetchMock.mock('/api/2', { status: 200, body: {} })
+    await expect(api.get('2')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/2')
+  })
+
+  it('adds explicit trailing slash', async () => {
+    let api = mande('/api')
+    fetchMock.mock('/api/', { status: 200, body: {} })
+    await expect(api.get('/')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/')
+  })
+
+  it('avoids duplicated slashes', async () => {
+    let api = mande('/api/')
+    fetchMock.mock('/api/2', { status: 200, body: {} })
+    await expect(api.get('/2')).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/2')
   })
 })
