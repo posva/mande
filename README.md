@@ -131,8 +131,8 @@ const todos = mande('/api/todos', {
     createdAt: new Date(plainTodo.timestamp),
   }))
 })
-todos.get('/finished').then((todo) => {/* I'm a transformed todo */ })
-todos.get('/deleted').then((todo) => {/* I'm a transformed todo */ })
+todos.get('/opened').then((todos) => { /* Do stuff with transformed todos */ })
+todos.get('/finished').then((todos) => { /* Here too */ })
 ```
 
 ## TypeScript
