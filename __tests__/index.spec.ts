@@ -309,8 +309,9 @@ describe('mande', () => {
   })
 
   it('call the onSuccess handler from default options', async () => {
-    const handler = jest.fn((res): string => {
+    const handler = jest.fn(async (res): Promise<string> => {
       expect(res).toEqual({ foo: 'bar' })
+      await Promise.resolve();
       return 'Hello'
     })
     defaults.onSuccess = handler
@@ -323,7 +324,7 @@ describe('mande', () => {
 
   it('call the handler from instance options over default options', async () => {
     const handlerDefault = jest.fn((res) => ({ bar: 'foo' }))
-    const handlerInstance = jest.fn((res) => ({ foo: 'baz' }))
+    const handlerInstance = jest.fn(async (res) => Promise.resolve({ foo: 'baz' }))
     defaults.onSuccess = handlerDefault
     fetchMock.mock('/api/2', { status: 200, body: { foo: 'bar' } })
     let api = mande('/api', { onSuccess: handlerInstance })

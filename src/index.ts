@@ -21,30 +21,17 @@ export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes>
 
   /**
    * Intercept the success response
-   *
-   * We need to set the response type as any while we don't know the return type
-   * The user will have to use the api.get<T>() prototype to force it to be the onSuccessResponse type
-   *
-   * Maybe there is a Typescript trick to force the response type to be the 'onSuccess response type'
-   * But i guess it would happen only on implementations like
-   * ``` mande('/api').onSuccess((Response) => T).get() ```
-   *
-   * Rather than
-   * ```
-   *   default.onSuccess = (Response) => T
-   *   mande('/api').get();
-   * ```
-   * or
-   * ``` mande('/api', { onSuccess: (Response) => T }).get() ```
+   * @param response The response that would naturaly be returned if not set
+   * @return transformed (or not) data
    */
-  onSuccess?(response: Response): Response | unknown
+  onSuccess?(response: Response): Response | unknown | Promise<Response | unknown>
 
   /**
-   * Intercept the error thrown
-   *
-   * Promise rejection can't be typed, so we again need to set any agin
+   * Intercept the error response
+   * @param error The error that would naturaly be thrown if not set
+   * @return transformed (or not) data
    */
-  onError?(err: MandeError): MandeError | unknown
+  onError?(error: MandeError): MandeError | unknown | Promise<MandeError | unknown>
 }
 
 export type ResponseAsTypes = 'json' | 'text' | 'response'
