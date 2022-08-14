@@ -126,13 +126,13 @@ Or in a single instance
 import { mande } from 'mande'
 
 const todos = mande('/api/todos', {
-  onSuccess: (plainTodo) => todoList
-    .map((todo) => new Todo({
-      ...plainTodo,
-      createdAt: new Date(plainTodo.timestamp)
-    }))
-todos.get('/finished').then((todo) => /* I'm a transformed todo */)
-todos.get('/deleted').then((todo) => /* I'm a transformed todo */)
+  onSuccess: (plainTodos) => plainTodos.map((plainTodo) => new Todo({
+    ...plainTodo,
+    createdAt: new Date(plainTodo.timestamp),
+  }))
+})
+todos.get('/finished').then((todo) => {/* I'm a transformed todo */ })
+todos.get('/deleted').then((todo) => {/* I'm a transformed todo */ })
 ```
 
 ## TypeScript
