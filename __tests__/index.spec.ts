@@ -277,4 +277,46 @@ describe('mande', () => {
     await expect(api.get('/2')).resolves.toEqual({})
     expect(fetchMock).toHaveFetched('/api/2')
   })
+  it('call the onSuccess handler', async () => {
+    const handler = jest.fn((res): any => {
+      expect(res).toEqual({ foo: 'bar' });
+      return { foo: 'baz' }
+    });
+    fetchMock.mock('/api/2', { status: 200, body: { foo: 'bar' } })
+    let api = mande('/api', { onSuccess: handler })
+    await expect(api.get('/2')).resolves.toEqual({ foo: 'baz' })
+    expect(handler).toBeCalledTimes(1);
+  })
+
+  it('call the onError handler', async () => {
+    const handler = jest.fn((err): any => {
+      expect(err).toBeInstanceOf(Error)
+      expect(err).toMatchObject({
+        response: expect.anything(),
+        body: { foo: 'bar' },
+      });
+      err.body = { foo: 'baz' };
+      return err;
+    });
+    fetchMock.mock('/api/2', { status: 500, body: { foo: 'bar' } })
+    let api = mande('/api', { onError: handler })
+    await expect(api.get('/2')).rejects.toMatchObject({
+      response: expect.anything(),
+      body: { foo: 'baz' },
+    })
+    expect(handler).toBeCalledTimes(1);
+  })
+
+  it('call the onSuccess handler from default options', async () => {
+    const handler = jest.fn((res): any => {
+      expect(res).toEqual({ foo: 'bar' });
+      return 'baz'
+    });
+    defaults.onSuccess = handler;
+    fetchMock.mock('/api/2', { status: 200, body: { foo: 'bar' } })
+    let api = mande('/api')
+    await expect(api.get('/2')).resolves.toEqual({ foo: 'baz' })
+    expect(handler).toBeCalledTimes(1);
+    delete defaults.onSuccess;
+  })
 })
