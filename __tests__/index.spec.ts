@@ -310,7 +310,7 @@ describe('mande', () => {
   it('call the onSuccess handler from default options', async () => {
     const handler = jest.fn((res): any => {
       expect(res).toEqual({ foo: 'bar' });
-      return 'baz'
+      return { foo: 'baz' }
     });
     defaults.onSuccess = handler;
     fetchMock.mock('/api/2', { status: 200, body: { foo: 'bar' } })
