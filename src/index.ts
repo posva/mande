@@ -21,13 +21,30 @@
 
  /**
   * Intercept the success response
+  * 
+  * We need to set the response type as any while we don't know the return type
+  * The user will have to use the api.get<T>() prototype to force it to be the onSuccessResponse type
+  *
+  * Maybe there is a Typescript trick to force the response type to be the 'onSuccess response type'
+  * But i guess it would happen only on implementations like
+  * ``` mande('/api').onSuccess((Response) => T).get() ```
+  * 
+  * Rather than
+  * ```
+  *   default.onSuccess = (Response) => T
+  *   mande('/api').get();
+  * ```
+  * or
+  * ``` mande('/api', { onSuccess: (Response) => T }).get() ```
   */
- onSuccess?<T = Response>(response: Response): T
+ onSuccess?(response: Response): Response | unknown
 
  /**
   * Intercept the error thrown
+  * 
+  * Promise rejection can't be typed, so we again need to set any agin
   */
- onError?<T = MandeError>(err: MandeError): T
+ onError?(err: MandeError): MandeError | unknown
 }
 
 export type ResponseAsTypes = 'json' | 'text' | 'response'
@@ -352,16 +369,16 @@ export function mande(
  }
 
  return {
-   options: instanceOptions,
-   post: _fetch.bind(null, 'POST'),
-   put: _fetch.bind(null, 'PUT'),
-   patch: _fetch.bind(null, 'PATCH'),
+    options: instanceOptions,
+    post: _fetch.bind(null, 'POST'),
+    put: _fetch.bind(null, 'PUT'),
+    patch: _fetch.bind(null, 'PATCH'),
 
-   // these two have no body
-   get: (url: string, options?: Options) => _fetch('GET', url, null, options),
-   delete: (url: string, options?: Options) =>
-     _fetch('DELETE', url, null, options),
- }
+    // these two have no body
+    get: (url: string, options?: Options) => _fetch('GET', url, null, options),
+    delete: (url: string, options?: Options) =>
+      _fetch('DELETE', url, null, options),
+  }
 }
 
 type InferArgs<F> = F extends (api: MandeInstance, ...args: infer A) => any
