@@ -280,13 +280,13 @@ describe('mande', () => {
 
   it('call the onSuccess handler', async () => {
     const handler = jest.fn((res): any => {
-      expect(res).toEqual({ foo: 'bar' });
+      expect(res).toEqual({ foo: 'bar' })
       return { foo: 'baz' }
-    });
+    })
     fetchMock.mock('/api/2', { status: 200, body: { foo: 'bar' } })
     let api = mande('/api', { onSuccess: handler })
     await expect(api.get('/2')).resolves.toEqual({ foo: 'baz' })
-    expect(handler).toBeCalledTimes(1);
+    expect(handler).toBeCalledTimes(1)
   })
 
   it('call the onError handler', async () => {
@@ -295,41 +295,41 @@ describe('mande', () => {
       expect(err).toMatchObject({
         response: expect.anything(),
         body: { foo: 'bar' },
-      });
-      err.body = { foo: 'baz' };
-      return err;
-    });
+      })
+      err.body = { foo: 'baz' }
+      return err
+    })
     fetchMock.mock('/api/2', { status: 500, body: { foo: 'bar' } })
     let api = mande('/api', { onError: handler })
     await expect(api.get('/2')).rejects.toMatchObject({
       response: expect.anything(),
       body: { foo: 'baz' },
     })
-    expect(handler).toBeCalledTimes(1);
+    expect(handler).toBeCalledTimes(1)
   })
 
   it('call the onSuccess handler from default options', async () => {
     const handler = jest.fn((res): string => {
-      expect(res).toEqual({ foo: 'bar' });
+      expect(res).toEqual({ foo: 'bar' })
       return 'Hello'
-    });
-    defaults.onSuccess = handler;
+    })
+    defaults.onSuccess = handler
     fetchMock.mock('/api/2', { status: 200, body: { foo: 'bar' } })
     let api = mande('/api')
     await expect(api.get('/2')).resolves.toEqual('Hello')
-    expect(handler).toBeCalledTimes(1);
-    delete defaults.onSuccess;
+    expect(handler).toBeCalledTimes(1)
+    delete defaults.onSuccess
   })
 
   it('call the handler from instance options over default options', async () => {
-    const handlerDefault = jest.fn((res) => ({ bar: 'foo' }));
-    const handlerInstance = jest.fn((res) => ({ foo: 'baz' }));
-    defaults.onSuccess = handlerDefault;
+    const handlerDefault = jest.fn((res) => ({ bar: 'foo' }))
+    const handlerInstance = jest.fn((res) => ({ foo: 'baz' }))
+    defaults.onSuccess = handlerDefault
     fetchMock.mock('/api/2', { status: 200, body: { foo: 'bar' } })
     let api = mande('/api', { onSuccess: handlerInstance })
     await expect(api.get('/2')).resolves.toMatchObject({ foo: 'baz' })
-    expect(handlerDefault).toBeCalledTimes(0);
-    expect(handlerInstance).toBeCalledTimes(1);
-    delete defaults.onSuccess;
+    expect(handlerDefault).toBeCalledTimes(0)
+    expect(handlerInstance).toBeCalledTimes(1)
+    delete defaults.onSuccess
   })
 })
