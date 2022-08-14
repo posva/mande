@@ -110,6 +110,31 @@ import { defaults } from 'mande'
 defaults.headers.Authorization = 'Bearer token'
 ```
 
+You can intercept successfull or errored responses before they are handled by then or catch
+
+Globaly
+```js
+import { defaults } from 'mande'
+
+defaults.onError = (error) => {
+  notify(`Error from API: ${error.message}`)
+  return error
+}
+```
+Or in a single instance
+```js
+import { mande } from 'mande'
+
+const todos = mande('/api/todos', {
+  onSuccess: (plainTodo) => todoList
+    .map((todo) => new Todo({
+      ...plainTodo,
+      createdAt: new Date(plainTodo.timestamp)
+    }))
+todos.get('/finished').then((todo) => /* I'm a transformed todo */)
+todos.get('/deleted').then((todo) => /* I'm a transformed todo */)
+```
+
 ## TypeScript
 
 All methods defined on a `mande` instance accept a type generic to type their return:
