@@ -16,7 +16,7 @@ get(url: string | number, options: Options<'response'>): Promise<Response>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string \| number | relative url to send the request to |
+|  url | string \| number \| optional | relative url to send the request to |
 |  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; | optional [Options](./mande.options.md) |
 
 <b>Returns:</b>
