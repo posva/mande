@@ -41,6 +41,13 @@ describe('mande', () => {
     expect(fetchMock).toHaveFetched('/api/2')
   })
 
+  it('can use get without parameters', async () => {
+    let api = mande('/api/')
+    fetchMock.mock('/api/', { status: 200, body: {} })
+    await expect(api.get()).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/')
+  })
+
   it('allows an absolute base', async () => {
     let api = mande('http://example.com/api/')
     fetchMock.mock('http://example.com/api/', { status: 200, body: {} })

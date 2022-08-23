@@ -66,9 +66,15 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
-  get(url: string | number, options: Options<'response'>): Promise<Response>
-  get(url: string | number, options: Options<'text'>): Promise<string>
-  get<T = unknown>(url: string | number, options?: Options): Promise<T>
+  get(
+    url: string | number | undefined,
+    options: Options<'response'>
+  ): Promise<Response>
+  get(
+    url: string | number | undefined,
+    options: Options<'text'>
+  ): Promise<string>
+  get<T = unknown>(url?: string | number, options?: Options): Promise<T>
 
   /**
    * Sends a POST request to the given url.
@@ -343,7 +349,7 @@ export function mande(
     patch: _fetch.bind(null, 'PATCH'),
 
     // these two have no body
-    get: (url: string, options?: Options) => _fetch('GET', url, null, options),
+    get: (url?: string, options?: Options) => _fetch('GET', url, null, options),
     delete: (url: string, options?: Options) =>
       _fetch('DELETE', url, null, options),
   }
