@@ -113,9 +113,9 @@ describe('mande', () => {
   it('can use get with options only', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/?foo=a&bar=b', { body: {} })
-    await expect(
-      api.get({ query: { foo: 'a', bar: 'b' } })
-    ).resolves.toEqual({})
+    await expect(api.get({ query: { foo: 'a', bar: 'b' } })).resolves.toEqual(
+      {}
+    )
   })
 
   it('merges global query', async () => {
