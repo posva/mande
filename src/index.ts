@@ -63,18 +63,19 @@ export interface MandeInstance {
    *   // do something
    * })
    * ```
-   * @param url - relative url to send the request to
+   * @param url - optional relative url to send the request to
    * @param options - optional {@link Options}
    */
   get(
-    url: string | number | undefined,
+    url: string | number,
     options: Options<'response'>
   ): Promise<Response>
   get(
-    url: string | number | undefined,
+    url: string | number,
     options: Options<'text'>
   ): Promise<string>
-  get<T = unknown>(url?: string | number, options?: Options): Promise<T>
+  get<T = unknown>(options?: Options): Promise<T>
+  get<T = unknown>(url: string | number, options?: Options): Promise<T>
 
   /**
    * Sends a POST request to the given url.
@@ -186,6 +187,7 @@ export interface MandeInstance {
    */
   delete(url: string | number, options: Options<'response'>): Promise<Response>
   delete(url: string | number, options: Options<'text'>): Promise<string>
+  delete<T = unknown>(options?: Options): Promise<T>
   delete<T = unknown>(url: string | number, options?: Options): Promise<T>
 }
 
@@ -349,9 +351,16 @@ export function mande(
     patch: _fetch.bind(null, 'PATCH'),
 
     // these two have no body
-    get: (url?: string, options?: Options) => _fetch('GET', url, null, options),
-    delete: (url: string, options?: Options) =>
-      _fetch('DELETE', url, null, options),
+    get: (urlOrOptions?: string | number | Options, passedOptions?: Options) => {
+      const url = parseUrl(urlOrOptions);
+      const options = parseOptions(urlOrOptions, passedOptions);
+      return _fetch('GET', url, null, options);
+    },
+    delete: (urlOrOptions?: string | number | Options, passedOptions?: Options) => {
+      const url = parseUrl(urlOrOptions);
+      const options = parseOptions(urlOrOptions, passedOptions);
+      return _fetch('DELETE', url, null, options);
+    },
   }
 }
 
@@ -402,4 +411,24 @@ export function nuxtWrap<
     }
 
   return wrappedCall
+}
+
+function parseUrl(urlOrOptions: string | number | undefined | Options) {
+  const url = typeof urlOrOptions === 'string'
+    || typeof urlOrOptions === 'number'
+    ? urlOrOptions
+    : undefined;
+  return url;
+}
+
+function parseOptions(
+  urlOrOptions: string | number | undefined | Options,
+  passedOptions: Options | undefined,
+) {
+  const options = urlOrOptions !== undefined
+    && typeof urlOrOptions !== 'string'
+    && typeof urlOrOptions !== 'number'
+      ? urlOrOptions
+      : passedOptions;
+  return options;
 }

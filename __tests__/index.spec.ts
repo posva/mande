@@ -69,6 +69,13 @@ describe('mande', () => {
     expect(fetchMock).toHaveFetched('/api/')
   })
 
+  it('calls delete without parameters', async () => {
+    let api = mande('/api/')
+    fetchMock.mock('/api/', 204)
+    await expect(api.delete()).resolves.toEqual(null)
+    expect(fetchMock).toHaveFetched('/api/')
+  })
+
   it('rejects if not ok', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', 404)
@@ -100,6 +107,14 @@ describe('mande', () => {
     fetchMock.get('/api/?foo=a&bar=b', { body: {} })
     await expect(
       api.get('', { query: { foo: 'a', bar: 'b' } })
+    ).resolves.toEqual({})
+  })
+
+  it('can use get with options only', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/?foo=a&bar=b', { body: {} })
+    await expect(
+      api.get({ query: { foo: 'a', bar: 'b' } })
     ).resolves.toEqual({})
   })
 
