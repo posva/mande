@@ -2,7 +2,7 @@
   "name": "mande",
   "version": "2.0.3",
   "description": "Some awesome description",
-  "packageManager": "pnpm@7.10.0",
+  "packageManager": "pnpm@7.11.0",
   "main": "index.js",
   "module": "dist/mande.mjs",
   "unpkg": "dist/mande.iife.js",
@@ -81,7 +81,7 @@
     "@nuxt/types": "^2.15.8",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-replace": "^4.0.0",
-    "@size-limit/preset-small-lib": "^8.0.1",
+    "@size-limit/preset-small-lib": "^8.1.0",
     "@types/jest": "^28.1.8",
     "codecov": "^3.8.3",
     "conventional-changelog-cli": "^2.2.2",
@@ -96,9 +96,9 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.33.0",
-    "size-limit": "^8.0.1",
+    "size-limit": "^8.1.0",
     "ts-jest": "^28.0.8",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.3"
   },
   "repository": {
     "type": "git",
