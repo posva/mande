@@ -238,12 +238,48 @@ describe('mande', () => {
     }
   })
 
+  it('can return a raw response when called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
+    await api.get({ responseAs: 'response' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<Response>(res)
+    })
+  })
+
   it('can return a raw response with status code 204', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', { status: 204 })
     await api.get('', { responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<Response>(res)
+    })
+  })
+
+  it('can return a text response when called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
+    await api.get({ responseAs: 'text' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<string>(res)
+    })
+  })
+
+  it('can return a raw response when delete called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.delete('/api/', 204)
+    await api.delete({ responseAs: 'response' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<Response>(res)
+    })
+  })
+
+  it('can return a text response when delete called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.delete('/api/', 200)
+    await api.delete({ responseAs: 'text' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<string>(res)
     })
   })
 
