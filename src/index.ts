@@ -68,8 +68,10 @@ export interface MandeInstance {
    */
   get(url: string | number, options: Options<'response'>): Promise<Response>
   get(url: string | number, options: Options<'text'>): Promise<string>
-  get<T = unknown>(options?: Options): Promise<T>
   get<T = unknown>(url: string | number, options?: Options): Promise<T>
+  get(options: Options<'response'>): Promise<Response>
+  get(options: Options<'text'>): Promise<string>
+  get<T = unknown>(options?: Options): Promise<T>
 
   /**
    * Sends a POST request to the given url.
@@ -181,8 +183,10 @@ export interface MandeInstance {
    */
   delete(url: string | number, options: Options<'response'>): Promise<Response>
   delete(url: string | number, options: Options<'text'>): Promise<string>
-  delete<T = unknown>(options?: Options): Promise<T>
   delete<T = unknown>(url: string | number, options?: Options): Promise<T>
+  delete(options: Options<'response'>): Promise<Response>
+  delete(options: Options<'text'>): Promise<string>
+  delete<T = unknown>(options?: Options): Promise<T>
 }
 
 function stringifyQuery(query: any): string {
@@ -256,18 +260,23 @@ export function mande(
 ): MandeInstance {
   function _fetch(
     method: string,
-    urlOrData?: string | number | any,
+    urlOrDataOrOptions?: string | number | Options | any,
     dataOrOptions?: Options | any,
     localOptions: Options = {}
   ) {
     let url: string | number
     let data: any
-    if (typeof urlOrData === 'object') {
-      url = ''
-      data = urlOrData
-      localOptions = dataOrOptions || {}
+    if (typeof urlOrDataOrOptions === 'object') {
+      if (method === 'GET' || method === 'DELETE') {
+        url = ''
+        localOptions = urlOrDataOrOptions
+      } else {
+        url = ''
+        data = urlOrDataOrOptions
+        localOptions = dataOrOptions || {}
+      }
     } else {
-      url = urlOrData
+      url = urlOrDataOrOptions
       data = dataOrOptions
     }
 
@@ -345,22 +354,10 @@ export function mande(
     patch: _fetch.bind(null, 'PATCH'),
 
     // these two have no body
-    get: (
-      urlOrOptions?: string | number | Options,
-      passedOptions?: Options
-    ) => {
-      const url = parseUrl(urlOrOptions)
-      const options = parseOptions(urlOrOptions, passedOptions)
-      return _fetch('GET', url, null, options)
-    },
-    delete: (
-      urlOrOptions?: string | number | Options,
-      passedOptions?: Options
-    ) => {
-      const url = parseUrl(urlOrOptions)
-      const options = parseOptions(urlOrOptions, passedOptions)
-      return _fetch('DELETE', url, null, options)
-    },
+    get: (url?: string | number | Options, options?: Options) =>
+      _fetch('GET', url, null, options),
+    delete: (url?: string | number | Options, options?: Options) =>
+      _fetch('DELETE', url, null, options),
   }
 }
 
@@ -411,25 +408,4 @@ export function nuxtWrap<
     }
 
   return wrappedCall
-}
-
-function parseUrl(urlOrOptions: string | number | undefined | Options) {
-  const url =
-    typeof urlOrOptions === 'string' || typeof urlOrOptions === 'number'
-      ? urlOrOptions
-      : undefined
-  return url
-}
-
-function parseOptions(
-  urlOrOptions: string | number | undefined | Options,
-  passedOptions: Options | undefined
-) {
-  const options =
-    urlOrOptions !== undefined &&
-    typeof urlOrOptions !== 'string' &&
-    typeof urlOrOptions !== 'number'
-      ? urlOrOptions
-      : passedOptions
-  return options
 }
