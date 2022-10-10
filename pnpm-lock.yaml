@@ -7,7 +7,7 @@ specifiers:
   '@rollup/plugin-alias': ^3.1.9
   '@rollup/plugin-replace': ^4.0.0
   '@size-limit/preset-small-lib': ^8.1.0
-  '@types/jest': ^29.1.1
+  '@types/jest': ^29.1.2
   codecov: ^3.8.3
   conventional-changelog-cli: ^2.2.2
   fetch-mock-jest: ^1.5.1
@@ -20,7 +20,7 @@ specifiers:
   rollup-plugin-commonjs: ^10.1.0
   rollup-plugin-node-resolve: ^5.2.0
   rollup-plugin-terser: ^7.0.2
-  rollup-plugin-typescript2: ^0.34.0
+  rollup-plugin-typescript2: ^0.34.1
   size-limit: ^8.1.0
   ts-jest: ^29.0.3
   typescript: ^4.8.4
@@ -32,7 +32,7 @@ devDependencies:
   '@rollup/plugin-alias': 3.1.9_rollup@2.79.1
   '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
   '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
-  '@types/jest': 29.1.1
+  '@types/jest': 29.1.2
   codecov: 3.8.3
   conventional-changelog-cli: 2.2.2
   fetch-mock-jest: 1.5.1_node-fetch@2.6.7
@@ -45,7 +45,7 @@ devDependencies:
   rollup-plugin-commonjs: 10.1.0_rollup@2.79.1
   rollup-plugin-node-resolve: 5.2.0_rollup@2.79.1
   rollup-plugin-terser: 7.0.2_rollup@2.79.1
-  rollup-plugin-typescript2: 0.34.0_gypgyaqhine6mwjfvh7icfhviq
+  rollup-plugin-typescript2: 0.34.1_gypgyaqhine6mwjfvh7icfhviq
   size-limit: 8.1.0
   ts-jest: 29.0.3_2gcdg7c5hzdfd67o3khlosdlhu
   typescript: 4.8.4
@@ -1067,8 +1067,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.1.1:
-    resolution: {integrity: sha512-U9Ey07dGWl6fUFaIaUQUKWG5NoKi/zizeVQCGV8s4nSU0jPgqphVZvS64+8BtWYvrc3ZGw6wo943NSYPxkrp/g==}
+  /@types/jest/29.1.2:
+    resolution: {integrity: sha512-y+nlX0h87U0R+wsGn6EBuoRWYyv3KFtwRNP3QWp9+k2tJ2/bqcGS3UxD7jgT+tiwJWWq3UsyV4Y+T6rsMT4XMg==}
     dependencies:
       expect: 29.1.2
       pretty-format: 29.1.2
@@ -3900,8 +3900,8 @@ packages:
       terser: 5.15.0
     dev: true
 
-  /rollup-plugin-typescript2/0.34.0_gypgyaqhine6mwjfvh7icfhviq:
-    resolution: {integrity: sha512-dGtOz2kL6nQVgfIOmnA4Xh+5cFrs3bdu4jja/ej7WKR92RzOOixsn71LY5ZFFmKe1R677nUh+k2++NiY3un2PQ==}
+  /rollup-plugin-typescript2/0.34.1_gypgyaqhine6mwjfvh7icfhviq:
+    resolution: {integrity: sha512-P4cHLtGikESmqi1CA+tdMDUv8WbQV48mzPYt77TSTOPJpERyZ9TXdDgjSDix8Fkqce6soYz3+fa4lrC93IEkcw==}
     peerDependencies:
       rollup: '>=1.26.3'
       typescript: '>=2.4.0'
@@ -3910,6 +3910,7 @@ packages:
       find-cache-dir: 3.3.2
       fs-extra: 10.1.0
       rollup: 2.79.1
+      semver: 7.3.7
       tslib: 2.4.0
       typescript: 4.8.4
     dev: true
