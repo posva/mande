@@ -79,7 +79,7 @@
     "@microsoft/api-documenter": "^7.19.16",
     "@microsoft/api-extractor": "^7.32.0",
     "@nuxt/types": "^2.15.8",
-    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-alias": "^4.0.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@types/jest": "^29.1.2",
