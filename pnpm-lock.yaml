@@ -7,7 +7,7 @@ specifiers:
   '@rollup/plugin-alias': ^4.0.2
   '@rollup/plugin-replace': ^5.0.1
   '@size-limit/preset-small-lib': ^8.1.0
-  '@types/jest': ^29.2.0
+  '@types/jest': ^29.2.2
   codecov: ^3.8.3
   conventional-changelog-cli: ^2.2.2
   fetch-mock-jest: ^1.5.1
@@ -32,7 +32,7 @@ devDependencies:
   '@rollup/plugin-alias': 4.0.2_rollup@2.79.1
   '@rollup/plugin-replace': 5.0.1_rollup@2.79.1
   '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
-  '@types/jest': 29.2.0
+  '@types/jest': 29.2.2
   codecov: 3.8.3
   conventional-changelog-cli: 2.2.2
   fetch-mock-jest: 1.5.1_node-fetch@2.6.7
@@ -1088,11 +1088,11 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.2.0:
-    resolution: {integrity: sha512-KO7bPV21d65PKwv3LLsD8Jn3E05pjNjRZvkm+YTacWhVmykAb07wW6IkZUmQAltwQafNcDUEUrMO2h3jeBSisg==}
+  /@types/jest/29.2.2:
+    resolution: {integrity: sha512-og1wAmdxKoS71K2ZwSVqWPX6OVn3ihZ6ZT2qvZvZQm90lJVDyXIjYcu4Khx2CNIeaFv12rOU/YObOsI3VOkzog==}
     dependencies:
-      expect: 29.2.0
-      pretty-format: 29.2.0
+      expect: 29.2.2
+      pretty-format: 29.2.1
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -2189,17 +2189,6 @@ packages:
   /exit/0.1.2:
     resolution: {integrity: sha512-Zk/eNKV2zbjpKzrsQ+n1G6poVbErQxJ0LBOJXaKZ1EViLzH+hrLu9cdXI4zw9dBQJslwBEpbQ2P1oS7nDxs6jQ==}
     engines: {node: '>= 0.8.0'}
-    dev: true
-
-  /expect/29.2.0:
-    resolution: {integrity: sha512-03ClF3GWwUqd9Grgkr9ZSdaCJGMRA69PQ8jT7o+Bx100VlGiAFf9/8oIm9Qve7ZVJhuJxFftqFhviZJRxxNfvg==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    dependencies:
-      '@jest/expect-utils': 29.2.2
-      jest-get-type: 29.2.0
-      jest-matcher-utils: 29.2.2
-      jest-message-util: 29.2.1
-      jest-util: 29.2.1
     dev: true
 
   /expect/29.2.2:
@@ -3713,15 +3702,6 @@ packages:
     resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
-
-  /pretty-format/29.2.0:
-    resolution: {integrity: sha512-QCSUFdwOi924g24czhOH5eTkXxUCqlLGZBRCySlwDYHIXRJkdGyjJc9nZaqhlFBZws8dq5Dvk0lCilsmlfsPxw==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    dependencies:
-      '@jest/schemas': 29.0.0
-      ansi-styles: 5.2.0
-      react-is: 18.2.0
     dev: true
 
   /pretty-format/29.2.1:
