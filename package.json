@@ -2,7 +2,7 @@
   "name": "mande",
   "version": "2.0.3",
   "description": "Some awesome description",
-  "packageManager": "pnpm@7.17.1",
+  "packageManager": "pnpm@7.18.0",
   "main": "index.js",
   "module": "dist/mande.mjs",
   "unpkg": "dist/mande.iife.js",
@@ -76,7 +76,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/api-documenter": "^7.19.24",
+    "@microsoft/api-documenter": "^7.19.25",
     "@microsoft/api-extractor": "^7.33.6",
     "@nuxt/types": "^2.15.8",
     "@rollup/plugin-alias": "^4.0.2",
