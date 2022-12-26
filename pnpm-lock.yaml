@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@microsoft/api-documenter': ^7.19.26
+  '@microsoft/api-documenter': ^7.19.27
   '@microsoft/api-extractor': ^7.33.7
   '@nuxt/types': ^2.15.8
   '@rollup/plugin-alias': ^4.0.2
@@ -26,7 +26,7 @@ specifiers:
   typescript: ^4.9.4
 
 devDependencies:
-  '@microsoft/api-documenter': 7.19.26
+  '@microsoft/api-documenter': 7.19.27
   '@microsoft/api-extractor': 7.33.7
   '@nuxt/types': 2.15.8
   '@rollup/plugin-alias': 4.0.2_rollup@2.79.1
@@ -698,8 +698,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-documenter/7.19.26:
-    resolution: {integrity: sha512-sFhYmO8k6CMFJ20D/LP1B7GdH+JfwmSKO/xTXnm63WA3+AX7g94G4TlKlc1FXdHFS2qhHnlm4qZUD3fgfs1vqg==}
+  /@microsoft/api-documenter/7.19.27:
+    resolution: {integrity: sha512-KKNUnDlhRx+tYZsDt3Bn8OqdpCS8V9pce+ZvCjkL+nGHN4G2w1lqAtm82VdzGYgG8HgrwqZ72/Z2bsxKvPho7g==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.25.3
@@ -708,7 +708,7 @@ packages:
       '@rushstack/ts-command-line': 4.13.1
       colors: 1.2.5
       js-yaml: 3.13.1
-      resolve: 1.17.0
+      resolve: 1.22.1
     dev: true
 
   /@microsoft/api-extractor-model/7.25.3:
