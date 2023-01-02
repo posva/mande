@@ -7,7 +7,7 @@ specifiers:
   '@rollup/plugin-alias': ^4.0.2
   '@rollup/plugin-replace': ^5.0.2
   '@size-limit/preset-small-lib': ^8.1.0
-  '@types/jest': ^29.2.4
+  '@types/jest': ^29.2.5
   codecov: ^3.8.3
   conventional-changelog-cli: ^2.2.2
   fetch-mock-jest: ^1.5.1
@@ -32,7 +32,7 @@ devDependencies:
   '@rollup/plugin-alias': 4.0.2_rollup@2.79.1
   '@rollup/plugin-replace': 5.0.2_rollup@2.79.1
   '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
-  '@types/jest': 29.2.4
+  '@types/jest': 29.2.5
   codecov: 3.8.3
   conventional-changelog-cli: 2.2.2
   fetch-mock-jest: 1.5.1_node-fetch@2.6.7
@@ -1088,8 +1088,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.2.4:
-    resolution: {integrity: sha512-PipFB04k2qTRPePduVLTRiPzQfvMeLwUN3Z21hsAKaB/W9IIzgB2pizCL466ftJlcyZqnHoC9ZHpxLGl3fS86A==}
+  /@types/jest/29.2.5:
+    resolution: {integrity: sha512-H2cSxkKgVmqNHXP7TC2L/WUorrZu8ZigyRywfVzv6EyBlxj39n4C00hjXYQWsbwqgElaj/CiAeSRmk5GoaKTgw==}
     dependencies:
       expect: 29.3.1
       pretty-format: 29.3.1
