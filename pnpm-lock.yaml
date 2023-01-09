@@ -14,7 +14,7 @@ specifiers:
   jest: ^29.3.1
   node-fetch: ^2.6.7
   pascalcase: ^1.0.0
-  prettier: ^2.8.1
+  prettier: ^2.8.2
   rimraf: ^3.0.2
   rollup: ^2.79.1
   rollup-plugin-commonjs: ^10.1.0
@@ -39,7 +39,7 @@ devDependencies:
   jest: 29.3.1
   node-fetch: 2.6.7
   pascalcase: 1.0.0
-  prettier: 2.8.1
+  prettier: 2.8.2
   rimraf: 3.0.2
   rollup: 2.79.1
   rollup-plugin-commonjs: 10.1.0_rollup@2.79.1
@@ -3702,8 +3702,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /prettier/2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
+  /prettier/2.8.2:
+    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
