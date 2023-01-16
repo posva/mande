@@ -15,7 +15,7 @@ specifiers:
   node-fetch: ^2.6.8
   pascalcase: ^1.0.0
   prettier: ^2.8.3
-  rimraf: ^3.0.2
+  rimraf: ^4.0.7
   rollup: ^2.79.1
   rollup-plugin-commonjs: ^10.1.0
   rollup-plugin-node-resolve: ^5.2.0
@@ -40,7 +40,7 @@ devDependencies:
   node-fetch: 2.6.8
   pascalcase: 1.0.0
   prettier: 2.8.3
-  rimraf: 3.0.2
+  rimraf: 4.0.7
   rollup: 2.79.1
   rollup-plugin-commonjs: 10.1.0_rollup@2.79.1
   rollup-plugin-node-resolve: 5.2.0_rollup@2.79.1
@@ -3879,11 +3879,10 @@ packages:
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
 
-  /rimraf/3.0.2:
-    resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+  /rimraf/4.0.7:
+    resolution: {integrity: sha512-CUEDDrZvc0swDgVdXGiv3FcYYQMpJxjvSGt85Amj6yU+MCVWurrLCeLiJDdJPHCzNJnwuebBEdcO//eP11Xa7w==}
+    engines: {node: '>=14'}
     hasBin: true
-    dependencies:
-      glob: 7.2.3
     dev: true
 
   /rollup-plugin-commonjs/10.1.0_rollup@2.79.1:
