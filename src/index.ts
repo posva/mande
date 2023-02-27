@@ -18,6 +18,20 @@ export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes>
    * Headers sent alongside the request
    */
   headers?: Record<string, string>
+
+  /**
+   * Intercept the success response
+   * @param response The response that would naturaly be returned if not set
+   * @return transformed (or not) data
+   */
+  onSuccess?(response: Response): Response | unknown | Promise<Response | unknown>
+
+  /**
+   * Intercept the error response
+   * @param error The error that would naturaly be thrown if not set
+   * @return transformed (or not) data
+   */
+  onError?(error: MandeError): MandeError | unknown | Promise<MandeError | unknown>
 }
 
 export type ResponseAsTypes = 'json' | 'text' | 'response'
@@ -311,13 +325,16 @@ export function mande(
       .then(([response, data]) => {
         if (response.status >= 200 && response.status < 300) {
           // data is a raw response when responseAs is response
-          return responseAs !== 'response' && response.status == 204
-            ? null
-            : data
+          const resp =
+            responseAs !== 'response' && response.status == 204 ? null : data
+          if (mergedOptions.onSuccess) return mergedOptions.onSuccess(resp)
+          return resp
         }
         let err = new Error(response.statusText) as MandeError
         err.response = response
         err.body = data
+        if (mergedOptions.onError)
+          return Promise.reject(mergedOptions.onError(err))
         throw err
       })
   }
