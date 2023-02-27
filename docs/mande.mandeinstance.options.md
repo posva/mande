@@ -6,7 +6,7 @@
 
 Writable options.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 options: Required<Pick<OptionsRaw, 'headers'>> & Pick<OptionsRaw, 'responseAs' | 'query'>;

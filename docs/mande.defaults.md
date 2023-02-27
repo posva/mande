@@ -6,7 +6,7 @@
 
 Global default options as [Options](./mande.options.md) that are applied to \*\*all\*\* mande instances. Always contain an initialized `headers` property with the default headers: - Accept: 'application/json' - 'Content-Type': 'application/json'
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 defaults: Options & Pick<Required<Options>, 'headers' | 'responseAs'>

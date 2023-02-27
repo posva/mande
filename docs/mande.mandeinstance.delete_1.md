@@ -4,10 +4,10 @@
 
 ## MandeInstance.delete() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-delete(url: string | number, options: Options<'text'>): Promise<string>;
+delete<T = unknown, R extends ResponseAsTypes = 'json'>(url: string | number, options?: Options<R>): MandeResponse<T, R>;
 ```
 
 ## Parameters
@@ -15,9 +15,9 @@ delete(url: string | number, options: Options<'text'>): Promise<string>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string \| number |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'text'&gt; |  |
+|  options | [Options](./mande.options.md)<!-- -->&lt;R&gt; | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
-Promise&lt;string&gt;
+[MandeResponse](./mande.manderesponse.md)<!-- -->&lt;T, R&gt;
 

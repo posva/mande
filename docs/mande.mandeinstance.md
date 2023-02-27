@@ -6,7 +6,7 @@
 
 Object returned by [mande()](./mande.mande.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface MandeInstance 
@@ -22,28 +22,14 @@ export interface MandeInstance
 
 |  Method | Description |
 |  --- | --- |
-|  [delete(url, options)](./mande.mandeinstance.delete.md) | Sends a DELETE request to the given url. |
+|  [delete(options)](./mande.mandeinstance.delete.md) | Sends a DELETE request to the given url. |
 |  [delete(url, options)](./mande.mandeinstance.delete_1.md) |  |
-|  [delete(url, options)](./mande.mandeinstance.delete_2.md) |  |
-|  [get(url, options)](./mande.mandeinstance.get.md) | Sends a GET request to the given url. |
+|  [get(options)](./mande.mandeinstance.get.md) | Sends a GET request to the given url. |
 |  [get(url, options)](./mande.mandeinstance.get_1.md) |  |
-|  [get(url, options)](./mande.mandeinstance.get_2.md) |  |
-|  [patch(url, data, options)](./mande.mandeinstance.patch.md) | Sends a PATCH request to the given url. |
-|  [patch(data, options)](./mande.mandeinstance.patch_1.md) |  |
-|  [patch(url, data, options)](./mande.mandeinstance.patch_2.md) |  |
-|  [patch(data, options)](./mande.mandeinstance.patch_3.md) |  |
-|  [patch(url, data, options)](./mande.mandeinstance.patch_4.md) |  |
-|  [patch(data, options)](./mande.mandeinstance.patch_5.md) |  |
-|  [post(url, data, options)](./mande.mandeinstance.post.md) | Sends a POST request to the given url. |
-|  [post(data, options)](./mande.mandeinstance.post_1.md) |  |
-|  [post(url, data, options)](./mande.mandeinstance.post_2.md) |  |
-|  [post(data, options)](./mande.mandeinstance.post_3.md) |  |
-|  [post(data, options)](./mande.mandeinstance.post_4.md) |  |
-|  [post(url, data, options)](./mande.mandeinstance.post_5.md) |  |
-|  [put(url, data, options)](./mande.mandeinstance.put.md) | Sends a PUT request to the given url. |
-|  [put(data, options)](./mande.mandeinstance.put_1.md) |  |
-|  [put(url, data, options)](./mande.mandeinstance.put_2.md) |  |
-|  [put(data, options)](./mande.mandeinstance.put_3.md) |  |
-|  [put(url, data, options)](./mande.mandeinstance.put_4.md) |  |
-|  [put(data, options)](./mande.mandeinstance.put_5.md) |  |
+|  [patch(data, options)](./mande.mandeinstance.patch.md) | Sends a PATCH request to the given url. |
+|  [patch(url, data, options)](./mande.mandeinstance.patch_1.md) |  |
+|  [post(data, options)](./mande.mandeinstance.post.md) | Sends a POST request to the given url. |
+|  [post(url, data, options)](./mande.mandeinstance.post_1.md) |  |
+|  [put(data, options)](./mande.mandeinstance.put.md) | Sends a PUT request to the given url. |
+|  [put(url, data, options)](./mande.mandeinstance.put_1.md) |  |
 

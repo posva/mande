@@ -4,20 +4,21 @@
 
 ## MandeInstance.post() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-post(data: any, options: Options<'text'>): Promise<string>;
+post<T = unknown, R extends ResponseAsTypes = 'json'>(url: string | number, data?: any, options?: Options<R>): MandeResponse<T, R>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  data | any |  |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'text'&gt; |  |
+|  url | string \| number |  |
+|  data | any | _(Optional)_ |
+|  options | [Options](./mande.options.md)<!-- -->&lt;R&gt; | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
-Promise&lt;string&gt;
+[MandeResponse](./mande.manderesponse.md)<!-- -->&lt;T, R&gt;
 

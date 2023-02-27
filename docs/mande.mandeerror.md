@@ -6,12 +6,12 @@
 
 Extended Error with the raw `Response` object.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface MandeError<T = any> extends Error 
 ```
-<b>Extends:</b> Error
+**Extends:** Error
 
 ## Properties
 

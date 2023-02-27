@@ -4,8 +4,8 @@
 
 ## ResponseAsTypes type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type ResponseAsTypes = 'json' | 'text' | 'response';
+export type ResponseAsTypes = 'json' | 'text' | 'response';
 ```

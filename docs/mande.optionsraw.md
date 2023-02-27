@@ -4,17 +4,17 @@
 
 ## OptionsRaw interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface OptionsRaw<R extends ResponseAsTypes = ResponseAsTypes> extends Omit<Options<R>, 'headers' | 'signal'> 
 ```
-<b>Extends:</b> Omit&lt;[Options](./mande.options.md)
+**Extends:** Omit&lt;[Options](./mande.options.md)<!-- -->&lt;R&gt;, 'headers' \| 'signal'&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [headers?](./mande.optionsraw.headers.md) |  | Record&lt;string, string \| null&gt; | <i>(Optional)</i> Headers sent alongside the request. Set any header to null to remove it. |
-|  [signal?](./mande.optionsraw.signal.md) |  | never | <i>(Optional)</i> AbortSignal can only be passed to requests, not to a mande instance because it can only be used once. |
+|  [headers?](./mande.optionsraw.headers.md) |  | Record&lt;string, string \| null&gt; | _(Optional)_ Headers sent alongside the request. Set any header to null to remove it. |
+|  [signal?](./mande.optionsraw.signal.md) |  | never | _(Optional)_ AbortSignal can only be passed to requests, not to a mande instance because it can only be used once. |
 

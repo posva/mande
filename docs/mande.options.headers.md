@@ -6,7 +6,7 @@
 
 Headers sent alongside the request
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 headers?: Record<string, string>;

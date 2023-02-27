@@ -6,22 +6,21 @@
 
 Sends a GET request to the given url.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-get(url: string | number, options: Options<'response'>): Promise<Response>;
+get<T = unknown, R extends ResponseAsTypes = 'json'>(options?: Options<R>): MandeResponse<T, R>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string \| number | relative url to send the request to |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; | optional [Options](./mande.options.md) |
+|  options | [Options](./mande.options.md)<!-- -->&lt;R&gt; | _(Optional)_ optional [Options](./mande.options.md) |
 
-<b>Returns:</b>
+**Returns:**
 
-Promise&lt;Response&gt;
+[MandeResponse](./mande.manderesponse.md)<!-- -->&lt;T, R&gt;
 
 ## Example
 
