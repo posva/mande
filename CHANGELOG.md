@@ -1,3 +1,9 @@
+## [2.0.5](https://github.com/posva/mande/compare/v2.0.3...v2.0.5) (2023-02-27)
+
+### Bug Fixes
+
+- allow no url in get and delete ([#379](https://github.com/posva/mande/issues/379)) ([b5f48b7](https://github.com/posva/mande/commit/b5f48b7fedb506768a37da063622d5e66fcc1f12))
+
 ## [2.0.3](https://github.com/posva/mande/compare/v2.0.2...v2.0.3) (2022-08-10)
 
 ### Bug Fixes

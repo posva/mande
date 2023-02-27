@@ -6,7 +6,7 @@
 
 Creates an Nuxt SSR compatible function that automatically proxies cookies to requests and works transparently on the server and client (it still requires a fetch polyfill on Node).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function nuxtWrap<M extends MandeInstance, F extends (api: M, ...args: any[]) => any>(api: M, fn: F): (...args: InferArgs<F>) => ReturnType<F>;
@@ -19,7 +19,7 @@ export declare function nuxtWrap<M extends MandeInstance, F extends (api: M, ...
 |  api | M | Mande instance to wrap |
 |  fn | F | function to be wrapped |
 
-<b>Returns:</b>
+**Returns:**
 
 (...args: InferArgs&lt;F&gt;) =&gt; ReturnType&lt;F&gt;
 

@@ -6,7 +6,7 @@
 
 What kind of response is expected. Defaults to `json`<!-- -->. `response` will return the raw response from `fetch`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 responseAs?: ResponseAs;

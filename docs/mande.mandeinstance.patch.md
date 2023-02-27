@@ -6,23 +6,22 @@
 
 Sends a PATCH request to the given url.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-patch(url: string | number, data: any, options: Options<'response'>): Promise<Response>;
+patch<T = unknown, R extends ResponseAsTypes = 'json'>(data?: any, options?: Options<R>): MandeResponse<T, R>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  url | string \| number | relative url to send the request to |
-|  data | any | optional body of the request |
-|  options | [Options](./mande.options.md)<!-- -->&lt;'response'&gt; | optional [Options](./mande.options.md) |
+|  data | any | _(Optional)_ optional body of the request |
+|  options | [Options](./mande.options.md)<!-- -->&lt;R&gt; | _(Optional)_ optional [Options](./mande.options.md) |
 
-<b>Returns:</b>
+**Returns:**
 
-Promise&lt;Response&gt;
+[MandeResponse](./mande.manderesponse.md)<!-- -->&lt;T, R&gt;
 
 ## Example
 

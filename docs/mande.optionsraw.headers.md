@@ -6,7 +6,7 @@
 
 Headers sent alongside the request. Set any header to null to remove it.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 headers?: Record<string, string | null>;

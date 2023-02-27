@@ -30,5 +30,6 @@
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [MandeResponse](./mande.manderesponse.md) |  |
 |  [ResponseAsTypes](./mande.responseastypes.md) |  |
 

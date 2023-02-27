@@ -6,7 +6,7 @@
 
 AbortSignal can only be passed to requests, not to a mande instance because it can only be used once.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 signal?: never;

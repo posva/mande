@@ -4,7 +4,7 @@
 
 ## MandeError.response property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 response: Response;

@@ -6,7 +6,7 @@
 
 Optional query object. Does not support arrays. Will get stringified
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 query?: any;
