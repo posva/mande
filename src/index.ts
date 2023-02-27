@@ -44,6 +44,17 @@ export interface MandeError<T = any> extends Error {
   response: Response
 }
 
+export type MandeResponse<
+  T = unknown,
+  ResponseType extends ResponseAsTypes = 'json'
+> = Promise<
+  ResponseType extends 'response'
+    ? Response
+    : ResponseType extends 'text'
+    ? string
+    : T
+>
+
 /**
  * Object returned by {@link mande}
  */
@@ -63,12 +74,16 @@ export interface MandeInstance {
    *   // do something
    * })
    * ```
-   * @param url - relative url to send the request to
+   * @param url - optional relative url to send the request to
    * @param options - optional {@link Options}
    */
-  get(url: string | number, options: Options<'response'>): Promise<Response>
-  get(url: string | number, options: Options<'text'>): Promise<string>
-  get<T = unknown>(url: string | number, options?: Options): Promise<T>
+  get<T = unknown, R extends ResponseAsTypes = 'json'>(
+    options?: Options<R>
+  ): MandeResponse<T, R>
+  get<T = unknown, R extends ResponseAsTypes = 'json'>(
+    url: string | number,
+    options?: Options<R>
+  ): MandeResponse<T, R>
 
   /**
    * Sends a POST request to the given url.
@@ -83,24 +98,15 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  post(
-    url: string | number,
-    data: any,
-    options: Options<'text'>
-  ): Promise<string>
-  post(data: any, options: Options<'text'>): Promise<string>
-  post(
-    url: string | number,
-    data: any,
-    options: Options<'response'>
-  ): Promise<Response>
-  post(data: any, options: Options<'response'>): Promise<Response>
-  post<T = unknown>(data?: any, options?: Options): Promise<T>
-  post<T = unknown>(
+  post<T = unknown, R extends ResponseAsTypes = 'json'>(
+    data?: any,
+    options?: Options<R>
+  ): MandeResponse<T, R>
+  post<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
-    options?: Options
-  ): Promise<T>
+    options?: Options<R>
+  ): MandeResponse<T, R>
 
   /**
    * Sends a PUT request to the given url.
@@ -115,24 +121,15 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  put(
-    url: string | number,
-    data: any,
-    options: Options<'text'>
-  ): Promise<string>
-  put(data: any, options: Options<'text'>): Promise<string>
-  put(
-    url: string | number,
-    data: any,
-    options: Options<'response'>
-  ): Promise<Response>
-  put(data: any, options: Options<'response'>): Promise<Response>
-  put<T = unknown>(
+  put<T = unknown, R extends ResponseAsTypes = 'json'>(
+    data?: any,
+    options?: Options<R>
+  ): MandeResponse<T, R>
+  put<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
-    options?: Options
-  ): Promise<T>
-  put<T = unknown>(data?: any, options?: Options): Promise<T>
+    options?: Options<R>
+  ): MandeResponse<T, R>
 
   /**
    * Sends a PATCH request to the given url.
@@ -147,24 +144,15 @@ export interface MandeInstance {
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
-  patch(
-    url: string | number,
-    data: any,
-    options: Options<'response'>
-  ): Promise<Response>
-  patch(data: any, options: Options<'response'>): Promise<Response>
-  patch(
-    url: string | number,
-    data: any,
-    options: Options<'text'>
-  ): Promise<string>
-  patch(data: any, options: Options<'text'>): Promise<string>
-  patch<T = unknown>(
+  patch<T = unknown, R extends ResponseAsTypes = 'json'>(
+    data?: any,
+    options?: Options<R>
+  ): MandeResponse<T, R>
+  patch<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
-    options?: Options
-  ): Promise<T>
-  patch<T = unknown>(data?: any, options?: Options): Promise<T>
+    options?: Options<R>
+  ): MandeResponse<T, R>
 
   /**
    * Sends a DELETE request to the given url.
@@ -178,9 +166,13 @@ export interface MandeInstance {
    * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
-  delete(url: string | number, options: Options<'response'>): Promise<Response>
-  delete(url: string | number, options: Options<'text'>): Promise<string>
-  delete<T = unknown>(url: string | number, options?: Options): Promise<T>
+  delete<T = unknown, R extends ResponseAsTypes = 'json'>(
+    options?: Options<R>
+  ): MandeResponse<T, R>
+  delete<T = unknown, R extends ResponseAsTypes = 'json'>(
+    url: string | number,
+    options?: Options<R>
+  ): MandeResponse<T, R>
 }
 
 function stringifyQuery(query: any): string {
@@ -254,18 +246,27 @@ export function mande(
 ): MandeInstance {
   function _fetch(
     method: string,
-    urlOrData?: string | number | any,
+    // url can be any method, data for POST/PUT/PATCH, and options for all (without url or data)
+    urlOrDataOrOptions?: string | number | Options | any,
+    // data for POST/PUT/PATCH, and options for all (without url or data)
     dataOrOptions?: Options | any,
     localOptions: Options = {}
   ) {
     let url: string | number
     let data: any
-    if (typeof urlOrData === 'object') {
+    // at least the URL was omitted, localOptions wasn't passed so we can safely override it
+    // get(options) or put(data, options) or put(options)
+    if (typeof urlOrDataOrOptions === 'object') {
       url = ''
-      data = urlOrData
-      localOptions = dataOrOptions || {}
+      // if urlOrDataOrOptions is an object, it's either options or data
+      // if dataOrOptions was passed, urlOrDataOrOptions is data
+      localOptions = dataOrOptions || urlOrDataOrOptions || {}
+      // if it's a POST/PUT/PATCH, dataOrOptions is data
+      // if it's option, we will set data to options but it will be ignored later
+      data = urlOrDataOrOptions
     } else {
-      url = urlOrData
+      // get(url) or get(url, options) or put(url, data) or put(url, data, options)
+      url = urlOrDataOrOptions
       data = dataOrOptions
     }
 
@@ -297,27 +298,31 @@ export function mande(
 
     url += stringifyQuery(query)
 
-    if (data) mergedOptions.body = JSON.stringify(data)
+    // only stringify body if it's a POST/PUT/PATCH, otherwise it could be the options object
+    // it's not used by GET/DELETE but it would also be wasteful
+    if (method[0] === 'P' && data) mergedOptions.body = JSON.stringify(data)
 
     return localFetch(url, mergedOptions)
       .then((response) =>
+        // This is to get the response directly in the next then
         Promise.all([
           response,
           responseAs === 'response'
             ? response
-            : response[responseAs]().catch(() => null),
+            : // TODO: propagate error data to MandeError
+              response[responseAs]().catch(() => null),
         ])
       )
-      .then(([response, data]) => {
+      .then(([response, dataOrError]) => {
         if (response.status >= 200 && response.status < 300) {
           // data is a raw response when responseAs is response
           return responseAs !== 'response' && response.status == 204
             ? null
-            : data
+            : dataOrError
         }
         let err = new Error(response.statusText) as MandeError
         err.response = response
-        err.body = data
+        err.body = dataOrError
         throw err
       })
   }
@@ -343,8 +348,9 @@ export function mande(
     patch: _fetch.bind(null, 'PATCH'),
 
     // these two have no body
-    get: (url: string, options?: Options) => _fetch('GET', url, null, options),
-    delete: (url: string, options?: Options) =>
+    get: (url?: string | number | Options, options?: Options) =>
+      _fetch('GET', url, null, options),
+    delete: (url?: string | number | Options, options?: Options) =>
       _fetch('DELETE', url, null, options),
   }
 }

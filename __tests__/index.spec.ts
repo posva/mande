@@ -41,6 +41,13 @@ describe('mande', () => {
     expect(fetchMock).toHaveFetched('/api/2')
   })
 
+  it('can use get without parameters', async () => {
+    let api = mande('/api/')
+    fetchMock.mock('/api/', { status: 200, body: {} })
+    await expect(api.get()).resolves.toEqual({})
+    expect(fetchMock).toHaveFetched('/api/')
+  })
+
   it('allows an absolute base', async () => {
     let api = mande('http://example.com/api/')
     fetchMock.mock('http://example.com/api/', { status: 200, body: {} })
@@ -59,6 +66,13 @@ describe('mande', () => {
     let api = mande('/api/')
     fetchMock.mock('/api/', 204)
     await expect(api.delete('')).resolves.toEqual(null)
+    expect(fetchMock).toHaveFetched('/api/')
+  })
+
+  it('calls delete without parameters', async () => {
+    let api = mande('/api/')
+    fetchMock.mock('/api/', 204)
+    await expect(api.delete()).resolves.toEqual(null)
     expect(fetchMock).toHaveFetched('/api/')
   })
 
@@ -94,6 +108,14 @@ describe('mande', () => {
     await expect(
       api.get('', { query: { foo: 'a', bar: 'b' } })
     ).resolves.toEqual({})
+  })
+
+  it('can use get with options only', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/?foo=a&bar=b', { body: {} })
+    await expect(api.get({ query: { foo: 'a', bar: 'b' } })).resolves.toEqual(
+      {}
+    )
   })
 
   it('merges global query', async () => {
@@ -216,12 +238,48 @@ describe('mande', () => {
     }
   })
 
+  it('can return a raw response when called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
+    await api.get({ responseAs: 'response' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<Response>(res)
+    })
+  })
+
   it('can return a raw response with status code 204', async () => {
     let api = mande('/api/')
     fetchMock.get('/api/', { status: 204 })
     await api.get('', { responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<Response>(res)
+    })
+  })
+
+  it('can return a text response when called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
+    await api.get({ responseAs: 'text' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<string>(res)
+    })
+  })
+
+  it('can return a raw response when delete called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.delete('/api/', 204)
+    await api.delete({ responseAs: 'response' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<Response>(res)
+    })
+  })
+
+  it('can return a text response when delete called without url parameter', async () => {
+    let api = mande('/api/')
+    fetchMock.delete('/api/', 200)
+    await api.delete({ responseAs: 'text' }).then((res) => {
+      expect(res).not.toBeNull()
+      expectType<string>(res)
     })
   })
 
