@@ -138,7 +138,9 @@ const fetchPolyfill = process.server ? require('node-fetch') : fetch
 const contents = mande(BASE_URL + '/api', {}, fetchPolyfill)
 ```
 
-### Nuxt
+### Nuxt 2
+
+Note: If you are doing SSR with athentication, Nuxt 3 hasn't been adapted yet. See #308.
 
 When using with Nuxt **and SSR**, you must wrap exported functions so they automatically proxy cookies and headers on the server:
 
