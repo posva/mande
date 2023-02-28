@@ -1,6 +1,6 @@
 {
   "name": "mande",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Some awesome description",
   "packageManager": "pnpm@7.28.0",
   "main": "index.js",

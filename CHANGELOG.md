@@ -1,3 +1,9 @@
+## [2.0.6](https://github.com/posva/mande/compare/v2.0.5...v2.0.6) (2023-02-28)
+
+### Bug Fixes
+
+- work with test mocks ([4856726](https://github.com/posva/mande/commit/4856726b6d3c4e12e9cb36cd7900681607adcd52))
+
 ## [2.0.5](https://github.com/posva/mande/compare/v2.0.3...v2.0.5) (2023-02-27)
 
 ### Bug Fixes
