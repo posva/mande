@@ -302,6 +302,15 @@ export function mande(
     // it's not used by GET/DELETE but it would also be wasteful
     if (method[0] === 'P' && data) mergedOptions.body = JSON.stringify(data)
 
+    // we check the localFetch here to account for global fetch polyfills and msw in tests
+    const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
+
+    if (!localFetch) {
+      throw new Error(
+        'No fetch function exists. Make sure to include a polyfill on Node.js.'
+      )
+    }
+
     return localFetch(url, mergedOptions)
       .then((response) =>
         // This is to get the response directly in the next then
@@ -325,14 +334,6 @@ export function mande(
         err.body = dataOrError
         throw err
       })
-  }
-
-  const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
-
-  if (!localFetch) {
-    throw new Error(
-      'No fetch function exists. Make sure to include a polyfill on Node.js.'
-    )
   }
 
   const instanceOptions: MandeInstance['options'] = {
