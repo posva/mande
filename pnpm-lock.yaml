@@ -14,8 +14,8 @@ specifiers:
   jest: ^29.5.0
   node-fetch: ^2.6.9
   pascalcase: ^1.0.0
-  prettier: ^2.8.4
-  rimraf: ^4.4.0
+  prettier: ^2.8.7
+  rimraf: ^4.4.1
   rollup: ^2.79.1
   rollup-plugin-commonjs: ^10.1.0
   rollup-plugin-node-resolve: ^5.2.0
@@ -39,8 +39,8 @@ devDependencies:
   jest: 29.5.0
   node-fetch: 2.6.9
   pascalcase: 1.0.0
-  prettier: 2.8.4
-  rimraf: 4.4.0
+  prettier: 2.8.7
+  rimraf: 4.4.1
   rollup: 2.79.1
   rollup-plugin-commonjs: 10.1.0_rollup@2.79.1
   rollup-plugin-node-resolve: 5.2.0_rollup@2.79.1
@@ -3624,8 +3624,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /prettier/2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
+  /prettier/2.8.7:
+    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -3813,8 +3813,8 @@ packages:
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
 
-  /rimraf/4.4.0:
-    resolution: {integrity: sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==}
+  /rimraf/4.4.1:
+    resolution: {integrity: sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
