@@ -7,14 +7,14 @@ specifiers:
   '@rollup/plugin-alias': ^4.0.4
   '@rollup/plugin-replace': ^5.0.2
   '@size-limit/preset-small-lib': ^8.2.4
-  '@types/jest': ^29.5.0
+  '@types/jest': ^29.5.1
   codecov: ^3.8.3
   conventional-changelog-cli: ^2.2.2
   fetch-mock-jest: ^1.5.1
   jest: ^29.5.0
   node-fetch: ^2.6.9
   pascalcase: ^1.0.0
-  prettier: ^2.8.7
+  prettier: ^2.8.8
   rimraf: ^4.4.1
   rollup: ^2.79.1
   rollup-plugin-commonjs: ^10.1.0
@@ -32,14 +32,14 @@ devDependencies:
   '@rollup/plugin-alias': 4.0.4_rollup@2.79.1
   '@rollup/plugin-replace': 5.0.2_rollup@2.79.1
   '@size-limit/preset-small-lib': 8.2.4_size-limit@8.2.4
-  '@types/jest': 29.5.0
+  '@types/jest': 29.5.1
   codecov: 3.8.3
   conventional-changelog-cli: 2.2.2
   fetch-mock-jest: 1.5.1_node-fetch@2.6.9
   jest: 29.5.0
   node-fetch: 2.6.9
   pascalcase: 1.0.0
-  prettier: 2.8.7
+  prettier: 2.8.8
   rimraf: 4.4.1
   rollup: 2.79.1
   rollup-plugin-commonjs: 10.1.0_rollup@2.79.1
@@ -1236,8 +1236,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.5.0:
-    resolution: {integrity: sha512-3Emr5VOl/aoBwnWcH/EFQvlSAmjV+XtV9GGu5mwdYew5vhQh0IUZx/60x0TzHDu09Bi7HMx10t/namdJw5QIcg==}
+  /@types/jest/29.5.1:
+    resolution: {integrity: sha512-tEuVcHrpaixS36w7hpsfLBLpjtMRJUE09/MHXn923LOVojDwyC14cWcfc0rDs0VEfUyYmt/+iX1kxxp+gZMcaQ==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
@@ -3612,8 +3612,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /prettier/2.8.7:
-    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
+  /prettier/2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
