@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@microsoft/api-documenter': ^7.21.7
-  '@microsoft/api-extractor': ^7.34.4
+  '@microsoft/api-documenter': ^7.22.2
+  '@microsoft/api-extractor': ^7.34.6
   '@nuxt/types': ^2.16.3
   '@rollup/plugin-alias': ^4.0.4
   '@rollup/plugin-replace': ^5.0.2
@@ -26,8 +26,8 @@ specifiers:
   typescript: ^5.0.4
 
 devDependencies:
-  '@microsoft/api-documenter': 7.21.7
-  '@microsoft/api-extractor': 7.34.4
+  '@microsoft/api-documenter': 7.22.2
+  '@microsoft/api-extractor': 7.34.6
   '@nuxt/types': 2.16.3
   '@rollup/plugin-alias': 4.0.4_rollup@2.79.1
   '@rollup/plugin-replace': 5.0.2_rollup@2.79.1
@@ -875,13 +875,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-documenter/7.21.7:
-    resolution: {integrity: sha512-qlCJ9dSefL6Rmuv1FKtxg7i6N7Bv6LUPrA5Bb0dR/9Ffac2xQuXtuSXOJ09seM7G0WkpQOzta2Kc1CPixzDaIw==}
+  /@microsoft/api-documenter/7.22.2:
+    resolution: {integrity: sha512-xpxpdoOi5ENnRat+M6dHcpFTKzbIokZYHmiiSRLv4XzAhdJtFGRLLhybkORYwT70x8Xh1kaJmPUhEiBZKVEmQg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.26.4
+      '@microsoft/api-extractor-model': 7.26.6
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.55.2
+      '@rushstack/node-core-library': 3.57.0
       '@rushstack/ts-command-line': 4.13.2
       colors: 1.2.5
       js-yaml: 3.13.1
@@ -890,24 +890,24 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor-model/7.26.4:
-    resolution: {integrity: sha512-PDCgCzXDo+SLY5bsfl4bS7hxaeEtnXj7XtuzEE+BtALp7B5mK/NrS2kHWU69pohgsRmEALycQdaQPXoyT2i5MQ==}
+  /@microsoft/api-extractor-model/7.26.6:
+    resolution: {integrity: sha512-vacINIUTAwtN6W2fMbO/JORR8sVfq+DxS++ewSeqy0AM9a55IgMXC04p31IB3vShaFnozcjHLxTOD/eWom0dXA==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.1
-      '@rushstack/node-core-library': 3.55.2
+      '@rushstack/node-core-library': 3.57.0
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor/7.34.4:
-    resolution: {integrity: sha512-HOdcci2nT40ejhwPC3Xja9G+WSJmWhCUKKryRfQYsmE9cD+pxmBaKBKCbuS9jUcl6bLLb4Gz+h7xEN5r0QiXnQ==}
+  /@microsoft/api-extractor/7.34.6:
+    resolution: {integrity: sha512-TBbJZjUSt4vWjBchnkfmHwmQlwhMfavXIGbuSzN3QJV5n1oqKY+RtkYMEmLtW01OAJ6QsWFVx4tLHHsh608YQw==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.26.4
+      '@microsoft/api-extractor-model': 7.26.6
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.1
-      '@rushstack/node-core-library': 3.55.2
+      '@rushstack/node-core-library': 3.57.0
       '@rushstack/rig-package': 0.3.18
       '@rushstack/ts-command-line': 4.13.2
       colors: 1.2.5
@@ -1029,8 +1029,8 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rushstack/node-core-library/3.55.2:
-    resolution: {integrity: sha512-SaLe/x/Q/uBVdNFK5V1xXvsVps0y7h1sN7aSJllQyFbugyOaxhNRF25bwEDnicARNEjJw0pk0lYnJQ9Kr6ev0A==}
+  /@rushstack/node-core-library/3.57.0:
+    resolution: {integrity: sha512-uR5I9vLJuknliZXDDqW7nBtiKSO0fYOnvNEUNPQ84rmFYbvDWQGTDx7MREMVGXhfEN5J50xzAtGTPC9xdbia6g==}
     peerDependencies:
       '@types/node': '*'
     peerDependenciesMeta:
