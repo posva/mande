@@ -296,6 +296,7 @@ export function mande(
     // TODO: warn about multiple queries provided not supported
     // if (__DEV__ && query && urlInstance.search)
 
+    // TODO: use URL and URLSearchParams
     url += stringifyQuery(query)
 
     // only stringify body if it's a POST/PUT/PATCH, otherwise it could be the options object
