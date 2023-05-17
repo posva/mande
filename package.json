@@ -90,7 +90,7 @@
     "node-fetch": "^2.6.11",
     "pascalcase": "^1.0.0",
     "prettier": "^2.8.8",
-    "rimraf": "^4.4.1",
+    "rimraf": "^5.0.1",
     "rollup": "^2.79.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
