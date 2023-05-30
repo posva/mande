@@ -241,6 +241,7 @@ export const defaults: Options &
  */
 export function mande(
   baseURL: string,
+  replacer?: (key: string, value: any) => any | [],
   passedInstanceOptions: OptionsRaw = {},
   fetchPolyfill?: Window['fetch']
 ): MandeInstance {
@@ -301,7 +302,8 @@ export function mande(
 
     // only stringify body if it's a POST/PUT/PATCH, otherwise it could be the options object
     // it's not used by GET/DELETE but it would also be wasteful
-    if (method[0] === 'P' && data) mergedOptions.body = JSON.stringify(data)
+    if (method[0] === 'P' && data)
+      mergedOptions.body = JSON.stringify(data, replacer)
 
     // we check the localFetch here to account for global fetch polyfills and msw in tests
     const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
