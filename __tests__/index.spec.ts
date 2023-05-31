@@ -119,7 +119,7 @@ describe('mande', () => {
   })
 
   it('merges global query', async () => {
-    let api = mande('/api/', undefined, { query: { foo: 'a' } })
+    let api = mande('/api/', { query: { foo: 'a' } })
     fetchMock.get('/api/?foo=a&bar=b', { body: {} })
     await expect(api.get('', { query: { bar: 'b' } })).resolves.toEqual({})
   })
@@ -171,7 +171,7 @@ describe('mande', () => {
   })
 
   it('can remove a default header', async () => {
-    let api = mande('/api/', undefined, { headers: { 'Content-Type': null } })
+    let api = mande('/api/', { headers: { 'Content-Type': null } })
     fetchMock.get('/api/2', { body: {} })
     await api.get('2')
     expect(fetchMock).toHaveFetched('/api/2', {
@@ -185,7 +185,7 @@ describe('mande', () => {
   })
 
   it('keeps empty strings headers', async () => {
-    let api = mande('/api/', undefined, { headers: { 'Content-Type': '' } })
+    let api = mande('/api/', { headers: { 'Content-Type': '' } })
     fetchMock.get('/api/2', { body: {} })
     await api.get('2')
     expect(fetchMock).toHaveFetched('/api/2', {
@@ -337,11 +337,14 @@ describe('mande', () => {
   })
 
   it('can pass replacer function', async () => {
-    let api = mande('/api/', (_, value) => {
-      if (typeof value === 'boolean') {
-        return undefined
-      }
-      return value
+    let api = mande('/api/', {
+      stringify: (data) =>
+        JSON.stringify(data, (_, value) => {
+          if (typeof value === 'boolean') {
+            return undefined
+          }
+          return value
+        }),
     })
     fetchMock.mock('/api/', 204)
     await expect(api.post()).resolves.toEqual(null)
