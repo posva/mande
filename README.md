@@ -117,9 +117,11 @@ All methods defined on a `mande` instance accept a type generic to type their re
 ```ts
 const todos = mande('/api/todos', globalOptions)
 
-todos.get<{ text: string, id: number, isFinished: boolean }[]>().then(todos => {
-  // todos is correctly typed
-})
+todos
+  .get<{ text: string; id: number; isFinished: boolean }[]>()
+  .then((todos) => {
+    // todos is correctly typed
+  })
 ```
 
 ## SSR (and Nuxt in Universal mode)
