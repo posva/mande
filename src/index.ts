@@ -18,6 +18,11 @@ export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes>
    * Headers sent alongside the request
    */
   headers?: Record<string, string>
+
+  /**
+   * Optional function to stringify the body of the request for POST and PUT requests. Defaults to `JSON.stringify`.
+   */
+  stringify?: (data: unknown) => string
 }
 
 export type ResponseAsTypes = 'json' | 'text' | 'response'
@@ -62,8 +67,7 @@ export interface MandeInstance {
   /**
    * Writable options.
    */
-  options: Required<Pick<OptionsRaw, 'headers'>> &
-    Pick<OptionsRaw, 'responseAs' | 'query'>
+  options: Required<Pick<OptionsRaw, 'headers'>> & Omit<OptionsRaw, 'headers'>
 
   /**
    * Sends a GET request to the given url.
@@ -217,12 +221,13 @@ function removeNullishValues(
  * - 'Content-Type': 'application/json'
  */
 export const defaults: Options &
-  Pick<Required<Options>, 'headers' | 'responseAs'> = {
+  Pick<Required<Options>, 'headers' | 'responseAs' | 'stringify'> = {
   responseAs: 'json',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
+  stringify: JSON.stringify,
 }
 
 /**
@@ -270,7 +275,7 @@ export function mande(
       data = dataOrOptions
     }
 
-    let mergedOptions: Options = {
+    let mergedOptions = {
       ...defaults,
       ...instanceOptions,
       method,
@@ -281,7 +286,7 @@ export function mande(
         ...instanceOptions.headers,
         ...localOptions.headers,
       }),
-    }
+    } satisfies Options
 
     let query = {
       ...defaults.query,
@@ -301,7 +306,9 @@ export function mande(
 
     // only stringify body if it's a POST/PUT/PATCH, otherwise it could be the options object
     // it's not used by GET/DELETE but it would also be wasteful
-    if (method[0] === 'P' && data) mergedOptions.body = JSON.stringify(data)
+    if (method[0] === 'P' && data) {
+      mergedOptions.body = mergedOptions.stringify(data)
+    }
 
     // we check the localFetch here to account for global fetch polyfills and msw in tests
     const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!

@@ -335,4 +335,19 @@ describe('mande', () => {
     await expect(api.get('/2')).resolves.toEqual({})
     expect(fetchMock).toHaveFetched('/api/2')
   })
+
+  it('calls the stringify with data on put and post', async () => {
+    const spy = jest.fn().mockReturnValue({ foo: 'bar' })
+    let api = mande('/api/', { stringify: spy })
+    fetchMock.mock('/api/', 204)
+    const data = {}
+    await expect(api.post(data)).resolves.toEqual(null)
+    expect(spy).toHaveBeenCalledTimes(1)
+    expect(spy).toHaveBeenCalledWith(data)
+    // second arg
+    fetchMock.mock('/api/a', 204)
+    await expect(api.put('/a', data)).resolves.toEqual(null)
+    expect(spy).toHaveBeenCalledTimes(2)
+    expect(spy).toHaveBeenNthCalledWith(2, data)
+  })
 })
