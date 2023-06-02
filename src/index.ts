@@ -369,9 +369,10 @@ type InferArgs<F> = F extends (api: MandeInstance, ...args: infer A) => any
   : never
 
 /**
- * Creates an Nuxt SSR compatible function that automatically proxies cookies
- * to requests and works transparently on the server and client (it still
- * requires a fetch polyfill on Node).
+ * Creates an Nuxt 2 SSR compatible function that automatically proxies cookies to requests and works transparently on
+ * the server and client (it still requires a fetch polyfill on Node). Note this is only needed if you need to proxy
+ * cookies to the server.
+ *
  * @example
  * ```js
  * import { mande, nuxtWrap } from 'mande'
