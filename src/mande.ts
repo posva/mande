@@ -240,7 +240,8 @@ export const defaults: _OptionsDefaults = {
  *
  * @internal
  */
-export type _OptionsMerged = _OptionsDefaults & Pick<Required<Options>, 'method'>
+export type _OptionsMerged = _OptionsDefaults &
+  Pick<Required<Options>, 'method'>
 
 /**
  * Create a Mande instance
