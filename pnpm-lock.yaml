@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@microsoft/api-documenter': ^7.22.8
-  '@microsoft/api-extractor': ^7.35.1
-  '@nuxt/types': ^2.16.3
+  '@microsoft/api-documenter': ^7.22.16
+  '@microsoft/api-extractor': ^7.35.2
+  '@nuxt/types': ^2.17.0
   '@rollup/plugin-alias': ^4.0.4
   '@rollup/plugin-replace': ^5.0.2
   '@size-limit/preset-small-lib': ^8.2.4
@@ -26,9 +26,9 @@ specifiers:
   typescript: ^5.1.3
 
 devDependencies:
-  '@microsoft/api-documenter': 7.22.8
-  '@microsoft/api-extractor': 7.35.1
-  '@nuxt/types': 2.16.3
+  '@microsoft/api-documenter': 7.22.16
+  '@microsoft/api-extractor': 7.35.2
+  '@nuxt/types': 2.17.0
   '@rollup/plugin-alias': 4.0.4_rollup@2.79.1
   '@rollup/plugin-replace': 5.0.2_rollup@2.79.1
   '@size-limit/preset-small-lib': 8.2.4_size-limit@8.2.4
@@ -887,14 +887,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-documenter/7.22.8:
-    resolution: {integrity: sha512-0LHxKIcAskKRyZF0HmTYlEKFPJffKdumoLrMy3CNmE8y4xVza9RjpePvSvOFksAwrr3ClOLCSzd71mlvnjh4hQ==}
+  /@microsoft/api-documenter/7.22.16:
+    resolution: {integrity: sha512-/m2uXGrOMjdJQDDFKbEnI5xGkVyjaBcd5VUmmTYy+jBB8p1h+UxDDhM6UlW5nvQ3AebcdyFUvX7fX30epwWtaw==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.1
+      '@microsoft/api-extractor-model': 7.27.2
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.59.2
-      '@rushstack/ts-command-line': 4.13.3
+      '@rushstack/node-core-library': 3.59.3
+      '@rushstack/ts-command-line': 4.14.0
       colors: 1.2.5
       js-yaml: 3.13.1
       resolve: 1.22.1
@@ -902,26 +902,26 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor-model/7.27.1:
-    resolution: {integrity: sha512-WgmuQwElTuRLATQxCx+pqk5FtUeRX3FW8WDo7tSDmrN/7+XAggeVg5t8ItiJt688jEdbiPvagZlvjAcJMpXspg==}
+  /@microsoft/api-extractor-model/7.27.2:
+    resolution: {integrity: sha512-JWhSfEb4UMYZgI4JsJOws1DjQrb7BaoXoWQV5XW23MWRn1krHVmRHky82Dby5rQPHdr/BBKvEjZV6joFmaGU4Q==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.1
-      '@rushstack/node-core-library': 3.59.2
+      '@rushstack/node-core-library': 3.59.3
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor/7.35.1:
-    resolution: {integrity: sha512-xGVf1lKCYKEyJsspLzQjo4Oo6PGDPH95Z5/te75xQWpcRHcfemb6zTSPtiFeVDHkg9Tan5HW2QXGLwQRkW199w==}
+  /@microsoft/api-extractor/7.35.2:
+    resolution: {integrity: sha512-f3aM4hJkv5W04eLh6wdJ9fzscAmb+GgnT6j+pMlGVyz+0p2yQDndymvgUseFO6a+HqFDSH4yZXmkqT8bP7lVWQ==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.1
+      '@microsoft/api-extractor-model': 7.27.2
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.1
-      '@rushstack/node-core-library': 3.59.2
-      '@rushstack/rig-package': 0.3.19
-      '@rushstack/ts-command-line': 4.13.3
+      '@rushstack/node-core-library': 3.59.3
+      '@rushstack/rig-package': 0.3.20
+      '@rushstack/ts-command-line': 4.14.0
       colors: 1.2.5
       lodash: 4.17.21
       resolve: 1.22.1
@@ -970,11 +970,11 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@nuxt/types/2.16.3:
-    resolution: {integrity: sha512-55c5zU4JaAvyOqFxKGRNhPhBXfxptTLH0ypBXiALUojN15ZAhSjo3AqhtunZUqufBSuCEJtKD+fsBM/Fwvz+0A==}
-    engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
+  /@nuxt/types/2.17.0:
+    resolution: {integrity: sha512-McgjOTBpnbicjo830MYiCtI1zzkkq0W23GlxcWfLAsi5vjqjfcBn9w9emVhOCDfNNbhMPsvfp3B5MyPZEaqo9A==}
+    engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@types/babel__core': 7.20.0
+      '@types/babel__core': 7.20.1
       '@types/compression': 1.7.2
       '@types/connect': 3.4.35
       '@types/etag': 1.8.1
@@ -1048,8 +1048,8 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rushstack/node-core-library/3.59.2:
-    resolution: {integrity: sha512-Od8i9ZXiRPHrnkuNOZ9IjEYRQ9JsBLNHlkWJr1wSQZrD2TVIc8APpIB/FnzEcjfpbJMT4XhtcCZaa0pVx+hTXw==}
+  /@rushstack/node-core-library/3.59.3:
+    resolution: {integrity: sha512-OGk0nQc+SvDkn+IQN16co691A/96gPoRIoWdIlpUds+sYPAGWdTcNVjKMwFOAsCSASqOeF2lh1GdPtWoWJCkPQ==}
     peerDependencies:
       '@types/node': '*'
     peerDependenciesMeta:
@@ -1065,15 +1065,15 @@ packages:
       z-schema: 5.0.3
     dev: true
 
-  /@rushstack/rig-package/0.3.19:
-    resolution: {integrity: sha512-2d0/Gn+qjOYneZbiHjn4SjyDwq9I0WagV37z0F1V71G+yONgH7wlt3K/UoNiDkhA8gTHYPRo2jz3CvttybwSag==}
+  /@rushstack/rig-package/0.3.20:
+    resolution: {integrity: sha512-XemFRFbH9FOk1Es1kTjrYydenf3hXtrV3xxMCEWPuOSn2Lcll/dsLzEULbhCL0Nf5nGMe52ewEiVtX3odd5Ukg==}
     dependencies:
       resolve: 1.22.1
       strip-json-comments: 3.1.1
     dev: true
 
-  /@rushstack/ts-command-line/4.13.3:
-    resolution: {integrity: sha512-6aQIv/o1EgsC/+SpgUyRmzg2QIAL6sudEzw3sWzJKwWuQTc5XRsyZpyldfE7WAmIqMXDao9QG35/NYORjHm5Zw==}
+  /@rushstack/ts-command-line/4.14.0:
+    resolution: {integrity: sha512-DWozCsKg+ALgrsul+6vJhyB7ZogqSycRlnqULjGsJ9dLRv+Pc0Wj6J7pX0xarmgX2kH3tTf0rXgBcl8QjJULIQ==}
     dependencies:
       '@types/argparse': 1.0.38
       argparse: 1.0.10
@@ -1137,8 +1137,8 @@ packages:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
     dev: true
 
-  /@types/babel__core/7.20.0:
-    resolution: {integrity: sha512-+n8dL/9GWblDO0iU6eZAwEIJVr5DWigtle+Q6HLOrh/pdbXOhOtqzq8VPPE2zvNJzSKY4vH/z3iT3tn0A3ypiQ==}
+  /@types/babel__core/7.20.1:
+    resolution: {integrity: sha512-aACu/U/omhdk15O4Nfb+fHgH/z3QsfQzpnvRZhYhThms83ZnAOZz7zZAWO7mn2yyNQaA4xTO8GLK3uqFU4bYYw==}
     dependencies:
       '@babel/parser': 7.20.15
       '@babel/types': 7.20.7
@@ -1510,7 +1510,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.13
       '@jest/transform': 29.5.0
-      '@types/babel__core': 7.20.0
+      '@types/babel__core': 7.20.1
       babel-plugin-istanbul: 6.1.1
       babel-preset-jest: 29.5.0_@babel+core@7.18.13
       chalk: 4.1.2
@@ -1539,7 +1539,7 @@ packages:
     dependencies:
       '@babel/template': 7.18.10
       '@babel/types': 7.20.7
-      '@types/babel__core': 7.20.0
+      '@types/babel__core': 7.20.1
       '@types/babel__traverse': 7.18.0
     dev: true
 
