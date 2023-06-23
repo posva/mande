@@ -186,7 +186,7 @@ Most of the code can be discovered through the autocompletion but the API docume
 You can timeout requests by using the native `AbortSignal`:
 
 ```ts
-made('/api').get('/users', { signal: AbortSignal.timeout(200) })
+mande('/api').get('/users', { signal: AbortSignal.timeout(200) })
 ```
 
 This is supported by [all modern browsers](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout_static).
