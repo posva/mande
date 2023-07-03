@@ -2,7 +2,7 @@
   "name": "mande",
   "version": "2.0.6",
   "description": "Some awesome description",
-  "packageManager": "pnpm@7.33.3",
+  "packageManager": "pnpm@8.6.5",
   "main": "index.js",
   "module": "dist/mande.mjs",
   "unpkg": "dist/mande.iife.js",
