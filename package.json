@@ -84,7 +84,7 @@
     "@size-limit/preset-small-lib": "^8.2.6",
     "@types/jest": "^29.5.2",
     "codecov": "^3.8.3",
-    "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-cli": "^3.0.0",
     "fetch-mock-jest": "^1.5.1",
     "jest": "^29.5.0",
     "node-fetch": "^2.6.12",
