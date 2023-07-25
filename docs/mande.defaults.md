@@ -9,5 +9,5 @@ Global default options as [Options](./mande.options.md) that are applied to \*\*
 **Signature:**
 
 ```typescript
-defaults: Options & Pick<Required<Options>, 'headers' | 'responseAs'>
+defaults: _OptionsDefaults
 ```

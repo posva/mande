@@ -9,5 +9,5 @@ Writable options.
 **Signature:**
 
 ```typescript
-options: Required<Pick<OptionsRaw, 'headers'>> & Pick<OptionsRaw, 'responseAs' | 'query'>;
+options: Required<Pick<OptionsRaw, 'headers'>> & Omit<OptionsRaw, 'headers'>;
 ```

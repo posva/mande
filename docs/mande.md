@@ -9,7 +9,7 @@
 |  Function | Description |
 |  --- | --- |
 |  [mande(baseURL, passedInstanceOptions, fetchPolyfill)](./mande.mande.md) | Create a Mande instance |
-|  [nuxtWrap(api, fn)](./mande.nuxtwrap.md) | Creates an Nuxt SSR compatible function that automatically proxies cookies to requests and works transparently on the server and client (it still requires a fetch polyfill on Node). |
+|  [nuxtWrap(api, fn)](./mande.nuxtwrap.md) | Creates an Nuxt 2 SSR compatible function that automatically proxies cookies to requests and works transparently on the server and client (it still requires a fetch polyfill on Node). Note this is only needed if you need to proxy cookies to the server. |
 
 ## Interfaces
 

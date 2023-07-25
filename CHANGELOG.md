@@ -1,3 +1,13 @@
+## [2.0.7](https://github.com/posva/mande/compare/v2.0.6...v2.0.7) (2023-07-25)
+
+### Bug Fixes
+
+- **types:** specify types in package ([7678c66](https://github.com/posva/mande/commit/7678c665668263be60edb6bebc0fbd9aa50e1631)), closes [#401](https://github.com/posva/mande/issues/401)
+
+### Features
+
+- allow stringify option ([afd0c5e](https://github.com/posva/mande/commit/afd0c5e22fc3ac81423725b67a46e12d3541d29d)), closes [#399](https://github.com/posva/mande/issues/399) [#382](https://github.com/posva/mande/issues/382)
+
 ## [2.0.6](https://github.com/posva/mande/compare/v2.0.5...v2.0.6) (2023-02-28)
 
 ### Bug Fixes

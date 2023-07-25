@@ -20,4 +20,5 @@ export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes> e
 |  [headers?](./mande.options.headers.md) |  | Record&lt;string, string&gt; | _(Optional)_ Headers sent alongside the request |
 |  [query?](./mande.options.query.md) |  | any | _(Optional)_ Optional query object. Does not support arrays. Will get stringified |
 |  [responseAs?](./mande.options.responseas.md) |  | ResponseAs | _(Optional)_ What kind of response is expected. Defaults to <code>json</code>. <code>response</code> will return the raw response from <code>fetch</code>. |
+|  [stringify?](./mande.options.stringify.md) |  | (data: unknown) =&gt; string | _(Optional)_ Optional function to stringify the body of the request for POST and PUT requests. Defaults to <code>JSON.stringify</code>. |
 
