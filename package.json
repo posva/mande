@@ -1,7 +1,7 @@
 {
   "name": "mande",
   "version": "2.0.6",
-  "description": "Some awesome description",
+  "description": "800 bytes modern wrapper around fetch with smart defaults",
   "packageManager": "pnpm@8.6.10",
   "main": "index.js",
   "module": "dist/mande.mjs",
@@ -11,6 +11,7 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./dist/mande.d.ts",
       "node": {
         "import": {
           "production": "./dist/mande.prod.cjs",
