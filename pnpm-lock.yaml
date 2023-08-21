@@ -34,13 +34,13 @@ devDependencies:
     version: 2.2.2
   fetch-mock-jest:
     specifier: ^1.5.1
-    version: 1.5.1(node-fetch@2.6.12)
+    version: 1.5.1(node-fetch@2.6.13)
   jest:
     specifier: ^29.6.2
     version: 29.6.2
   node-fetch:
-    specifier: ^2.6.12
-    version: 2.6.12
+    specifier: ^2.6.13
+    version: 2.6.13
   pascalcase:
     specifier: ^1.0.0
     version: 1.0.0
@@ -2251,7 +2251,7 @@ packages:
       bser: 2.1.1
     dev: true
 
-  /fetch-mock-jest@1.5.1(node-fetch@2.6.12):
+  /fetch-mock-jest@1.5.1(node-fetch@2.6.13):
     resolution: {integrity: sha512-+utwzP8C+Pax1GSka3nFXILWMY3Er2L+s090FOgqVNrNCPp0fDqgXnAHAJf12PLHi0z4PhcTaZNTz8e7K3fjqQ==}
     engines: {node: '>=8.0.0'}
     peerDependencies:
@@ -2260,13 +2260,13 @@ packages:
       node-fetch:
         optional: true
     dependencies:
-      fetch-mock: 9.11.0(node-fetch@2.6.12)
-      node-fetch: 2.6.12
+      fetch-mock: 9.11.0(node-fetch@2.6.13)
+      node-fetch: 2.6.13
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /fetch-mock@9.11.0(node-fetch@2.6.12):
+  /fetch-mock@9.11.0(node-fetch@2.6.13):
     resolution: {integrity: sha512-PG1XUv+x7iag5p/iNHD4/jdpxL9FtVSqRMUQhPab4hVDt80T1MH5ehzVrL2IdXO9Q2iBggArFvPqjUbHFuI58Q==}
     engines: {node: '>=4.0.0'}
     peerDependencies:
@@ -2282,7 +2282,7 @@ packages:
       glob-to-regexp: 0.4.1
       is-subset: 0.1.1
       lodash.isequal: 4.5.0
-      node-fetch: 2.6.12
+      node-fetch: 2.6.13
       path-to-regexp: 2.4.0
       querystring: 0.2.1
       whatwg-url: 6.5.0
@@ -3531,8 +3531,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /node-fetch@2.6.12:
-    resolution: {integrity: sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==}
+  /node-fetch@2.6.13:
+    resolution: {integrity: sha512-StxNAxh15zr77QvvkmveSQ8uCQ4+v5FkvNTj0OESmiHu+VRi/gXArXtkWMElOsOUNLtUEvI4yS+rdtOHZTwlQA==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
@@ -4318,7 +4318,7 @@ packages:
     dependencies:
       http-proxy-agent: 4.0.1
       https-proxy-agent: 5.0.1
-      node-fetch: 2.6.12
+      node-fetch: 2.6.13
       stream-events: 1.0.5
       uuid: 8.3.2
     transitivePeerDependencies:
