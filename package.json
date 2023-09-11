@@ -2,7 +2,7 @@
   "name": "mande",
   "version": "2.0.7",
   "description": "800 bytes modern wrapper around fetch with smart defaults",
-  "packageManager": "pnpm@8.7.1",
+  "packageManager": "pnpm@8.7.4",
   "main": "index.js",
   "module": "dist/mande.mjs",
   "unpkg": "dist/mande.iife.js",
