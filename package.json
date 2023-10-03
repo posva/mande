@@ -14,7 +14,7 @@
       "types": "./dist/mande.d.ts",
       "node": {
         "import": {
-          "production": "./dist/mande.prod.cjs",
+          "production": "./dist/mande.prod.mjs",
           "development": "./dist/mande.mjs",
           "default": "./dist/mande.mjs"
         },
