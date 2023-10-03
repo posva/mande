@@ -1,92 +1,111 @@
+import { vi, expect, describe, it } from 'vitest'
 import { mande, defaults } from '../src'
-import { FetchMockStatic } from 'fetch-mock'
-import './global.d.ts'
-jest.mock('node-fetch', () => require('fetch-mock-jest').sandbox())
-const fetchMock: FetchMockStatic = require('node-fetch')
 
 function expectType<T>(_value: T): void {}
 
 describe('mande', () => {
-  // @ts-ignore
-  global.fetch = fetchMock
-  // let fetchSpy = global.fetch = jest.fn()
-
-  beforeEach(() => {
-    // @ts-ignore
-    fetchMock.mockReset()
-    // fetchSpy.mockReset()
-    // fetchSpy.mockImplementation(() => Promise.resolve())
-  })
-
-  afterEach(() => {})
-
   it('calls fetch', async () => {
+    const spy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response())
+
     let api = mande('/api/')
-    fetchMock.mock('/api/', { status: 200, body: {} })
-    await expect(api.get('')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/')
+    await expect(api.get('')).resolves
+    expect(spy).toHaveBeenCalledTimes(1)
+    expect(spy).toHaveBeenCalledWith(
+      '/api/',
+      expect.objectContaining({
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        method: 'GET',
+      })
+    )
   })
 
   it('can use a number', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.mock('/api/0', { status: 200, body: {} })
     await expect(api.get(0)).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/0')
+    expect(spy).toHaveBeenCalledWith('/api/0', expect.anything())
   })
 
   it('works with non trailing slashes', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.mock('/api/2', { status: 200, body: {} })
     await expect(api.get('/2')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/2')
+    expect(spy).toHaveBeenCalledWith('/api/2', expect.anything())
   })
 
   it('can use get without parameters', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.mock('/api/', { status: 200, body: {} })
     await expect(api.get()).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/')
+    expect(spy).toHaveBeenCalledWith('/api/', expect.anything())
   })
 
   it('allows an absolute base', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('http://example.com/api/')
-    fetchMock.mock('http://example.com/api/', { status: 200, body: {} })
     await expect(api.get('')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('http://example.com/api/')
+    expect(spy).toHaveBeenCalledWith(
+      'http://example.com/api/',
+      expect.anything()
+    )
   })
 
   it('returns null on 204', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(null, { status: 200 }))
     let api = mande('/api/')
-    fetchMock.mock('/api/', 204)
     await expect(api.get('')).resolves.toEqual(null)
-    expect(fetchMock).toHaveFetched('/api/')
   })
 
   it('calls delete', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.mock('/api/', 204)
-    await expect(api.delete('')).resolves.toEqual(null)
-    expect(fetchMock).toHaveFetched('/api/')
+    await expect(api.delete('')).resolves.toEqual({})
+    expect(spy).toHaveBeenCalledWith(
+      '/api/',
+      expect.objectContaining({
+        method: 'DELETE',
+      })
+    )
   })
 
   it('calls delete without parameters', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.mock('/api/', 204)
-    await expect(api.delete()).resolves.toEqual(null)
-    expect(fetchMock).toHaveFetched('/api/')
+    await expect(api.delete()).resolves.toEqual({})
+    expect(spy.mock.calls[0][1]).not.toHaveProperty('body')
   })
 
   it('rejects if not ok', async () => {
+    const response = Response.json({}, { status: 404 })
+    const spy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(response)
     let api = mande('/api/')
-    fetchMock.get('/api/', 404)
     await expect(api.get('')).rejects.toMatchObject({
-      response: expect.anything(),
+      response,
     })
   })
 
   it('serializes body on error', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({ message: 'nope' }, { status: 404 }))
     let api = mande('/api/')
-    fetchMock.mock('/api/', { status: 404, body: { message: 'nope' } })
     await expect(api.get('')).rejects.toMatchObject({
       response: expect.anything(),
       body: { message: 'nope' },
@@ -94,8 +113,10 @@ describe('mande', () => {
   })
 
   it('works with empty failed request', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json(null, { status: 404 }))
     let api = mande('/api/')
-    fetchMock.get('/api/', 404)
     await expect(api.get('')).rejects.toMatchObject({
       response: expect.anything(),
       body: null,
@@ -103,104 +124,148 @@ describe('mande', () => {
   })
 
   it('can pass a query', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.get('/api/?foo=a&bar=b', { body: {} })
     await expect(
       api.get('', { query: { foo: 'a', bar: 'b' } })
     ).resolves.toEqual({})
+    expect(spy).toHaveBeenCalledWith('/api/?foo=a&bar=b', expect.anything())
   })
 
   it('can use get with options only', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.get('/api/?foo=a&bar=b', { body: {} })
     await expect(api.get({ query: { foo: 'a', bar: 'b' } })).resolves.toEqual(
       {}
     )
+    expect(spy).toHaveBeenCalledWith('/api/?foo=a&bar=b', expect.anything())
   })
 
   it('merges global query', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/', { query: { foo: 'a' } })
-    fetchMock.get('/api/?foo=a&bar=b', { body: {} })
     await expect(api.get('', { query: { bar: 'b' } })).resolves.toEqual({})
+    expect(spy).toHaveBeenCalledWith('/api/?foo=a&bar=b', expect.anything())
   })
 
   it('can pass a body', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.put('/api/', { body: {} })
     await expect(api.put('', { foo: 'a', bar: 'b' })).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/', { body: { foo: 'a', bar: 'b' } })
+    expect(spy).toHaveBeenCalledWith(
+      '/api/',
+      expect.objectContaining({
+        body: '{"foo":"a","bar":"b"}',
+        method: 'PUT',
+      })
+    )
   })
 
   it('can omit the url', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/users')
-    fetchMock.put('/api/users', { body: {} })
     await expect(api.put({ foo: 'a', bar: 'b' })).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/users', {
-      body: { foo: 'a', bar: 'b' },
-    })
+    expect(spy).toHaveBeenCalledWith(
+      '/api/users',
+      expect.objectContaining({
+        body: '{"foo":"a","bar":"b"}',
+        method: 'PUT',
+      })
+    )
   })
 
   it('can add custom headers', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
     await api.get('2', { headers: { Authorization: 'Bearer foo' } })
-    expect(fetchMock).toHaveFetched('/api/2', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer foo',
-      },
-    })
+    expect(spy).toHaveBeenCalledWith(
+      '/api/2',
+      expect.objectContaining({
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer foo',
+        },
+      })
+    )
   })
 
   it('can add custom headers through instance', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
     api.options.headers.Authorization = 'token secret'
-    fetchMock.get('/api/2', { body: { foo: 'a', bar: 'b' } })
     await api.get('2', { headers: { other: 'foo' } })
-    expect(fetchMock).toHaveFetched('/api/2', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'token secret',
-        other: 'foo',
-      },
-    })
+    expect(spy).toHaveBeenCalledWith(
+      '/api/2',
+      expect.objectContaining({
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'token secret',
+          other: 'foo',
+        },
+      })
+    )
     // should not fail in TS
     api.options.headers.Authorization = 'token secret'
   })
 
   it('can remove a default header', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/', { headers: { 'Content-Type': null } })
-    fetchMock.get('/api/2', { body: {} })
     await api.get('2')
-    expect(fetchMock).toHaveFetched('/api/2', {
-      headers: {
-        Accept: 'application/json',
-        // no Content-Type
-        // @ts-expect-error: not a valid possibility
-        'Content-Type': undefined,
-      },
-    })
+    expect(spy).toHaveBeenCalledWith(
+      '/api/2',
+      expect.objectContaining({
+        headers: {
+          Accept: 'application/json',
+          // no Content-Type
+          'Content-Type': undefined,
+        },
+      })
+    )
   })
 
   it('keeps empty strings headers', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/', { headers: { 'Content-Type': '' } })
-    fetchMock.get('/api/2', { body: {} })
     await api.get('2')
-    expect(fetchMock).toHaveFetched('/api/2', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': '',
-      },
-    })
+    expect(spy).toHaveBeenCalledWith(
+      '/api/2',
+      expect.objectContaining({
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': '',
+        },
+      })
+    )
   })
 
   it('can return a raw response', async () => {
+    const response = Response.json({})
+    const spy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(response)
     let api = mande('/api/')
-    fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
     await api.get('', { responseAs: 'response' }).then((res) => {
       expectType<Response>(res)
+      expect(res).toBe(response)
     })
     // cannot check the result for some reason...
     function tds() {
@@ -239,8 +304,10 @@ describe('mande', () => {
   })
 
   it('can return a raw response when called without url parameter', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
     await api.get({ responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<Response>(res)
@@ -248,8 +315,10 @@ describe('mande', () => {
   })
 
   it('can return a raw response with status code 204', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(null, { status: 204 }))
     let api = mande('/api/')
-    fetchMock.get('/api/', { status: 204 })
     await api.get('', { responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<Response>(res)
@@ -257,8 +326,10 @@ describe('mande', () => {
   })
 
   it('can return a text response when called without url parameter', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.get('/api/', { body: { foo: 'a', bar: 'b' } })
     await api.get({ responseAs: 'text' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<string>(res)
@@ -266,8 +337,10 @@ describe('mande', () => {
   })
 
   it('can return a raw response when delete called without url parameter', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(null, { status: 204 }))
     let api = mande('/api/')
-    fetchMock.delete('/api/', 204)
     await api.delete({ responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<Response>(res)
@@ -275,8 +348,10 @@ describe('mande', () => {
   })
 
   it('can return a text response when delete called without url parameter', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.delete('/api/', 200)
     await api.delete({ responseAs: 'text' }).then((res) => {
       expect(res).not.toBeNull()
       expectType<string>(res)
@@ -284,70 +359,101 @@ describe('mande', () => {
   })
 
   it('can add global defaults', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
     defaults.query = { foo: 'bar' }
     // defaults.headers.Authorization = { foo: 'bar' }
-    fetchMock.mock('/api/2?foo=bar', { status: 200, body: {} })
     await expect(api.get('2')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/2?foo=bar')
+    expect(spy).toHaveBeenCalledWith('/api/2?foo=bar', expect.anything())
     delete defaults.query
   })
 
-  // FIXME: the test works but it logs out errors
-  it.skip('can be aborted with signal', async () => {
+  it('can be passed a signal', async () => {
     const controller = new AbortController()
     const { signal } = controller
 
     // @ts-expect-error: signal cannot be passed to mande
     mande('/api', { signal })
     let api = mande('/api')
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
 
-    fetchMock.mock('/api/1', { status: 200, body: {} })
-    const promise = api.get('1', { signal })
-    controller.abort()
-    await expect(promise).rejects.toBeInstanceOf(DOMException)
+    await expect(api.get('1', { signal })).resolves.toEqual({})
+    expect(spy).toHaveBeenCalledWith(
+      '/api/1',
+      expect.objectContaining({
+        signal,
+      })
+    )
   })
 
   it('does not add trailing slashes', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api')
-    fetchMock.mock('/api', { status: 200, body: {} })
     await expect(api.get('')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api')
+    expect(spy).toHaveBeenCalledWith('/api', expect.anything())
   })
 
   it('ensure in between slashes', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api')
-    fetchMock.mock('/api/2', { status: 200, body: {} })
     await expect(api.get('2')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/2')
+    expect(spy).toHaveBeenCalledWith('/api/2', expect.anything())
   })
 
   it('adds explicit trailing slash', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api')
-    fetchMock.mock('/api/', { status: 200, body: {} })
     await expect(api.get('/')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/')
+    expect(spy).toHaveBeenCalledWith('/api/', expect.anything())
   })
 
   it('avoids duplicated slashes', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
     let api = mande('/api/')
-    fetchMock.mock('/api/2', { status: 200, body: {} })
     await expect(api.get('/2')).resolves.toEqual({})
-    expect(fetchMock).toHaveFetched('/api/2')
+    expect(spy).toHaveBeenCalledWith('/api/2', expect.anything())
   })
 
   it('calls the stringify with data on put and post', async () => {
-    const spy = jest.fn().mockReturnValue({ foo: 'bar' })
-    let api = mande('/api/', { stringify: spy })
-    fetchMock.mock('/api/', 204)
+    const stringify = vi.fn().mockReturnValue({ foo: 'bar' })
+
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockImplementation(async () => Response.json({}))
+    let api = mande('/api/', { stringify: stringify })
     const data = {}
-    await expect(api.post(data)).resolves.toEqual(null)
-    expect(spy).toHaveBeenCalledTimes(1)
-    expect(spy).toHaveBeenCalledWith(data)
+    await expect(api.post(data)).resolves.toEqual({})
+    expect(stringify).toHaveBeenCalledTimes(1)
+    expect(stringify).toHaveBeenCalledWith(data)
     // second arg
-    fetchMock.mock('/api/a', 204)
-    await expect(api.put('/a', data)).resolves.toEqual(null)
-    expect(spy).toHaveBeenCalledTimes(2)
-    expect(spy).toHaveBeenNthCalledWith(2, data)
+    await expect(api.put('/a', data)).resolves.toEqual({})
+    expect(stringify).toHaveBeenCalledTimes(2)
+    expect(stringify).toHaveBeenNthCalledWith(2, data)
+  })
+
+  it('keeps FormData as is', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
+    let api = mande('/api/')
+
+    const data = new FormData()
+    await expect(api.post(data)).resolves.toEqual({})
+    expect(spy).toHaveBeenCalledWith(
+      '/api/',
+      expect.objectContaining({ body: data })
+    )
   })
 })

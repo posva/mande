@@ -2,9 +2,11 @@ name: test
 
 on:
   push:
+    branches: main
     paths-ignore:
       - 'docs/**'
   pull_request:
+    branches: main
     paths-ignore:
       - 'docs/**'
 
@@ -14,18 +16,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.4.0
-        with:
-          version: 7.9.0
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 18
           cache: 'pnpm'
 
       - run: pnpm install
       - run: pnpm run lint
-      - run: pnpm run test:unit
+      - run: pnpm run test:unit --coverage
       - run: pnpm run build
+      - run: pnpm run build:dts
       - run: pnpm run size
 
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v2
