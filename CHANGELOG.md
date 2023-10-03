@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/posva/mande/compare/v2.0.7...v2.0.8) (2023-10-03)
+
+### Bug Fixes
+
+- correct prod mjs in package.json ([9272afb](https://github.com/posva/mande/commit/9272afb9f36dccefce2de02e138e0b5ecb515e07))
+- keep FormData as is ([3b106f4](https://github.com/posva/mande/commit/3b106f44e1b3137dc9e885b11f910872bb840274))
+
 ## [2.0.7](https://github.com/posva/mande/compare/v2.0.6...v2.0.7) (2023-07-25)
 
 ### Bug Fixes
