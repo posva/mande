@@ -79,7 +79,7 @@ This version has no breaking changes. `mande` has reached a stable state and it 
 
 ### Bug Fixes
 
-- **nuxt:** missign cookies ([c9b02d2](https://github.com/posva/mande/commit/c9b02d25ce4511e1611b4f38972038c144c2428e))
+- **nuxt:** missing cookies ([c9b02d2](https://github.com/posva/mande/commit/c9b02d25ce4511e1611b4f38972038c144c2428e))
 
 ## [0.0.22](https://github.com/posva/mande/compare/v0.0.21...v0.0.22) (2020-08-09)
 
@@ -97,7 +97,7 @@ This version has no breaking changes. `mande` has reached a stable state and it 
 
 ### Features
 
-- **nuxt:** pass errros to ctx.error ([b71b043](https://github.com/posva/mande/commit/b71b043a526d7d1719d072f4f60e86d632b46082))
+- **nuxt:** pass errors to ctx.error ([b71b043](https://github.com/posva/mande/commit/b71b043a526d7d1719d072f4f60e86d632b46082))
 
 ## [0.0.19](https://github.com/posva/mande/compare/v0.0.18...v0.0.19) (2020-07-28)
 
