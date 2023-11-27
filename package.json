@@ -2,7 +2,7 @@
   "name": "mande",
   "version": "2.0.8",
   "description": "800 bytes modern wrapper around fetch with smart defaults",
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.11.0",
   "main": "index.js",
   "module": "dist/mande.mjs",
   "unpkg": "dist/mande.iife.js",
@@ -80,7 +80,7 @@
     "@microsoft/api-documenter": "^7.23.12",
     "@microsoft/api-extractor": "^7.38.3",
     "@nuxt/types": "^2.17.2",
-    "@rollup/plugin-alias": "^5.0.1",
+    "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-replace": "^5.0.5",
     "@size-limit/preset-small-lib": "^8.2.6",
     "@vitest/coverage-v8": "^0.34.6",
@@ -95,7 +95,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "size-limit": "^8.2.6",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "repository": {
