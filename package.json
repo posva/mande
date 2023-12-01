@@ -85,7 +85,7 @@
     "@size-limit/preset-small-lib": "^8.2.6",
     "@vitest/coverage-v8": "^0.34.6",
     "codecov": "^3.8.3",
-    "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-cli": "^4.1.0",
     "pascalcase": "^1.0.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.5",
