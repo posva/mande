@@ -6,11 +6,11 @@ settings:
 
 devDependencies:
   '@microsoft/api-documenter':
-    specifier: ^7.23.12
-    version: 7.23.12
+    specifier: ^7.23.14
+    version: 7.23.14
   '@microsoft/api-extractor':
-    specifier: ^7.38.3
-    version: 7.38.3
+    specifier: ^7.38.5
+    version: 7.38.5
   '@nuxt/types':
     specifier: ^2.17.2
     version: 2.17.2
@@ -55,13 +55,13 @@ devDependencies:
     version: 7.0.2(rollup@2.79.1)
   rollup-plugin-typescript2:
     specifier: ^0.36.0
-    version: 0.36.0(rollup@2.79.1)(typescript@5.3.2)
+    version: 0.36.0(rollup@2.79.1)(typescript@5.3.3)
   size-limit:
     specifier: ^8.2.6
     version: 8.2.6
   typescript:
-    specifier: ^5.3.2
-    version: 5.3.2
+    specifier: ^5.3.3
+    version: 5.3.3
   vitest:
     specifier: ^0.34.6
     version: 0.34.6
@@ -607,13 +607,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@microsoft/api-documenter@7.23.12:
-    resolution: {integrity: sha512-ZFQGHNs8fSe3KoSCNa+jt/HLTN8IdTRGd0TZqmSeHpz2cSvUYHJeyQKhv8s7yi2flr1LezBq5/ig65ITZPSSqw==}
+  /@microsoft/api-documenter@7.23.14:
+    resolution: {integrity: sha512-D9cX3sS/6xN8SFbrR6I1ZTKvGl5UIPFZKYqTLg8YBUKJtFbUSDLrzRLWOcjxwxjnu+gCHAHyaNpG4G//CQivLw==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.2
+      '@microsoft/api-extractor-model': 7.28.3
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.61.0
+      '@rushstack/node-core-library': 3.62.0
       '@rushstack/ts-command-line': 4.17.1
       colors: 1.2.5
       js-yaml: 3.13.1
@@ -622,24 +622,24 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor-model@7.28.2:
-    resolution: {integrity: sha512-vkojrM2fo3q4n4oPh4uUZdjJ2DxQ2+RnDQL/xhTWSRUNPF6P4QyrvY357HBxbnltKcYu+nNNolVqc6TIGQ73Ig==}
+  /@microsoft/api-extractor-model@7.28.3:
+    resolution: {integrity: sha512-wT/kB2oDbdZXITyDh2SQLzaWwTOFbV326fP0pUwNW00WeliARs0qjmXBWmGWardEzp2U3/axkO3Lboqun6vrig==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.1
-      '@rushstack/node-core-library': 3.61.0
+      '@rushstack/node-core-library': 3.62.0
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.38.3:
-    resolution: {integrity: sha512-xt9iYyC5f39281j77JTA9C3ISJpW1XWkCcnw+2vM78CPnro6KhPfwQdPDfwS5JCPNuq0grm8cMdPUOPvrchDWw==}
+  /@microsoft/api-extractor@7.38.5:
+    resolution: {integrity: sha512-c/w2zfqBcBJxaCzpJNvFoouWewcYrUOfeu5ZkWCCIXTF9a/gXM85RGevEzlMAIEGM/kssAAZSXRJIZ3Q5vLFow==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.2
+      '@microsoft/api-extractor-model': 7.28.3
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.1
-      '@rushstack/node-core-library': 3.61.0
+      '@rushstack/node-core-library': 3.62.0
       '@rushstack/rig-package': 0.5.1
       '@rushstack/ts-command-line': 4.17.1
       colors: 1.2.5
@@ -768,8 +768,8 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rushstack/node-core-library@3.61.0:
-    resolution: {integrity: sha512-tdOjdErme+/YOu4gPed3sFS72GhtWCgNV9oDsHDnoLY5oDfwjKUc9Z+JOZZ37uAxcm/OCahDHfuu2ugqrfWAVQ==}
+  /@rushstack/node-core-library@3.62.0:
+    resolution: {integrity: sha512-88aJn2h8UpSvdwuDXBv1/v1heM6GnBf3RjEy6ZPP7UnzHNCqOHA2Ut+ScYUbXcqIdfew9JlTAe3g+cnX9xQ/Aw==}
     peerDependencies:
       '@types/node': '*'
     peerDependenciesMeta:
@@ -2577,7 +2577,7 @@ packages:
       terser: 5.15.0
     dev: true
 
-  /rollup-plugin-typescript2@0.36.0(rollup@2.79.1)(typescript@5.3.2):
+  /rollup-plugin-typescript2@0.36.0(rollup@2.79.1)(typescript@5.3.3):
     resolution: {integrity: sha512-NB2CSQDxSe9+Oe2ahZbf+B4bh7pHwjV5L+RSYpCu7Q5ROuN94F9b6ioWwKfz3ueL3KTtmX4o2MUH2cgHDIEUsw==}
     peerDependencies:
       rollup: '>=1.26.3'
@@ -2589,7 +2589,7 @@ packages:
       rollup: 2.79.1
       semver: 7.5.4
       tslib: 2.6.2
-      typescript: 5.3.2
+      typescript: 5.3.3
     dev: true
 
   /rollup-pluginutils@2.8.2:
@@ -2958,8 +2958,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.3.2:
-    resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
