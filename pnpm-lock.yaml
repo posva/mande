@@ -6,11 +6,11 @@ settings:
 
 devDependencies:
   '@microsoft/api-documenter':
-    specifier: ^7.23.14
-    version: 7.23.14
+    specifier: ^7.23.15
+    version: 7.23.15
   '@microsoft/api-extractor':
-    specifier: ^7.38.5
-    version: 7.38.5
+    specifier: ^7.39.0
+    version: 7.39.0
   '@nuxt/types':
     specifier: ^2.17.2
     version: 2.17.2
@@ -607,8 +607,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@microsoft/api-documenter@7.23.14:
-    resolution: {integrity: sha512-D9cX3sS/6xN8SFbrR6I1ZTKvGl5UIPFZKYqTLg8YBUKJtFbUSDLrzRLWOcjxwxjnu+gCHAHyaNpG4G//CQivLw==}
+  /@microsoft/api-documenter@7.23.15:
+    resolution: {integrity: sha512-dOMuxPtpINTO/P9NXcww0iIJ3yZnt5jiy1XQT/Hv21TjyVjcxYlICItvoagyz5B+T8w8sV7KEx/rcIwVPGAWuQ==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.3
@@ -632,8 +632,8 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.38.5:
-    resolution: {integrity: sha512-c/w2zfqBcBJxaCzpJNvFoouWewcYrUOfeu5ZkWCCIXTF9a/gXM85RGevEzlMAIEGM/kssAAZSXRJIZ3Q5vLFow==}
+  /@microsoft/api-extractor@7.39.0:
+    resolution: {integrity: sha512-PuXxzadgnvp+wdeZFPonssRAj/EW4Gm4s75TXzPk09h3wJ8RS3x7typf95B4vwZRrPTQBGopdUl+/vHvlPdAcg==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.3
@@ -647,7 +647,7 @@ packages:
       resolve: 1.22.1
       semver: 7.5.4
       source-map: 0.6.1
-      typescript: 5.0.4
+      typescript: 5.3.3
     transitivePeerDependencies:
       - '@types/node'
     dev: true
@@ -2950,12 +2950,6 @@ packages:
   /type-fest@4.8.2:
     resolution: {integrity: sha512-mcvrCjixA5166hSrUoJgGb9gBQN4loMYyj9zxuMs/66ibHNEFd5JXMw37YVDx58L4/QID9jIzdTBB4mDwDJ6KQ==}
     engines: {node: '>=16'}
-    dev: true
-
-  /typescript@5.0.4:
-    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
-    engines: {node: '>=12.20'}
-    hasBin: true
     dev: true
 
   /typescript@5.3.3:
