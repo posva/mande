@@ -288,6 +288,12 @@ export function mande(
       data = dataOrOptions
     }
 
+    // Let the browser determine the Content-Type automatically for FormData
+    const updatedDefaultHeaders = defaults.headers;
+    if (data instanceof FormData) {
+      delete updatedDefaultHeaders['Content-Type'];
+    }
+
     let mergedOptions: _OptionsMerged = {
       ...defaults,
       ...instanceOptions,
@@ -295,7 +301,7 @@ export function mande(
       ...localOptions,
       // we need to ditch nullish headers
       headers: removeNullishValues({
-        ...defaults.headers,
+        ...updatedDefaultHeaders,
         ...instanceOptions.headers,
         ...localOptions.headers,
       }),

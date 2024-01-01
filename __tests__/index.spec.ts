@@ -456,4 +456,22 @@ describe('mande', () => {
       expect.objectContaining({ body: data })
     )
   })
+
+  it('not adding default Content-Type with FormData', async () => {
+    const spy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({}))
+    let api = mande('/api/')
+
+    const data = new FormData()
+    await expect(api.post(data)).resolves.toEqual({})
+    expect(spy).toHaveBeenCalledWith(
+      '/api/',
+      expect.objectContaining({ body: data })
+    )
+    expect(spy).toHaveBeenCalledWith(
+      '/api/',
+      expect.objectContaining({ headers: { 'Accept': 'application/json' } })
+    )
+  })
 })
