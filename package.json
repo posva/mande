@@ -83,7 +83,7 @@
     "@nuxt/types": "^2.17.2",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-replace": "^5.0.5",
-    "@size-limit/preset-small-lib": "^8.2.6",
+    "@size-limit/preset-small-lib": "^11.0.1",
     "@vitest/coverage-v8": "^1.1.1",
     "codecov": "^3.8.3",
     "conventional-changelog-cli": "^4.1.0",
