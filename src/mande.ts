@@ -230,7 +230,8 @@ export const defaults: _OptionsDefaults = {
   responseAs: 'json',
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
+    // NOTE: instead of passing json here, we pass it when creating the request to automatically handle FormData
+    // 'Content-Type': data instanceof FormData ? null : 'application/json',
   },
   stringify: JSON.stringify,
 }
@@ -295,6 +296,8 @@ export function mande(
       ...localOptions,
       // we need to ditch nullish headers
       headers: removeNullishValues({
+        // let the browser automatically set the content-type with FormData
+        'Content-Type': data instanceof FormData ? null : 'application/json',
         ...defaults.headers,
         ...instanceOptions.headers,
         ...localOptions.headers,

@@ -61,7 +61,7 @@ Creating a small layer to communicate to your API:
 // api/users
 import { mande } from 'mande'
 
-const users = mande('/api/users', globalOptions)
+const users = mande('/api/users', usersApiOptions)
 
 export function getUserById(id) {
   return users.get(id)
@@ -78,7 +78,7 @@ Adding _Authorization_ tokens:
 // api/users
 import { mande } from 'mande'
 
-const todos = mande('/api/todos', globalOptions)
+const todos = mande('/api/todos', todosApiOptions)
 
 export function setToken(token) {
   // todos.options will be used for all requests
@@ -108,6 +108,26 @@ You can also globally add default options to all _mande_ instances:
 import { defaults } from 'mande'
 
 defaults.headers.Authorization = 'Bearer token'
+```
+
+To delete a header, pass `null` to the mande instance or the request:
+
+```ts
+const legacy = mande('/api/v1/data', {
+  headers: {
+    // override all requests
+    'Content-Type': 'application/xml',
+  },
+})
+
+// override only this request
+legacy.post(new FormData(), {
+  headers: {
+    // overrides Accept: 'application/json' only for this request
+    Accept: null,
+    'Content-Type': null,
+  },
+})
 ```
 
 ## TypeScript
@@ -186,10 +206,26 @@ Most of the code can be discovered through the autocompletion but the API docume
 You can timeout requests by using the native `AbortSignal`:
 
 ```ts
-mande('/api').get('/users', { signal: AbortSignal.timeout(200) })
+mande('/api').get('/users', { signal: AbortSignal.timeout(2000) })
 ```
 
 This is supported by [all modern browsers](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout_static).
+
+#### `FormData`
+
+When passing [Form Data](https://developer.mozilla.org/en-US/docs/Web/API/FormData), mande automatically removes the `Content-Type` header but you can manually set it if needed:
+
+```ts
+// directly pass it to the mande instance
+const api = mande('/api/', { headers: { 'Content-Type': null } })
+// or when creating the request
+const formData = new FormData()
+api.post(formData, {
+  headers: { 'Content-Type': 'multipart/form-data' },
+})
+```
+
+Most of the time you should let the browser set it for you.
 
 ## Related
 
