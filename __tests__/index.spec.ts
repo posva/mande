@@ -96,9 +96,7 @@ describe('mande', () => {
     const response = Response.json({}, { status: 404 })
     const spy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(response)
     let api = mande('/api/')
-    await expect(api.get('')).rejects.toMatchObject({
-      response,
-    })
+    await expect(api.get('')).rejects.toHaveProperty('response', response)
   })
 
   it('serializes body on error', async () => {
