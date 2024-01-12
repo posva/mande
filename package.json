@@ -89,7 +89,7 @@
     "conventional-changelog-cli": "^4.1.0",
     "happy-dom": "^12.10.3",
     "pascalcase": "^1.0.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.2.1",
     "rimraf": "^5.0.5",
     "rollup": "^2.79.1",
     "rollup-plugin-commonjs": "^10.1.0",
