@@ -467,9 +467,9 @@ describe('mande', () => {
       '/api/',
       expect.objectContaining({
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': undefined
-        }
+          Accept: 'application/json',
+          'Content-Type': undefined,
+        },
       })
     )
   })

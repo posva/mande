@@ -51,13 +51,13 @@ export interface MandeError<T = any> extends Error {
 
 export type MandeResponse<
   T = unknown,
-  ResponseType extends ResponseAsTypes = 'json'
+  ResponseType extends ResponseAsTypes = 'json',
 > = Promise<
   ResponseType extends 'response'
     ? Response
     : ResponseType extends 'text'
-    ? string
-    : T
+      ? string
+      : T
 >
 
 /**
@@ -196,21 +196,24 @@ function joinURL(base: string, url: string): string {
       (base.endsWith('/')
         ? url.replace(leadingSlashRE, '')
         : url.startsWith('/')
-        ? url
-        : '/' + url))
+          ? url
+          : '/' + url))
   )
 }
 
 function removeNullishValues(
   headers: Exclude<OptionsRaw['headers'], undefined>
 ): Exclude<Options['headers'], undefined> {
-  return Object.keys(headers).reduce((newHeaders, headerName) => {
-    if (headers[headerName] != null) {
-      // @ts-ignore
-      newHeaders[headerName] = headers[headerName]
-    }
-    return newHeaders
-  }, {} as Exclude<Options['headers'], undefined>)
+  return Object.keys(headers).reduce(
+    (newHeaders, headerName) => {
+      if (headers[headerName] != null) {
+        // @ts-ignore
+        newHeaders[headerName] = headers[headerName]
+      }
+      return newHeaders
+    },
+    {} as Exclude<Options['headers'], undefined>
+  )
 }
 
 /**
@@ -406,7 +409,7 @@ type InferArgs<F> = F extends (api: MandeInstance, ...args: infer A) => any
  */
 export function nuxtWrap<
   M extends MandeInstance,
-  F extends (api: M, ...args: any[]) => any
+  F extends (api: M, ...args: any[]) => any,
 >(api: M, fn: F): (...args: InferArgs<F>) => ReturnType<F> {
   // args for the api call + 1 because of api parameter
   const argsAmount = fn.length
