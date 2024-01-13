@@ -5,9 +5,9 @@ import ts from 'rollup-plugin-typescript2'
 import alias from '@rollup/plugin-alias'
 import terser from '@rollup/plugin-terser'
 import path from 'path'
-import {rimraf} from 'rimraf'
-import pascalcase from 'pascalcase'
-import pkg from './package.json' assert { type: "json" }
+import { rimraf } from 'rimraf'
+import camelCase from 'camelcase'
+import pkg from './package.json' assert { type: 'json' }
 
 const cwd = process.cwd()
 
@@ -19,7 +19,7 @@ const banner = `/*!
   * @license MIT
   */`
 
-const exportName = pascalcase(pkg.name)
+const exportName = camelCase(pkg.name, { pascalCase: true })
 
 function createEntry(
   {

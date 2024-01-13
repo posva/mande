@@ -35,15 +35,15 @@ devDependencies:
   '@vitest/coverage-v8':
     specifier: ^1.2.0
     version: 1.2.0(vitest@1.2.0)
+  camelcase:
+    specifier: ^8.0.0
+    version: 8.0.0
   conventional-changelog-cli:
     specifier: ^4.1.0
     version: 4.1.0
   happy-dom:
     specifier: ^13.0.6
     version: 13.0.6
-  pascalcase:
-    specifier: ^1.0.0
-    version: 1.0.0
   prettier:
     specifier: ^3.2.1
     version: 3.2.1
@@ -1231,6 +1231,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /camelcase@8.0.0:
+    resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
+    engines: {node: '>=16'}
+    dev: true
+
   /chai@4.4.1:
     resolution: {integrity: sha512-13sOfMv2+DWduEU+/xbun3LScLoqN17nBeTLUsmDfKdoiC1fr0n9PU4guu4AhRcOVFk/sW8LyZWHuhWtQZiF+g==}
     engines: {node: '>=4'}
@@ -2335,11 +2340,6 @@ packages:
       json-parse-even-better-errors: 3.0.1
       lines-and-columns: 2.0.4
       type-fest: 3.13.1
-    dev: true
-
-  /pascalcase@1.0.0:
-    resolution: {integrity: sha512-BSExi0rRnCHReJys6NocaK+cfTXNinAegfWBvr0JD3hiaEG7Nuc7r0CIdOJunXrs8gU/sbHQ9dxVAtiVQisjmg==}
-    engines: {node: '>=8'}
     dev: true
 
   /path-exists@4.0.0:
