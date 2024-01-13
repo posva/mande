@@ -1,16 +1,15 @@
 import replace from '@rollup/plugin-replace'
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import ts from 'rollup-plugin-typescript2'
 import alias from '@rollup/plugin-alias'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import path from 'path'
-import rimraf from 'rimraf'
+import {rimraf} from 'rimraf'
 import pascalcase from 'pascalcase'
+import pkg from './package.json' assert { type: "json" }
 
 const cwd = process.cwd()
-// eslint-disable-next-line
-const pkg = require(path.join(cwd, 'package.json'))
 
 rimraf.sync(path.join(cwd, './dist'))
 

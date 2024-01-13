@@ -44,7 +44,7 @@
     "pretest": "pnpm run lint",
     "test": "pnpm run test:unit run && pnpm run build",
     "size": "size-limit",
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.mjs",
     "build:dts": "api-extractor run --local --verbose",
     "docs": "api-documenter markdown -i temp -o docs"
   },
@@ -73,7 +73,9 @@
   ],
   "size-limit": [
     {
-      "path": "size-check/index.js"
+      "name": "Mande",
+      "path": "dist/mande.prod.mjs",
+      "import": "{ mande }"
     }
   ],
   "license": "MIT",
@@ -82,8 +84,11 @@
     "@microsoft/api-extractor": "^7.39.1",
     "@nuxt/types": "^2.17.2",
     "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
-    "@size-limit/preset-small-lib": "^8.2.6",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@size-limit/preset-small-lib": "^11.0.1",
     "@vitest/coverage-v8": "^1.2.0",
     "codecov": "^3.8.3",
     "conventional-changelog-cli": "^4.1.0",
@@ -91,12 +96,9 @@
     "pascalcase": "^1.0.0",
     "prettier": "^3.2.1",
     "rimraf": "^5.0.5",
-    "rollup": "^2.79.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
+    "rollup": "^4.9.5",
     "rollup-plugin-typescript2": "^0.36.0",
-    "size-limit": "^8.2.6",
+    "size-limit": "^11.0.0",
     "typescript": "^5.3.3",
     "vitest": "^1.2.0"
   },
