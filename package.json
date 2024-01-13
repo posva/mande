@@ -90,7 +90,6 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@size-limit/preset-small-lib": "^11.0.1",
     "@vitest/coverage-v8": "^1.2.0",
-    "codecov": "^3.8.3",
     "conventional-changelog-cli": "^4.1.0",
     "happy-dom": "^13.0.6",
     "pascalcase": "^1.0.0",
