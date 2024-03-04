@@ -6,11 +6,11 @@ settings:
 
 devDependencies:
   '@microsoft/api-documenter':
-    specifier: ^7.23.31
-    version: 7.23.31
+    specifier: ^7.23.36
+    version: 7.23.36
   '@microsoft/api-extractor':
-    specifier: ^7.41.0
-    version: 7.41.0
+    specifier: ^7.42.3
+    version: 7.42.3
   '@nuxt/types':
     specifier: ^2.17.3
     version: 2.17.3
@@ -42,8 +42,8 @@ devDependencies:
     specifier: ^4.1.0
     version: 4.1.0
   happy-dom:
-    specifier: ^13.6.0
-    version: 13.6.0
+    specifier: ^13.6.2
+    version: 13.6.2
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -64,7 +64,7 @@ devDependencies:
     version: 5.3.3
   vitest:
     specifier: ^1.3.1
-    version: 1.3.1(happy-dom@13.6.0)
+    version: 1.3.1(happy-dom@13.6.2)
 
 packages:
 
@@ -397,15 +397,15 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@microsoft/api-documenter@7.23.31:
-    resolution: {integrity: sha512-dHCoUN98ihW5+iro0q31tIOt6t5jwk4DKLq+GGDKlGvepwzP3X2XUkcq3zlh9OtxqLt320+9BvKMiJknZo4SXw==}
+  /@microsoft/api-documenter@7.23.36:
+    resolution: {integrity: sha512-DD4SkP0EKFmXJprt/WB4XykK2KdKSk5FjXeOvJ3D4cKFw0R5Da7TKfvsDKAASE1COB8FgQO3sftoPDHu9OD3lw==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.13
       '@microsoft/tsdoc': 0.14.2
       '@rushstack/node-core-library': 4.0.2
       '@rushstack/terminal': 0.10.0
-      '@rushstack/ts-command-line': 4.17.4
+      '@rushstack/ts-command-line': 4.19.1
       js-yaml: 3.13.1
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -422,8 +422,8 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.41.0:
-    resolution: {integrity: sha512-Wk4fcSqO1i32FspStEm4ak+cfdo2xGsWk/K9uZoYIRQxjQH/roLU78waP+g+GhoAg5OxH63BfY37h6ISkNfQEQ==}
+  /@microsoft/api-extractor@7.42.3:
+    resolution: {integrity: sha512-JNLJFpGHz6ekjS6bvYXxUBeRGnSHeCMFNvRbCQ+7XXB/ZFrgLSMPwWtEq40AiWAy+oyG5a4RSNwdJTp0B2USvQ==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.13
@@ -432,8 +432,9 @@ packages:
       '@rushstack/node-core-library': 4.0.2
       '@rushstack/rig-package': 0.5.2
       '@rushstack/terminal': 0.10.0
-      '@rushstack/ts-command-line': 4.17.4
+      '@rushstack/ts-command-line': 4.19.1
       lodash: 4.17.21
+      minimatch: 3.0.8
       resolve: 1.22.8
       semver: 7.5.4
       source-map: 0.6.1
@@ -744,8 +745,8 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /@rushstack/ts-command-line@4.17.4:
-    resolution: {integrity: sha512-XPQQDaxgFqRHFRgt7jjCKnr0vrC75s/+ISU6kGhWpDlGzWl4vig6ZfZTs3HgM6Kh1Bb3wUKSyKQOV+G36cyZfg==}
+  /@rushstack/ts-command-line@4.19.1:
+    resolution: {integrity: sha512-J7H768dgcpG60d7skZ5uSSwyCZs/S2HrWP1Ds8d1qYAyaaeJmpmmLr9BVw97RjFzmQPOYnoXcKA4GkqDCkduQg==}
     dependencies:
       '@rushstack/terminal': 0.10.0
       '@types/argparse': 1.0.38
@@ -1027,7 +1028,7 @@ packages:
       std-env: 3.7.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.3.1(happy-dom@13.6.0)
+      vitest: 1.3.1(happy-dom@13.6.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1772,8 +1773,8 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-  /happy-dom@13.6.0:
-    resolution: {integrity: sha512-4sVRENyxCSqAiOzAfPiohU56/D5bcLJmyT3WGoqjVX1IXq+ScTsrLR98RUODHz0nVvSLNW86CJzRXdPoSdw/yg==}
+  /happy-dom@13.6.2:
+    resolution: {integrity: sha512-Ku+wDqcF/KwFA0dI+xIMZd9Jn020RXjuSil/Vz7gu2yhDC3FsDYZ55qqV9k+SGC4opwb4acisXqVSRxUJMlPbQ==}
     engines: {node: '>=16.0.0'}
     dependencies:
       entities: 4.5.0
@@ -2131,6 +2132,12 @@ packages:
   /mimic-fn@4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
+    dev: true
+
+  /minimatch@3.0.8:
+    resolution: {integrity: sha512-6FsRAQsxQ61mw+qP1ZzbL9Bc78x2p5OqNgNpnoAFLTrX8n5Kxph0CsnhmKKNXTWjXqU5L0pGPR7hYk+XWZr60Q==}
+    dependencies:
+      brace-expansion: 1.1.11
     dev: true
 
   /minimatch@3.1.2:
@@ -2923,7 +2930,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.3.1(happy-dom@13.6.0):
+  /vitest@1.3.1(happy-dom@13.6.2):
     resolution: {integrity: sha512-/1QJqXs8YbCrfv/GPQ05wAZf2eakUPLPa18vkJAKE7RXOKfVHqMZZ1WlTjiwl6Gcn65M5vpNUB6EFLnEdRdEXQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -2957,7 +2964,7 @@ packages:
       chai: 4.4.1
       debug: 4.3.4
       execa: 8.0.1
-      happy-dom: 13.6.0
+      happy-dom: 13.6.2
       local-pkg: 0.5.0
       magic-string: 0.30.5
       pathe: 1.1.2
