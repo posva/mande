@@ -95,7 +95,7 @@
     "happy-dom": "^14.7.1",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "rollup": "^4.14.3",
+    "rollup": "^4.16.1",
     "rollup-plugin-typescript2": "^0.36.0",
     "size-limit": "^11.1.2",
     "typescript": "^5.4.5",
