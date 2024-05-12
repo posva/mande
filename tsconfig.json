@@ -6,10 +6,12 @@
     "strict": true,
     "composite": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
-
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
     "rootDir": ".",
     "baseUrl": "."
   },
-  "include": ["src", "__tests__"]
+  "include": [
+    "src",
+  ]
 }

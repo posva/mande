@@ -46,7 +46,7 @@
     "size": "size-limit",
     "build": "rollup -c rollup.config.mjs",
     "build:dts": "api-extractor run --local --verbose",
-    "docs": "api-documenter markdown -i temp -o docs"
+    "docs": "typedoc"
   },
   "files": [
     "index.js",
@@ -80,7 +80,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/api-documenter": "^7.24.2",
     "@microsoft/api-extractor": "^7.43.1",
     "@nuxt/types": "^2.17.3",
     "@rollup/plugin-alias": "^5.1.0",
@@ -98,6 +97,7 @@
     "rollup": "^4.17.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "size-limit": "^11.1.2",
+    "typedoc": "^0.25.13",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   },
