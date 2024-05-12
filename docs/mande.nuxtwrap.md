@@ -14,11 +14,55 @@ export declare function nuxtWrap<M extends MandeInstance, F extends (api: M, ...
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  api | M | Mande instance to wrap |
-|  fn | F | function to be wrapped |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+api
+
+
+</td><td>
+
+M
+
+
+</td><td>
+
+Mande instance to wrap
+
+
+</td></tr>
+<tr><td>
+
+fn
+
+
+</td><td>
+
+F
+
+
+</td><td>
+
+function to be wrapped
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 (...args: InferArgs&lt;F&gt;) =&gt; ReturnType&lt;F&gt;

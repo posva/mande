@@ -6,30 +6,153 @@
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [mande(baseURL, passedInstanceOptions, fetchPolyfill)](./mande.mande.md) | Create a Mande instance |
-|  [nuxtWrap(api, fn)](./mande.nuxtwrap.md) | Creates an Nuxt 2 SSR compatible function that automatically proxies cookies to requests and works transparently on the server and client (it still requires a fetch polyfill on Node). Note this is only needed if you need to proxy cookies to the server. |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[mande(baseURL, passedInstanceOptions, fetchPolyfill)](./mande.mande.md)
+
+
+</td><td>
+
+Create a Mande instance
+
+
+</td></tr>
+<tr><td>
+
+[nuxtWrap(api, fn)](./mande.nuxtwrap.md)
+
+
+</td><td>
+
+Creates an Nuxt 2 SSR compatible function that automatically proxies cookies to requests and works transparently on the server and client (it still requires a fetch polyfill on Node). Note this is only needed if you need to proxy cookies to the server.
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [MandeError](./mande.mandeerror.md) | Extended Error with the raw <code>Response</code> object. |
-|  [MandeInstance](./mande.mandeinstance.md) | Object returned by [mande()](./mande.mande.md) |
-|  [Options](./mande.options.md) | Allowed options for a request. Extends native <code>RequestInit</code>. |
-|  [OptionsRaw](./mande.optionsraw.md) |  |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[MandeError](./mande.mandeerror.md)
+
+
+</td><td>
+
+Extended Error with the raw `Response` object.
+
+
+</td></tr>
+<tr><td>
+
+[MandeInstance](./mande.mandeinstance.md)
+
+
+</td><td>
+
+Object returned by [mande()](./mande.mande.md)
+
+
+</td></tr>
+<tr><td>
+
+[Options](./mande.options.md)
+
+
+</td><td>
+
+Allowed options for a request. Extends native `RequestInit`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[OptionsRaw](./mande.optionsraw.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Variables
 
-|  Variable | Description |
-|  --- | --- |
-|  [defaults](./mande.defaults.md) | Global default options as [Options](./mande.options.md) that are applied to \*\*all\*\* mande instances. Always contain an initialized <code>headers</code> property with the default headers: - Accept: 'application/json' - 'Content-Type': 'application/json' |
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[defaults](./mande.defaults.md)
+
+
+</td><td>
+
+Global default options as [Options](./mande.options.md) that are applied to \*\*all\*\* mande instances. Always contain an initialized `headers` property with the default headers: - Accept: 'application/json' - 'Content-Type': 'application/json'
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [MandeResponse](./mande.manderesponse.md) |  |
-|  [ResponseAsTypes](./mande.responseastypes.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[MandeResponse](./mande.manderesponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ResponseAsTypes](./mande.responseastypes.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

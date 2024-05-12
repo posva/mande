@@ -12,12 +12,69 @@ post<T = unknown, R extends ResponseAsTypes = 'json'>(url: string | number, data
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  url | string \| number |  |
-|  data | any | _(Optional)_ |
-|  options | [Options](./mande.options.md)<!-- -->&lt;R&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+url
+
+
+</td><td>
+
+string \| number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+data
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[Options](./mande.options.md)<!-- -->&lt;R&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MandeResponse](./mande.manderesponse.md)<!-- -->&lt;T, R&gt;

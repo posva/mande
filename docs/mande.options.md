@@ -15,10 +15,101 @@ export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes> e
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [headers?](./mande.options.headers.md) |  | Record&lt;string, string&gt; | _(Optional)_ Headers sent alongside the request |
-|  [query?](./mande.options.query.md) |  | any | _(Optional)_ Optional query object. Does not support arrays. Will get stringified |
-|  [responseAs?](./mande.options.responseas.md) |  | ResponseAs | _(Optional)_ What kind of response is expected. Defaults to <code>json</code>. <code>response</code> will return the raw response from <code>fetch</code>. |
-|  [stringify?](./mande.options.stringify.md) |  | (data: unknown) =&gt; string | _(Optional)_ Optional function to stringify the body of the request for POST and PUT requests. Defaults to <code>JSON.stringify</code>. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[headers?](./mande.options.headers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Record&lt;string, string&gt;
+
+
+</td><td>
+
+_(Optional)_ Headers sent alongside the request
+
+
+</td></tr>
+<tr><td>
+
+[query?](./mande.options.query.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ Optional query object. Does not support arrays. Will get stringified
+
+
+</td></tr>
+<tr><td>
+
+[responseAs?](./mande.options.responseas.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ResponseAs
+
+
+</td><td>
+
+_(Optional)_ What kind of response is expected. Defaults to `json`<!-- -->. `response` will return the raw response from `fetch`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[stringify?](./mande.options.stringify.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(data: unknown) =&gt; string
+
+
+</td><td>
+
+_(Optional)_ Optional function to stringify the body of the request for POST and PUT requests. Defaults to `JSON.stringify`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

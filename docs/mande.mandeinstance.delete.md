@@ -14,10 +14,39 @@ delete<T = unknown, R extends ResponseAsTypes = 'json'>(options?: Options<R>): M
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  options | [Options](./mande.options.md)<!-- -->&lt;R&gt; | _(Optional)_ optional [Options](./mande.options.md) |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+options
+
+
+</td><td>
+
+[Options](./mande.options.md)<!-- -->&lt;R&gt;
+
+
+</td><td>
+
+_(Optional)_ optional [Options](./mande.options.md)
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MandeResponse](./mande.manderesponse.md)<!-- -->&lt;T, R&gt;

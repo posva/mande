@@ -14,11 +14,55 @@ post<T = unknown, R extends ResponseAsTypes = 'json'>(data?: any, options?: Opti
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  data | any | _(Optional)_ optional body of the request |
-|  options | [Options](./mande.options.md)<!-- -->&lt;R&gt; | _(Optional)_ optional [Options](./mande.options.md) |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+data
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ optional body of the request
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[Options](./mande.options.md)<!-- -->&lt;R&gt;
+
+
+</td><td>
+
+_(Optional)_ optional [Options](./mande.options.md)
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MandeResponse](./mande.manderesponse.md)<!-- -->&lt;T, R&gt;

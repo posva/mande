@@ -14,22 +14,159 @@ export interface MandeInstance
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [options](./mande.mandeinstance.options.md) |  | Required&lt;Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'headers'&gt;&gt; &amp; Omit&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'headers'&gt; | Writable options. |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[options](./mande.mandeinstance.options.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Required&lt;Pick&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'headers'&gt;&gt; &amp; Omit&lt;[OptionsRaw](./mande.optionsraw.md)<!-- -->, 'headers'&gt;
+
+
+</td><td>
+
+Writable options.
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [delete(options)](./mande.mandeinstance.delete.md) | Sends a DELETE request to the given url. |
-|  [delete(url, options)](./mande.mandeinstance.delete_1.md) |  |
-|  [get(options)](./mande.mandeinstance.get.md) | Sends a GET request to the given url. |
-|  [get(url, options)](./mande.mandeinstance.get_1.md) |  |
-|  [patch(data, options)](./mande.mandeinstance.patch.md) | Sends a PATCH request to the given url. |
-|  [patch(url, data, options)](./mande.mandeinstance.patch_1.md) |  |
-|  [post(data, options)](./mande.mandeinstance.post.md) | Sends a POST request to the given url. |
-|  [post(url, data, options)](./mande.mandeinstance.post_1.md) |  |
-|  [put(data, options)](./mande.mandeinstance.put.md) | Sends a PUT request to the given url. |
-|  [put(url, data, options)](./mande.mandeinstance.put_1.md) |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[delete(options)](./mande.mandeinstance.delete.md)
+
+
+</td><td>
+
+Sends a DELETE request to the given url.
+
+
+</td></tr>
+<tr><td>
+
+[delete(url, options)](./mande.mandeinstance.delete_1.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[get(options)](./mande.mandeinstance.get.md)
+
+
+</td><td>
+
+Sends a GET request to the given url.
+
+
+</td></tr>
+<tr><td>
+
+[get(url, options)](./mande.mandeinstance.get_1.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[patch(data, options)](./mande.mandeinstance.patch.md)
+
+
+</td><td>
+
+Sends a PATCH request to the given url.
+
+
+</td></tr>
+<tr><td>
+
+[patch(url, data, options)](./mande.mandeinstance.patch_1.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[post(data, options)](./mande.mandeinstance.post.md)
+
+
+</td><td>
+
+Sends a POST request to the given url.
+
+
+</td></tr>
+<tr><td>
+
+[post(url, data, options)](./mande.mandeinstance.post_1.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[put(data, options)](./mande.mandeinstance.put.md)
+
+
+</td><td>
+
+Sends a PUT request to the given url.
+
+
+</td></tr>
+<tr><td>
+
+[put(url, data, options)](./mande.mandeinstance.put_1.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -14,12 +14,71 @@ export declare function mande(baseURL: string, passedInstanceOptions?: OptionsRa
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  baseURL | string | absolute url |
-|  passedInstanceOptions | [OptionsRaw](./mande.optionsraw.md) | _(Optional)_ |
-|  fetchPolyfill | Window\['fetch'\] | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+baseURL
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+absolute url
+
+
+</td></tr>
+<tr><td>
+
+passedInstanceOptions
+
+
+</td><td>
+
+[OptionsRaw](./mande.optionsraw.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+fetchPolyfill
+
+
+</td><td>
+
+Window\['fetch'\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [MandeInstance](./mande.mandeinstance.md)
