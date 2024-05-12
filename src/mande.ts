@@ -70,88 +70,117 @@ export interface MandeInstance {
   options: Required<Pick<OptionsRaw, 'headers'>> & Omit<OptionsRaw, 'headers'>
 
   /**
+   * Sends a GET request to the base url. This is equivalent to calling get with an empty string.
+   *
+   * @example
+   * ```js
+   * const userList = await users.get()
+   * ```
+   * @param options - optional {@link Options}
+   */
+  get<T = unknown, R extends ResponseAsTypes = 'json'>(
+    options?: Options<R>
+  ): MandeResponse<T, R>
+
+  /**
    * Sends a GET request to the given url.
    *
    * @example
    * ```js
-   * users.get('2').then(user => {
-   *   // do something
-   * })
+   * const userProfile = await users.get('2')
    * ```
    * @param url - optional relative url to send the request to
    * @param options - optional {@link Options}
    */
   get<T = unknown, R extends ResponseAsTypes = 'json'>(
-    options?: Options<R>
-  ): MandeResponse<T, R>
-  get<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     options?: Options<R>
   ): MandeResponse<T, R>
 
+  /**
+   * Sends a POST request to the base url. This is equivalent to calling post with an empty string.
+   *
+   * @example
+   * ```js
+   * const createdUser = await users.post({ name: 'Eduardo' })
+   * ```
+   * @param data - optional body of the request
+   * @param options - optional {@link Options}
+   */
+  post<T = unknown, R extends ResponseAsTypes = 'json'>(
+    data?: any,
+    options?: Options<R>
+  ): MandeResponse<T, R>
   /**
    * Sends a POST request to the given url.
    *
    * @example
    * ```js
-   * users.post('', { name: 'Eduardo' }).then(user => {
-   *   // do something
-   * })
+   * const createdUser = await users.post('', { name: 'Eduardo' })
    * ```
    * @param url - relative url to send the request to
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
   post<T = unknown, R extends ResponseAsTypes = 'json'>(
-    data?: any,
-    options?: Options<R>
-  ): MandeResponse<T, R>
-  post<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
     options?: Options<R>
   ): MandeResponse<T, R>
 
+  /**
+   * Sends a PUT request to the base url. This is equivalent to calling put with an empty string.
+   *
+   * @example
+   * ```js
+   * users.put({ name: 'Eduardo' })
+   * ```
+   * @param data - optional body of the request
+   * @param options - optional {@link Options}
+   */
+  put<T = unknown, R extends ResponseAsTypes = 'json'>(
+    data?: any,
+    options?: Options<R>
+  ): MandeResponse<T, R>
   /**
    * Sends a PUT request to the given url.
    *
    * @example
    * ```js
-   * users.put('2', { name: 'Eduardo' }).then(user => {
-   *   // do something
-   * })
+   * users.put('2', { name: 'Eduardo' })
    * ```
    * @param url - relative url to send the request to
    * @param data - optional body of the request
    * @param options - optional {@link Options}
    */
   put<T = unknown, R extends ResponseAsTypes = 'json'>(
-    data?: any,
-    options?: Options<R>
-  ): MandeResponse<T, R>
-  put<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
     options?: Options<R>
   ): MandeResponse<T, R>
 
+  /**
+   * Sends a PATCH request to the base url. This is equivalent to calling patch with an empty string.
+   *
+   * @example
+   * ```js
+   * users.patch({ name: 'Eduardo' })
+   * ```
+   * @param data - optional body of the request
+   * @param options - optional {@link Options}
+   */
+  patch<T = unknown, R extends ResponseAsTypes = 'json'>(
+    data?: any,
+    options?: Options<R>
+  ): MandeResponse<T, R>
   /**
    * Sends a PATCH request to the given url.
    *
    * @example
    * ```js
-   * users.patch('2', { name: 'Eduardo' }).then(user => {
-   *   // do something
-   * })
+   * users.patch('2', { name: 'Eduardo' })
    * ```
-   * @param url - relative url to send the request to
-   * @param data - optional body of the request
-   * @param options - optional {@link Options}
    */
-  patch<T = unknown, R extends ResponseAsTypes = 'json'>(
-    data?: any,
-    options?: Options<R>
-  ): MandeResponse<T, R>
   patch<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
@@ -159,20 +188,27 @@ export interface MandeInstance {
   ): MandeResponse<T, R>
 
   /**
-   * Sends a DELETE request to the given url.
+   * Sends a DELETE request to the base url. This is equivalent to calling delete with an empty string.
    *
    * @example
    * ```js
-   * users.delete('2').then(user => {
-   *   // do something
-   * })
+   * users.delete()
    * ```
-   * @param url - relative url to send the request to
    * @param options - optional {@link Options}
    */
   delete<T = unknown, R extends ResponseAsTypes = 'json'>(
     options?: Options<R>
   ): MandeResponse<T, R>
+  /**
+   * Sends a DELETE request to the given url.
+   *
+   * @example
+   * ```js
+   * users.delete('2')
+   * ```
+   * @param url - relative url to send the request to
+   * @param options - optional {@link Options}
+   */
   delete<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     options?: Options<R>
@@ -258,7 +294,7 @@ export type _OptionsMerged = _OptionsDefaults &
  * })
  * ```
  * @param baseURL - absolute url
- * @param instanceOptions - optional options that will be applied to every
+ * @param passedInstanceOptions - optional options that will be applied to every
  * other request for this instance
  */
 export function mande(
