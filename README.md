@@ -197,7 +197,7 @@ Make sure to include `mande/nuxt` in your `tsconfig.json`:
 
 ## API
 
-Most of the code can be discovered through the autocompletion but the API documentation is available at https://posva.net/mande/.
+Most of the code can be discovered through the autocompletion but the API documentation is available at [https://mande.esm.is](https://mande.esm.is)
 
 ### Cookbook
 
