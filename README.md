@@ -1,4 +1,4 @@
-# mande [![build status](https://github.com/posva/mande/workflows/test/badge.svg?branch=main)](https://github.com/posva/mande/actions/workflows/test.yml?query=branch%3Amain) [![npm package](https://badgen.net/npm/v/mande)](https://www.npmjs.com/package/mande) [![coverage](https://badgen.net/codecov/c/github/posva/mande/main)](https://codecov.io/github/posva/mande) [![thanks](https://badgen.net/badge/thanks/♥/pink)](https://github.com/posva/thanks)
+# mande [![build status](https://github.com/posva/mande/workflows/test/badge.svg?branch=main)](https://github.com/posva/mande/actions/workflows/test.yml?query=branch%3Amain) [![npm package](https://badgen.net/npm/v/mande)](https://www.npmjs.com/package/mande) [![codecov](https://codecov.io/github/posva/mande/graph/badge.svg?token=ItUkHTdc2q)](https://codecov.io/github/posva/mande) [![thanks](https://badgen.net/badge/thanks/♥/pink)](https://github.com/posva/thanks)
 
 > Simple, light and extensible wrapper around fetch with smart defaults
 
