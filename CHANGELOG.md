@@ -1,3 +1,9 @@
+## [2.0.9](https://github.com/posva/mande/compare/v2.0.8...v2.0.9) (2024-05-12)
+
+### Reverts
+
+- smaller ([9f09df6](https://github.com/posva/mande/commit/9f09df678bd62aec36bc474535c405444267ec64))
+
 ## [2.0.8](https://github.com/posva/mande/compare/v2.0.7...v2.0.8) (2023-10-03)
 
 ### Bug Fixes
