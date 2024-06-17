@@ -12,8 +12,8 @@ importers:
         specifier: ^7.47.0
         version: 7.47.0(@types/node@18.11.18)
       '@nuxt/types':
-        specifier: ^2.17.3
-        version: 2.17.3
+        specifier: ^2.17.4
+        version: 2.17.4
       '@rollup/plugin-alias':
         specifier: ^5.1.0
         version: 5.1.0(rollup@4.18.0)
@@ -45,8 +45,8 @@ importers:
         specifier: ^14.12.0
         version: 14.12.0
       prettier:
-        specifier: ^3.3.1
-        version: 3.3.1
+        specifier: ^3.3.2
+        version: 3.3.2
       rimraf:
         specifier: ^5.0.7
         version: 5.0.7
@@ -457,8 +457,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@nuxt/types@2.17.3':
-    resolution: {integrity: sha512-IXM+DwDrBj96v2O+oQrqA1vhQMVnBBcU7lTb+Xhnl6StL2PU6hxcx2czUWS8p2K6B6xvOHu+Sda7rCOKP60j2g==}
+  '@nuxt/types@2.17.4':
+    resolution: {integrity: sha512-iouC94QWC6IHXTKPOU5Hc2idp67+9/ftTgq8tD0uUZ15osh0A+lvTrwcjMxal6EoAfujVZlHYH2EU4WAROfzdw==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   '@pkgjs/parseargs@0.11.0':
@@ -667,9 +667,6 @@ packages:
   '@types/body-parser@1.19.2':
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
 
-  '@types/clean-css@4.2.5':
-    resolution: {integrity: sha512-NEzjkGGpbs9S9fgC4abuBvTpVwE3i+Acu9BBod3PUyjDVZcNsGx61b8r2PphR61QGPnn0JHVs5ey6/I4eTrkxw==}
-
   '@types/compression@1.7.5':
     resolution: {integrity: sha512-AAQvK5pxMpaT+nDvhHrsBhLSYG5yQdtkaJE1WYieSNY2mVFKAgmU4ks65rkZD5oqnGCFLyQpUr1CqI4DmUMyDg==}
 
@@ -691,8 +688,8 @@ packages:
   '@types/file-loader@5.0.4':
     resolution: {integrity: sha512-aB4X92oi5D2nIGI8/kolnJ47btRM2MQjQS4eJgA/VnCD12x0+kP5v7b5beVQWKHLOcquwUXvv6aMt8PmMy9uug==}
 
-  '@types/html-minifier@4.0.5':
-    resolution: {integrity: sha512-LfE7f7MFd+YUfZnlBz8W43P4NgSObWiqyKapANsWCj63Aqeqli8/9gVsGP4CwC8jPpTTYlTopKCk9rJSuht/ew==}
+  '@types/html-minifier-terser@7.0.2':
+    resolution: {integrity: sha512-mm2HqV22l8lFQh4r2oSsOEVea+m0qqxEmwpc9kC1p/XzmjLWrReR9D/GRs8Pex2NX/imyEH9c5IU/7tMBQCHOA==}
 
   '@types/http-errors@2.0.1':
     resolution: {integrity: sha512-/K3ds8TRAfBvi5vfjuz8y6+GiAYBZ0x4tXv1Av6CWBWn0IlADc+ZX9pMq7oU0fNQPnBwIZl3rmeLp6SBApbxSQ==}
@@ -724,17 +721,17 @@ packages:
   '@types/range-parser@1.2.4':
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
 
-  '@types/relateurl@0.2.29':
-    resolution: {integrity: sha512-QSvevZ+IRww2ldtfv1QskYsqVVVwCKQf1XbwtcyyoRvLIQzfyPhj/C+3+PKzSDRdiyejaiLgnq//XTkleorpLg==}
-
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
 
-  '@types/serve-static@1.15.5':
-    resolution: {integrity: sha512-PDRk21MnK70hja/YF8AHfC7yIsiQHn1rcXx7ijCFBX/k+XQJhQT/gw3xekXKJvx+5SXaMMS8oqQy09Mzvz2TuQ==}
+  '@types/send@0.17.4':
+    resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
+
+  '@types/serve-static@1.15.7':
+    resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
 
   '@types/source-list-map@0.1.2':
     resolution: {integrity: sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==}
@@ -1518,8 +1515,8 @@ packages:
     resolution: {integrity: sha512-Kkpbhhdjw2qQs2O2DGX+8m5OVqEcbB9HRBvuYM9pgrjEFUg30A9LmXNlTAUj4S9kgtGyrMbTzVjH7E+s5Re2yg==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier@3.3.1:
-    resolution: {integrity: sha512-7CAwy5dRsxs8PHXT3twixW9/OEll8MLE0VRPCJyl7CkS6VHGPSlsVaWTiASPTyGyYRyApxlaWTzwUxVNrhcwDg==}
+  prettier@3.3.2:
+    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2182,19 +2179,19 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  '@nuxt/types@2.17.3':
+  '@nuxt/types@2.17.4':
     dependencies:
       '@types/babel__core': 7.20.5
       '@types/compression': 1.7.5
       '@types/connect': 3.4.38
       '@types/etag': 1.8.3
       '@types/file-loader': 5.0.4
-      '@types/html-minifier': 4.0.5
+      '@types/html-minifier-terser': 7.0.2
       '@types/less': 3.0.6
       '@types/node': 16.18.16
       '@types/optimize-css-assets-webpack-plugin': 5.0.8
       '@types/pug': 2.0.10
-      '@types/serve-static': 1.15.5
+      '@types/serve-static': 1.15.7
       '@types/terser-webpack-plugin': 4.2.1
       '@types/webpack': 4.41.38
       '@types/webpack-bundle-analyzer': 3.9.5
@@ -2389,11 +2386,6 @@ snapshots:
       '@types/connect': 3.4.38
       '@types/node': 18.11.18
 
-  '@types/clean-css@4.2.5':
-    dependencies:
-      '@types/node': 18.11.18
-      source-map: 0.6.1
-
   '@types/compression@1.7.5':
     dependencies:
       '@types/express': 4.17.13
@@ -2419,17 +2411,13 @@ snapshots:
       '@types/body-parser': 1.19.2
       '@types/express-serve-static-core': 4.17.30
       '@types/qs': 6.9.7
-      '@types/serve-static': 1.15.5
+      '@types/serve-static': 1.15.7
 
   '@types/file-loader@5.0.4':
     dependencies:
       '@types/webpack': 4.41.38
 
-  '@types/html-minifier@4.0.5':
-    dependencies:
-      '@types/clean-css': 4.2.5
-      '@types/relateurl': 0.2.29
-      '@types/uglify-js': 3.17.0
+  '@types/html-minifier-terser@7.0.2': {}
 
   '@types/http-errors@2.0.1': {}
 
@@ -2453,17 +2441,20 @@ snapshots:
 
   '@types/range-parser@1.2.4': {}
 
-  '@types/relateurl@0.2.29': {}
-
   '@types/resolve@1.20.2': {}
 
   '@types/semver@7.5.8': {}
 
-  '@types/serve-static@1.15.5':
+  '@types/send@0.17.4':
     dependencies:
-      '@types/http-errors': 2.0.1
       '@types/mime': 1.3.2
       '@types/node': 18.11.18
+
+  '@types/serve-static@1.15.7':
+    dependencies:
+      '@types/http-errors': 2.0.1
+      '@types/node': 18.11.18
+      '@types/send': 0.17.4
 
   '@types/source-list-map@0.1.2': {}
 
@@ -3314,7 +3305,7 @@ snapshots:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  prettier@3.3.1: {}
+  prettier@3.3.2: {}
 
   pretty-format@29.7.0:
     dependencies:
