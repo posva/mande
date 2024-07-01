@@ -81,7 +81,7 @@
   "license": "MIT",
   "devDependencies": {
     "@microsoft/api-extractor": "^7.47.0",
-    "@nuxt/types": "^2.17.4",
+    "@nuxt/types": "^2.18.1",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -97,7 +97,7 @@
     "rollup": "^4.18.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "size-limit": "^11.1.4",
-    "typedoc": "^0.26.2",
+    "typedoc": "^0.26.3",
     "typescript": "^5.5.2",
     "vitest": "^1.6.0"
   },
