@@ -80,7 +80,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.47.2",
+    "@microsoft/api-extractor": "^7.47.4",
     "@nuxt/types": "^2.18.1",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^26.0.1",
@@ -88,18 +88,18 @@
     "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-terser": "^0.4.4",
     "@size-limit/preset-small-lib": "^11.1.4",
-    "@vitest/coverage-v8": "^2.0.3",
+    "@vitest/coverage-v8": "^2.0.4",
     "camelcase": "^8.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "happy-dom": "^14.12.3",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.19.0",
+    "rollup": "^4.19.1",
     "rollup-plugin-typescript2": "^0.36.0",
     "size-limit": "^11.1.4",
     "typedoc": "^0.26.5",
-    "typescript": "^5.5.3",
-    "vitest": "^2.0.3"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.4"
   },
   "repository": {
     "type": "git",
