@@ -1,7 +1,5 @@
-import { vi, expect, describe, it } from 'vitest'
+import { vi, expect, describe, it, expectTypeOf } from 'vitest'
 import { mande, defaults } from '../src'
-
-function expectType<T>(_value: T): void {}
 
 describe('mande', () => {
   it('calls fetch', async () => {
@@ -262,7 +260,7 @@ describe('mande', () => {
     const spy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(response)
     let api = mande('/api/')
     await api.get('', { responseAs: 'response' }).then((res) => {
-      expectType<Response>(res)
+      expectTypeOf<Response>(res)
       expect(res).toBe(response)
     })
     // cannot check the result for some reason...
@@ -270,33 +268,33 @@ describe('mande', () => {
       const noDataMethods = ['get', 'delete'] as const
       const dataMethods = ['post', 'put', 'patch'] as const
       for (const method of dataMethods) {
-        expectType<Promise<{ value: number }>>(
+        expectTypeOf<Promise<{ value: number }>>(
           api[method]<{ value: number }>('/api')
         )
         api[method]('/api').then((r) => {
-          expectType<unknown>(r)
+          expectTypeOf<unknown>(r)
           // @ts-expect-error: r is unknown
           r.stuff
         })
-        expectType<Promise<Response>>(
+        expectTypeOf<Promise<Response>>(
           api[method](2, { responseAs: 'response' })
         )
-        expectType<Promise<string>>(api[method](2, { responseAs: 'text' }))
+        expectTypeOf<Promise<string>>(api[method](2, { responseAs: 'text' }))
       }
 
       for (const method of noDataMethods) {
-        expectType<Promise<{ value: number }>>(
+        expectTypeOf<Promise<{ value: number }>>(
           api[method]<{ value: number }>('/api')
         )
         api[method]('/api').then((r) => {
-          expectType<unknown>(r)
+          expectTypeOf<unknown>(r)
           // @ts-expect-error: r is unknown
           r.stuff
         })
-        expectType<Promise<Response>>(
+        expectTypeOf<Promise<Response>>(
           api[method](2, { responseAs: 'response' })
         )
-        expectType<Promise<string>>(api[method](2, { responseAs: 'text' }))
+        expectTypeOf<Promise<string>>(api[method](2, { responseAs: 'text' }))
       }
     }
   })
@@ -308,7 +306,7 @@ describe('mande', () => {
     let api = mande('/api/')
     await api.get({ responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
-      expectType<Response>(res)
+      expectTypeOf<Response>(res)
     })
   })
 
@@ -319,7 +317,7 @@ describe('mande', () => {
     let api = mande('/api/')
     await api.get('', { responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
-      expectType<Response>(res)
+      expectTypeOf<Response>(res)
     })
   })
 
@@ -330,7 +328,7 @@ describe('mande', () => {
     let api = mande('/api/')
     await api.get({ responseAs: 'text' }).then((res) => {
       expect(res).not.toBeNull()
-      expectType<string>(res)
+      expectTypeOf<string>(res)
     })
   })
 
@@ -341,7 +339,7 @@ describe('mande', () => {
     let api = mande('/api/')
     await api.delete({ responseAs: 'response' }).then((res) => {
       expect(res).not.toBeNull()
-      expectType<Response>(res)
+      expectTypeOf<Response>(res)
     })
   })
 
@@ -352,7 +350,7 @@ describe('mande', () => {
     let api = mande('/api/')
     await api.delete({ responseAs: 'text' }).then((res) => {
       expect(res).not.toBeNull()
-      expectType<string>(res)
+      expectTypeOf<string>(res)
     })
   })
 

@@ -3,9 +3,9 @@
   "version": "2.0.9",
   "description": "800 bytes modern wrapper around fetch with smart defaults",
   "packageManager": "pnpm@9.6.0",
-  "type": "commonjs",
-  "main": "index.js",
-  "module": "dist/mande.mjs",
+  "type": "module",
+  "main": "index.cjs",
+  "module": "dist/mande.js",
   "unpkg": "dist/mande.iife.js",
   "jsdelivr": "dist/mande.iife.js",
   "types": "dist/mande.d.ts",
@@ -15,17 +15,17 @@
       "types": "./dist/mande.d.ts",
       "node": {
         "import": {
-          "production": "./dist/mande.prod.mjs",
-          "development": "./dist/mande.mjs",
-          "default": "./dist/mande.mjs"
+          "production": "./dist/mande.prod.js",
+          "development": "./dist/mande.js",
+          "default": "./dist/mande.js"
         },
         "require": {
           "production": "./dist/mande.prod.cjs",
           "development": "./dist/mande.cjs",
-          "default": "./index.js"
+          "default": "./index.cjs"
         }
       },
-      "import": "./dist/mande.mjs"
+      "import": "./dist/mande.js"
     },
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
@@ -45,6 +45,7 @@
     "test": "pnpm run test:unit run && pnpm run build",
     "size": "size-limit",
     "build": "rollup -c rollup.config.mjs",
+    "build:pkgs": "pnpm run --stream --parallel --filter './nuxt-module' build",
     "build:dts": "api-extractor run --local --verbose",
     "docs": "typedoc"
   },
@@ -88,18 +89,18 @@
     "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-terser": "^0.4.4",
     "@size-limit/preset-small-lib": "^11.1.4",
-    "@vitest/coverage-v8": "^2.0.4",
+    "@vitest/coverage-v8": "^2.0.5",
     "camelcase": "^8.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "happy-dom": "^14.12.3",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.19.1",
+    "rollup": "^4.19.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "size-limit": "^11.1.4",
     "typedoc": "^0.26.5",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.4"
+    "vitest": "^2.0.5"
   },
   "repository": {
     "type": "git",

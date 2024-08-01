@@ -67,7 +67,7 @@ function createEntry(
   } else if (format === 'es') {
     config.output.file = pkg.module
   } else if (format === 'cjs') {
-    config.output.file = pkg.module.replace('mjs', 'cjs')
+    config.output.file = pkg.module.replace('js', 'cjs')
   }
 
   if (!external) {
