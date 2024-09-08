@@ -9,4 +9,4 @@ const config = {
   exclude: ['**/*.spec.ts'],
 }
 
-module.exports = config
+export default config
