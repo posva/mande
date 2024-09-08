@@ -433,10 +433,6 @@ export function mande(
   }
 }
 
-type InferArgs<F> = F extends (api: MandeInstance, ...args: infer A) => any
-  ? A
-  : never
-
 /**
  * Creates an Nuxt 2 SSR compatible function that automatically proxies cookies to requests and works transparently on
  * the server and client (it still requires a fetch polyfill on Node). Note this is only needed if you need to proxy
@@ -458,14 +454,14 @@ type InferArgs<F> = F extends (api: MandeInstance, ...args: infer A) => any
 export function nuxtWrap<
   M extends MandeInstance,
   F extends (api: M, ...args: any[]) => any,
->(api: M, fn: F): (...args: InferArgs<F>) => ReturnType<F> {
+>(api: M, fn: F): (...args: Parameters<F>) => ReturnType<F> {
   // args for the api call + 1 because of api parameter
   const argsAmount = fn.length
 
-  const wrappedCall: (...args: InferArgs<F>) => ReturnType<F> =
+  const wrappedCall: (...args: Parameters<F>) => ReturnType<F> =
     function _wrappedCall() {
       let apiInstance: M = api
-      let args = Array.from(arguments) as InferArgs<F>
+      let args = Array.from(arguments) as Parameters<F>
       // call from nuxt server with a function to augment the api instance
       if (arguments.length === argsAmount) {
         apiInstance = { ...api }
