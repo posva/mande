@@ -49,6 +49,18 @@ export interface MandeError<T = any> extends Error {
   response: Response
 }
 
+/**
+ * Checks if an object is a MandeError
+ * @param err - error to check
+ */
+export function isMandeError(err: any): err is MandeError {
+  return err instanceof Error && 'response' in err
+}
+
+/**
+ * Response type of a Mande request based on `responseAs` option. . If `responseAs` is set to `response`, it will return
+   the raw `Response` object.
+ */
 export type MandeResponse<
   T = unknown,
   ResponseType extends ResponseAsTypes = 'json',
