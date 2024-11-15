@@ -24,6 +24,7 @@ jobs:
 
       - run: pnpm install
       - run: pnpm run lint
+      - run: pnpm -C nuxt-module dev:prepare
       - run: pnpm run test:unit --coverage
       - run: pnpm run build
       - run: pnpm run build:dts
