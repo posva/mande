@@ -75,7 +75,7 @@
   "size-limit": [
     {
       "name": "Mande",
-      "path": "dist/mande.prod.mjs",
+      "path": "dist/mande.prod.js",
       "import": "{ mande }"
     }
   ],
