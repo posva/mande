@@ -7,7 +7,7 @@ import terser from '@rollup/plugin-terser'
 import path from 'path'
 import { rimraf } from 'rimraf'
 import camelCase from 'camelcase'
-import pkg from './package.json' assert { type: 'json' }
+import pkg from './package.json' with { type: 'json' }
 
 const cwd = process.cwd()
 
