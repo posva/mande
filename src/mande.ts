@@ -330,9 +330,8 @@ export function mande(
       url = ''
       // if urlOrDataOrOptions is an object, it's either options or data
       // if dataOrOptions was passed, urlOrDataOrOptions is data
-      localOptions = dataOrOptions || urlOrDataOrOptions || {}
+      localOptions = dataOrOptions || {}
       // if it's a POST/PUT/PATCH, dataOrOptions is data
-      // if it's option, we will set data to options but it will be ignored later
       data = urlOrDataOrOptions
     } else {
       // get(url) or get(url, options) or put(url, data) or put(url, data, options)
