@@ -34,7 +34,7 @@ importers:
         version: 11.1.6(size-limit@11.1.6)
       '@vitest/coverage-v8':
         specifier: ^2.1.8
-        version: 2.1.8(vitest@2.1.8(@types/node@22.10.2)(happy-dom@15.11.7)(terser@5.31.6))
+        version: 2.1.8(vitest@2.1.8(@types/node@22.10.2)(happy-dom@16.0.1)(terser@5.31.6))
       camelcase:
         specifier: ^8.0.0
         version: 8.0.0
@@ -42,8 +42,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       happy-dom:
-        specifier: ^15.11.7
-        version: 15.11.7
+        specifier: ^16.0.1
+        version: 16.0.1
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -67,7 +67,7 @@ importers:
         version: 5.7.2
       vitest:
         specifier: ^2.1.8
-        version: 2.1.8(@types/node@22.10.2)(happy-dom@15.11.7)(terser@5.31.6)
+        version: 2.1.8(@types/node@22.10.2)(happy-dom@16.0.1)(terser@5.31.6)
 
   nuxt-module:
     dependencies:
@@ -3087,6 +3087,10 @@ packages:
 
   happy-dom@15.11.7:
     resolution: {integrity: sha512-KyrFvnl+J9US63TEzwoiJOQzZBJY7KgBushJA8X61DMbNsH+2ONkDuLDnCnwUiPTF42tLoEmrPyoqbenVA5zrg==}
+    engines: {node: '>=18.0.0'}
+
+  happy-dom@16.0.1:
+    resolution: {integrity: sha512-cqbqvutE6XAIMe4nM93TkbW5SDFtLkU/6nsQfJBJ2KSlaT+My2kmnYsCFXrvEzvmP7s1xGJ6Xt4D9LNJIJHMbA==}
     engines: {node: '>=18.0.0'}
 
   has-flag@4.0.0:
@@ -6961,7 +6965,7 @@ snapshots:
       vite: 6.0.6(@types/node@22.10.2)(jiti@2.4.2)(terser@5.31.6)(yaml@2.6.1)
       vue: 3.5.13(typescript@5.7.2)
 
-  '@vitest/coverage-v8@2.1.8(vitest@2.1.8(@types/node@22.10.2)(happy-dom@15.11.7)(terser@5.31.6))':
+  '@vitest/coverage-v8@2.1.8(vitest@2.1.8(@types/node@22.10.2)(happy-dom@16.0.1)(terser@5.31.6))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -6975,7 +6979,7 @@ snapshots:
       std-env: 3.8.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.8(@types/node@22.10.2)(happy-dom@15.11.7)(terser@5.31.6)
+      vitest: 2.1.8(@types/node@22.10.2)(happy-dom@16.0.1)(terser@5.31.6)
     transitivePeerDependencies:
       - supports-color
 
@@ -8489,6 +8493,12 @@ snapshots:
   happy-dom@15.11.7:
     dependencies:
       entities: 4.5.0
+      webidl-conversions: 7.0.0
+      whatwg-mimetype: 3.0.0
+    optional: true
+
+  happy-dom@16.0.1:
+    dependencies:
       webidl-conversions: 7.0.0
       whatwg-mimetype: 3.0.0
 
@@ -10577,6 +10587,43 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.2
       happy-dom: 15.11.7
+    transitivePeerDependencies:
+      - less
+      - lightningcss
+      - msw
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    optional: true
+
+  vitest@2.1.8(@types/node@22.10.2)(happy-dom@16.0.1)(terser@5.31.6):
+    dependencies:
+      '@vitest/expect': 2.1.8
+      '@vitest/mocker': 2.1.8(vite@5.4.11(@types/node@22.10.2)(terser@5.31.6))
+      '@vitest/pretty-format': 2.1.8
+      '@vitest/runner': 2.1.8
+      '@vitest/snapshot': 2.1.8
+      '@vitest/spy': 2.1.8
+      '@vitest/utils': 2.1.8
+      chai: 5.1.2
+      debug: 4.3.7(supports-color@9.4.0)
+      expect-type: 1.1.0
+      magic-string: 0.30.13
+      pathe: 1.1.2
+      std-env: 3.8.0
+      tinybench: 2.9.0
+      tinyexec: 0.3.1
+      tinypool: 1.0.2
+      tinyrainbow: 1.2.0
+      vite: 5.4.11(@types/node@22.10.2)(terser@5.31.6)
+      vite-node: 2.1.8(@types/node@22.10.2)(terser@5.31.6)
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 22.10.2
+      happy-dom: 16.0.1
     transitivePeerDependencies:
       - less
       - lightningcss
