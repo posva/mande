@@ -8,6 +8,6 @@
     "generate": "nuxi generate"
   },
   "dependencies": {
-    "nuxt": "^3.17.2"
+    "nuxt": "^3.17.4"
   }
 }
