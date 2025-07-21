@@ -32,13 +32,13 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^2.6.2",
-    "@nuxt/eslint-config": "^1.5.2",
+    "@nuxt/eslint-config": "^1.6.0",
     "@nuxt/module-builder": "^1.0.1",
     "@nuxt/schema": "^3.17.7",
     "@nuxt/test-utils": "^3.19.2",
-    "@types/node": "^22.16.3",
+    "@types/node": "^22.16.5",
     "eslint": "^9.31.0",
     "nuxt": "^3.17.7",
-    "vue-tsc": "^3.0.1"
+    "vue-tsc": "^3.0.3"
   }
 }
