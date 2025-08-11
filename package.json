@@ -2,7 +2,7 @@
   "name": "mande",
   "version": "2.0.9",
   "description": "800 bytes modern wrapper around fetch with smart defaults",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.14.0",
   "type": "module",
   "main": "index.cjs",
   "module": "dist/mande.js",
@@ -81,7 +81,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.52.9",
+    "@microsoft/api-extractor": "^7.52.10",
     "@nuxt/types": "^2.18.1",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.6",
@@ -95,11 +95,11 @@
     "happy-dom": "^18.0.1",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "rollup": "^4.46.1",
+    "rollup": "^4.46.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "size-limit": "^11.2.0",
-    "typedoc": "^0.28.8",
-    "typescript": "^5.8.3",
+    "typedoc": "^0.28.10",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
   "repository": {
