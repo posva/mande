@@ -31,14 +31,14 @@
     "@nuxt/kit": "^4.0.3"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^2.6.2",
-    "@nuxt/eslint-config": "^1.8.0",
+    "@nuxt/devtools": "^2.6.3",
+    "@nuxt/eslint-config": "^1.9.0",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.0.3",
     "@nuxt/test-utils": "^3.19.2",
     "@types/node": "^22.17.2",
-    "eslint": "^9.33.0",
+    "eslint": "^9.34.0",
     "nuxt": "^4.0.3",
-    "vue-tsc": "^3.0.5"
+    "vue-tsc": "^3.0.6"
   }
 }
