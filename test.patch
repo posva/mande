@@ -1,0 +1,517 @@
+diff --git a/__tests__/retry.spec.ts b/__tests__/retry.spec.ts
+new file mode 100644
+index 0000000..e4e81b2
+--- /dev/null
++++ b/__tests__/retry.spec.ts
+@@ -0,0 +1,492 @@
++import { vi, expect, describe, it, beforeEach, afterEach } from 'vitest'
++import { mande } from '../src'
++import { isMandeError } from '../src/mande'
++import { withInterceptors } from '../src/interceptors'
++
++describe('retry', () => {
++  beforeEach(() => {
++    vi.useFakeTimers()
++  })
++
++  afterEach(() => {
++    vi.restoreAllMocks()
++    vi.useRealTimers()
++  })
++
++  describe('network errors', () => {
++    it('retries on network failure', async () => {
++      let callCount = 0
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        callCount++
++        if (callCount < 3) {
++          return Promise.reject(new Error('Network error'))
++        }
++        return Promise.resolve(Response.json({ success: true }))
++      })
++
++      const api = mande('/api/', { retry: { attempts: 3, delay: 10 } })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).resolves.toEqual({ success: true })
++      expect(spy).toHaveBeenCalledTimes(3)
++    })
++
++    it('throws last error after max attempts', async () => {
++      const networkError = new Error('Network error')
++      const spy = vi.spyOn(globalThis, 'fetch').mockRejectedValue(networkError)
++
++      const api = mande('/api/', { retry: { attempts: 2, delay: 10 } })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).rejects.toThrow('Network error')
++      expect(spy).toHaveBeenCalledTimes(2)
++    })
++  })
++
++  describe('HTTP status codes', () => {
++    it('retries on 500 status code', async () => {
++      let callCount = 0
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        callCount++
++        if (callCount < 2) {
++          return Promise.resolve(Response.json({}, { status: 500 }))
++        }
++        return Promise.resolve(Response.json({ success: true }))
++      })
++
++      const api = mande('/api/', { retry: { attempts: 2, delay: 10 } })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).resolves.toEqual({ success: true })
++      expect(spy).toHaveBeenCalledTimes(2)
++    })
++
++    it('retries on default retryable status codes', async () => {
++      const statusCodes = [429, 500, 502, 503, 504]
++      const spy = vi.spyOn(globalThis, 'fetch')
++
++      for (const status of statusCodes) {
++        let callCount = 0
++        spy.mockImplementation(() => {
++          callCount++
++          if (callCount < 2) {
++            return Promise.resolve(Response.json({}, { status }))
++          }
++          return Promise.resolve(Response.json({ success: true }))
++        })
++
++        const api = mande('/api/', { retry: { attempts: 2, delay: 10 } })
++        const promise = api.get('')
++
++        await vi.advanceTimersByTimeAsync(100)
++        await expect(promise).resolves.toEqual({ success: true })
++        expect(spy).toHaveBeenCalledTimes(2)
++        spy.mockClear()
++      }
++
++      spy.mockRestore()
++    })
++
++    it('does not retry on 4xx errors except configurable ones', async () => {
++      const spy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
++        Response.json({}, { status: 404 })
++      )
++
++      const api = mande('/api/', { retry: { attempts: 3, delay: 10 } })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).rejects.toThrow()
++      expect(spy).toHaveBeenCalledTimes(1)
++    })
++
++    it('retries on configurable status codes', async () => {
++      let callCount = 0
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        callCount++
++        if (callCount < 2) {
++          return Promise.resolve(Response.json({}, { status: 408 }))
++        }
++        return Promise.resolve(Response.json({ success: true }))
++      })
++
++      const api = mande('/api/', {
++        retry: { attempts: 2, delay: 10, statusCodes: [408] },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).resolves.toEqual({ success: true })
++      expect(spy).toHaveBeenCalledTimes(2)
++    })
++  })
++
++  describe('exponential backoff', () => {
++    it('applies exponential backoff between retries', async () => {
++      const delays: number[] = []
++      let lastCallTime = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        const now = Date.now()
++        if (lastCallTime > 0) {
++          delays.push(now - lastCallTime)
++        }
++        lastCallTime = now
++        return Promise.reject(new Error('Network error'))
++      })
++
++      const api = mande('/api/', { retry: { attempts: 3, delay: 100 } })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(1000)
++      await expect(promise).rejects.toThrow()
++      expect(spy).toHaveBeenCalledTimes(3)
++
++      expect(delays.length).toBe(2)
++      expect(delays[0]).toBeGreaterThanOrEqual(100)
++      expect(delays[0]).toBeLessThan(300)
++      expect(delays[1]).toBeGreaterThanOrEqual(200)
++      expect(delays[1]).toBeLessThan(500)
++    })
++
++    it('respects maxDelay cap', async () => {
++      const delays: number[] = []
++      let lastCallTime = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        const now = Date.now()
++        if (lastCallTime > 0) {
++          delays.push(now - lastCallTime)
++        }
++        lastCallTime = now
++        return Promise.reject(new Error('Network error'))
++      })
++
++      const api = mande('/api/', {
++        retry: { attempts: 5, delay: 1000, maxDelay: 2000 },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(10000)
++      await expect(promise).rejects.toThrow()
++
++      for (const delay of delays) {
++        expect(delay).toBeLessThanOrEqual(2000)
++      }
++    })
++
++    it('recognizes backoff option set to exponential', async () => {
++      const delays: number[] = []
++      let lastCallTime = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        const now = Date.now()
++        if (lastCallTime > 0) {
++          delays.push(now - lastCallTime)
++        }
++        lastCallTime = now
++        return Promise.reject(new Error('Network error'))
++      })
++
++      const api = mande('/api/', {
++        retry: { attempts: 3, delay: 100, backoff: 'exponential' },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(1000)
++      await expect(promise).rejects.toThrow()
++      expect(spy).toHaveBeenCalledTimes(3)
++
++      expect(delays.length).toBe(2)
++      expect(delays[0]).toBeGreaterThanOrEqual(100)
++      expect(delays[0]).toBeLessThan(300)
++      expect(delays[1]).toBeGreaterThanOrEqual(200)
++      expect(delays[1]).toBeLessThan(500)
++    })
++  })
++
++  describe('jitter', () => {
++    it('does not apply jitter by default', async () => {
++      const delays: number[] = []
++      let lastCallTime = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        const now = Date.now()
++        if (lastCallTime > 0) {
++          delays.push(now - lastCallTime)
++        }
++        lastCallTime = now
++        return Promise.reject(new Error('Network error'))
++      })
++
++      const api = mande('/api/', {
++        retry: { attempts: 3, delay: 100 },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(1000)
++      await expect(promise).rejects.toThrow()
++
++      expect(delays.length).toBe(2)
++      expect(delays[0]).toBeGreaterThanOrEqual(100)
++      expect(delays[0]).toBeLessThan(110)
++      expect(delays[1]).toBeGreaterThanOrEqual(200)
++      expect(delays[1]).toBeLessThan(210)
++    })
++
++    it('applies full jitter to delays when jitter is true', async () => {
++      const delays: number[] = []
++      let lastCallTime = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        const now = Date.now()
++        if (lastCallTime > 0) {
++          delays.push(now - lastCallTime)
++        }
++        lastCallTime = now
++        return Promise.reject(new Error('Network error'))
++      })
++
++      const api = mande('/api/', {
++        retry: { attempts: 3, delay: 100, jitter: true },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(1000)
++      await expect(promise).rejects.toThrow()
++
++      expect(delays.length).toBe(2)
++      const firstDelay = delays[0]
++      const secondDelay = delays[1]
++
++      expect(firstDelay).toBeGreaterThan(0)
++      expect(firstDelay).toBeLessThan(200)
++      expect(secondDelay).toBeGreaterThan(0)
++      expect(secondDelay).toBeLessThan(400)
++    })
++
++    it('applies full jitter when jitter is "full"', async () => {
++      const delays: number[] = []
++      let lastCallTime = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        const now = Date.now()
++        if (lastCallTime > 0) {
++          delays.push(now - lastCallTime)
++        }
++        lastCallTime = now
++        return Promise.reject(new Error('Network error'))
++      })
++
++      const api = mande('/api/', {
++        retry: { attempts: 3, delay: 100, jitter: 'full' },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(1000)
++      await expect(promise).rejects.toThrow()
++
++      expect(delays.length).toBe(2)
++      const firstDelay = delays[0]
++      const secondDelay = delays[1]
++
++      expect(firstDelay).toBeGreaterThan(0)
++      expect(firstDelay).toBeLessThan(200)
++      expect(secondDelay).toBeGreaterThan(0)
++      expect(secondDelay).toBeLessThan(400)
++      expect(spy).toHaveBeenCalledTimes(3)
++    })
++
++    it('applies equal jitter when jitter is "equal"', async () => {
++      const delays: number[] = []
++      let lastCallTime = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        const now = Date.now()
++        if (lastCallTime > 0) {
++          delays.push(now - lastCallTime)
++        }
++        lastCallTime = now
++        return Promise.reject(new Error('Network error'))
++      })
++
++      const api = mande('/api/', {
++        retry: { attempts: 3, delay: 100, jitter: 'equal' },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(1000)
++      await expect(promise).rejects.toThrow()
++
++      expect(delays.length).toBe(2)
++      const firstDelay = delays[0]
++      const secondDelay = delays[1]
++
++      expect(firstDelay).toBeGreaterThanOrEqual(50)
++      expect(firstDelay).toBeLessThan(200)
++      expect(secondDelay).toBeGreaterThanOrEqual(100)
++      expect(secondDelay).toBeLessThan(400)
++      expect(spy).toHaveBeenCalledTimes(3)
++    })
++  })
++
++  describe('custom retry condition', () => {
++    it('uses shouldRetry function to determine retry', async () => {
++      let callCount = 0
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        callCount++
++        if (callCount < 2) {
++          return Promise.resolve(Response.json({}, { status: 400 }))
++        }
++        return Promise.resolve(Response.json({ success: true }))
++      })
++
++      const api = mande('/api/', {
++        retry: {
++          attempts: 2,
++          delay: 10,
++          shouldRetry: (error, attempt) => {
++            if (isMandeError(error) && error.response.status === 400) {
++              return attempt < 2
++            }
++            return false
++          },
++        },
++      })
++      const promise = api.get('')
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).resolves.toEqual({ success: true })
++      expect(spy).toHaveBeenCalledTimes(2)
++    })
++  })
++
++  describe('AbortSignal', () => {
++    it('cancels retries when AbortSignal is aborted', async () => {
++      const spy = vi.spyOn(globalThis, 'fetch').mockRejectedValue(
++        new Error('Network error')
++      )
++
++      const controller = new AbortController()
++      const api = mande('/api/', { retry: { attempts: 5, delay: 100 } })
++      const promise = api.get('', { signal: controller.signal })
++
++      await vi.advanceTimersByTimeAsync(50)
++      controller.abort()
++
++      await vi.advanceTimersByTimeAsync(1000)
++      await expect(promise).rejects.toThrow()
++
++      expect(spy).toHaveBeenCalledTimes(1)
++    })
++  })
++
++  describe('per-request configuration', () => {
++    it('overrides instance-level retry configuration', async () => {
++      let callCount = 0
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        callCount++
++        if (callCount < 2) {
++          return Promise.reject(new Error('Network error'))
++        }
++        return Promise.resolve(Response.json({ success: true }))
++      })
++
++      const api = mande('/api/', { retry: { attempts: 1, delay: 10 } })
++      const promise = api.get('', { retry: { attempts: 2, delay: 10 } })
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).resolves.toEqual({ success: true })
++      expect(spy).toHaveBeenCalledTimes(2)
++    })
++
++    it('disables retry per-request when retry is false', async () => {
++      const spy = vi.spyOn(globalThis, 'fetch').mockRejectedValue(
++        new Error('Network error')
++      )
++
++      const api = mande('/api/', { retry: { attempts: 3, delay: 10 } })
++      const promise = api.get('', { retry: false })
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).rejects.toThrow()
++      expect(spy).toHaveBeenCalledTimes(1)
++    })
++  })
++
++  describe('request preservation', () => {
++    it('preserves request options and body across retries', async () => {
++      let callCount = 0
++      const requestBody = { name: 'test', value: 123 }
++      const customHeader = 'custom-value'
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation((url, options) => {
++        callCount++
++        if (callCount < 2) {
++          return Promise.reject(new Error('Network error'))
++        }
++        expect(options?.headers?.['X-Custom']).toBe(customHeader)
++        expect(options?.body).toBe(JSON.stringify(requestBody))
++        return Promise.resolve(Response.json({ success: true }))
++      })
++
++      const api = mande('/api/', { retry: { attempts: 2, delay: 10 } })
++      const promise = api.post('', requestBody, {
++        headers: { 'X-Custom': customHeader },
++      })
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).resolves.toEqual({ success: true })
++      expect(spy).toHaveBeenCalledTimes(2)
++    })
++  })
++
++  describe('interceptor integration', () => {
++    it('retries work with interceptors', async () => {
++      let callCount = 0
++
++      const spy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
++        callCount++
++        if (callCount < 2) {
++          return Promise.reject(new Error('Network error'))
++        }
++        return Promise.resolve(Response.json({ success: true }))
++      })
++
++      const api = mande('/api/', { retry: { attempts: 2, delay: 10 } })
++      const apiWithInterceptors = withInterceptors(api)
++
++      const promise = apiWithInterceptors.get('')
++
++      await vi.advanceTimersByTimeAsync(100)
++      await expect(promise).resolves.toEqual({ success: true })
++      expect(spy).toHaveBeenCalledTimes(2)
++    })
++  })
++
++  describe('backward compatibility', () => {
++    it('does not retry when retry is not configured', async () => {
++      const spy = vi.spyOn(globalThis, 'fetch').mockRejectedValue(
++        new Error('Network error')
++      )
++
++      const api = mande('/api/')
++      const promise = api.get('')
++
++      await expect(promise).rejects.toThrow('Network error')
++      expect(spy).toHaveBeenCalledTimes(1)
++    })
++
++    it('maintains backward compatibility when retry is not configured', async () => {
++      const spy = vi
++        .spyOn(globalThis, 'fetch')
++        .mockResolvedValue(Response.json({}))
++      let api = mande('/api/')
++      await expect(api.get('')).resolves.toEqual({})
++      expect(spy).toHaveBeenCalledTimes(1)
++    })
++  })
++})
+diff --git a/test.sh b/test.sh
+new file mode 100755
+index 0000000..06d7ae4
+--- /dev/null
++++ b/test.sh
+@@ -0,0 +1,13 @@
++#!/bin/bash
++
++set -e
++
++if [ "$1" = "base" ]; then
++  pnpm test:unit run __tests__/index.spec.ts
++elif [ "$1" = "new" ]; then
++  pnpm test:unit run __tests__/retry.spec.ts
++else
++  echo "Usage: $0 [base|new]"
++  exit 1
++fi
++

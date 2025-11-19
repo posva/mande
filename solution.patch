@@ -1,0 +1,281 @@
+diff --git a/src/mande.ts b/src/mande.ts
+index 0115eb0..c2b3d3a 100644
+--- a/src/mande.ts
++++ b/src/mande.ts
+@@ -1,3 +1,37 @@
++/**
++ * Retry configuration options
++ */
++export interface RetryOptions {
++  /**
++   * Total number of attempts including the initial request
++   */
++  attempts: number
++  /**
++   * Base delay in milliseconds
++   */
++  delay: number
++  /**
++   * Maximum delay cap in milliseconds
++   */
++  maxDelay?: number
++  /**
++   * Backoff strategy. Defaults to 'exponential'
++   */
++  backoff?: string
++  /**
++   * Jitter mode: true or 'full' for full jitter, 'equal' for equal jitter, false to disable
++   */
++  jitter?: boolean | 'full' | 'equal'
++  /**
++   * HTTP status codes that should trigger retry
++   */
++  statusCodes?: number[]
++  /**
++   * Custom function to determine if retry should occur
++   */
++  shouldRetry?: (error: any, attempt: number) => boolean
++}
++
+ /**
+  * Allowed options for a request. Extends native `RequestInit`.
+  */
+@@ -23,6 +57,11 @@ export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes>
+    * Optional function to stringify the body of the request for POST and PUT requests. Defaults to `JSON.stringify`.
+    */
+   stringify?: (data: unknown) => string
++
++  /**
++   * Retry configuration. Set to false to disable retry for this request.
++   */
++  retry?: RetryOptions | false
+ }
+ 
+ export type ResponseAsTypes = 'json' | 'text' | 'response'
+@@ -39,6 +78,11 @@ export interface OptionsRaw<R extends ResponseAsTypes = ResponseAsTypes>
+    * because it can only be used once.
+    */
+   signal?: never
++
++  /**
++   * Retry configuration for instance-level defaults
++   */
++  retry?: RetryOptions
+ }
+ 
+ /**
+@@ -264,6 +308,81 @@ function removeNullishValues(
+   )
+ }
+ 
++/**
++ * Default retryable status codes
++ */
++const DEFAULT_RETRYABLE_STATUS_CODES = [429, 500, 502, 503, 504]
++
++/**
++ * Calculate exponential backoff delay
++ */
++function calculateBackoffDelay(
++  baseDelay: number,
++  attemptNumber: number,
++  maxDelay?: number
++): number {
++  // Exponential backoff: delay * 2^attemptNumber
++  const delay = baseDelay * Math.pow(2, attemptNumber)
++  const cappedDelay = maxDelay ? Math.min(delay, maxDelay) : delay
++  return cappedDelay
++}
++
++/**
++ * Apply jitter to delay
++ */
++function applyJitter(
++  delay: number,
++  jitter: boolean | 'full' | 'equal' | undefined
++): number {
++  if (!jitter || jitter === false) {
++    return delay
++  }
++
++  if (jitter === 'full') {
++    // Full jitter: random between 0 and delay
++    return Math.random() * delay
++  }
++
++  if (jitter === 'equal' || jitter === true) {
++    // Equal jitter: random between delay/2 and delay
++    const minDelay = delay / 2
++    return minDelay + Math.random() * (delay - minDelay)
++  }
++
++  return delay
++}
++
++/**
++ * Check if error should trigger retry
++ */
++function shouldRetryError(
++  error: any,
++  attempt: number,
++  retryConfig: RetryOptions
++): boolean {
++  // Check custom shouldRetry function first
++  if (retryConfig.shouldRetry) {
++    return retryConfig.shouldRetry(error, attempt)
++  }
++
++  // Network errors (fetch failures, timeouts) should always retry
++  if (!isMandeError(error)) {
++    return true
++  }
++
++  // Check status codes
++  const statusCodes =
++    retryConfig.statusCodes || DEFAULT_RETRYABLE_STATUS_CODES
++  return statusCodes.includes(error.response.status)
++}
++
++/**
++ * Sleep for specified milliseconds
++ */
++function sleep(ms: number): Promise<void> {
++  return new Promise((resolve) => setTimeout(resolve, ms))
++}
++
+ /**
+  * Used internally for merged options.
+  * @internal
+@@ -387,30 +506,120 @@ export function mande(
+       )
+     }
+ 
+-    return localFetch(url, mergedOptions)
+-      .then((response) =>
+-        // This is to get the response directly in the next then
+-        Promise.all([
+-          response,
++    // Determine retry configuration
++    const retryConfig =
++      mergedOptions.retry === false
++        ? undefined
++        : mergedOptions.retry || instanceOptions.retry
++
++    // If retry is not configured, use original behavior
++    if (!retryConfig) {
++      return localFetch(url, mergedOptions)
++        .then((response) =>
++          // This is to get the response directly in the next then
++          Promise.all([
++            response,
++            responseAs === 'response'
++              ? response
++              : // TODO: propagate error data to MandeError
++                response[responseAs]().catch(() => null),
++          ])
++        )
++        .then(([response, dataOrError]) => {
++          if (response.status >= 200 && response.status < 300) {
++            // data is a raw response when responseAs is response
++            return responseAs !== 'response' && response.status == 204
++              ? null
++              : dataOrError
++          }
++          // Has better browser support and is way smaller than `class MandeError extends Error`
++          let err = new Error(response.statusText) as MandeError
++          err.response = response
++          err.body = dataOrError
++          throw err
++        })
++    }
++
++    // Retry logic - wrap in async IIFE to use await
++    return (async () => {
++      const maxAttempts = retryConfig.attempts
++      let lastError: any
++
++      // Create a function to execute a single fetch attempt
++      const executeFetch = async (): Promise<any> => {
++        // Ensure network errors are properly caught and re-thrown
++        const response = await localFetch(url, mergedOptions).catch((error) => {
++          throw error
++        })
++
++        const dataOrError =
+           responseAs === 'response'
+             ? response
+-            : // TODO: propagate error data to MandeError
+-              response[responseAs]().catch(() => null),
+-        ])
+-      )
+-      .then(([response, dataOrError]) => {
++            : await response[responseAs]().catch(() => null)
++
+         if (response.status >= 200 && response.status < 300) {
+-          // data is a raw response when responseAs is response
+           return responseAs !== 'response' && response.status == 204
+             ? null
+             : dataOrError
+         }
++
+         // Has better browser support and is way smaller than `class MandeError extends Error`
+         let err = new Error(response.statusText) as MandeError
+         err.response = response
+         err.body = dataOrError
+         throw err
+-      })
++      }
++
++      // Retry loop
++      for (let attempt = 0; attempt < maxAttempts; attempt++) {
++        try {
++          // Check if AbortSignal is aborted before attempting
++          if (mergedOptions.signal?.aborted) {
++            throw new DOMException('The operation was aborted.', 'AbortError')
++          }
++
++          const result = await executeFetch()
++          return result
++        } catch (error: any) {
++          lastError = error
++
++          // Don't retry if it's an AbortError
++          if (error.name === 'AbortError') {
++            throw error
++          }
++
++          // Check if AbortSignal is aborted
++          if (mergedOptions.signal?.aborted) {
++            throw new DOMException('The operation was aborted.', 'AbortError')
++          }
++
++          // Check if we should retry
++          const isLastAttempt = attempt === maxAttempts - 1
++          if (isLastAttempt || !shouldRetryError(error, attempt, retryConfig)) {
++            throw error
++          }
++
++          // Calculate delay for next retry (attempt is 0-indexed, so attempt 0 means first retry)
++          const backoffDelay = calculateBackoffDelay(
++            retryConfig.delay,
++            attempt,
++            retryConfig.maxDelay
++          )
++          const jitteredDelay = applyJitter(backoffDelay, retryConfig.jitter)
++
++          // Wait before retrying
++          await sleep(jitteredDelay)
++
++          // Check again if AbortSignal is aborted after delay
++          if (mergedOptions.signal?.aborted) {
++            throw new DOMException('The operation was aborted.', 'AbortError')
++          }
++        }
++      }
++
++      // This should never be reached, but TypeScript needs it
++      throw lastError
++    })()
+   }
+ 
+   const instanceOptions: MandeInstance['options'] = {
