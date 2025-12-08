@@ -36,7 +36,7 @@
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.2.1",
     "@nuxt/test-utils": "^3.20.1",
-    "@types/node": "^22.19.1",
+    "@types/node": "^24.10.1",
     "eslint": "^9.39.1",
     "nuxt": "^4.2.1",
     "vue-tsc": "^3.1.5"
