@@ -17,7 +17,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@v6
         with:
-          node-version: 24.11.1
+          node-version: 24.14.0
 
       - name: Install dependencies
         run: npx nypm@latest i
@@ -33,7 +33,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@v6
         with:
-          node-version: 24.11.1
+          node-version: 24.14.0
 
       - name: Install dependencies
         run: npx nypm@latest i

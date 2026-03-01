@@ -28,17 +28,17 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.2.1"
+    "@nuxt/kit": "^4.3.1"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^3.1.0",
-    "@nuxt/eslint-config": "^1.10.0",
+    "@nuxt/devtools": "^3.2.2",
+    "@nuxt/eslint-config": "^1.15.2",
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.2.1",
+    "@nuxt/schema": "^4.3.1",
     "@nuxt/test-utils": "^4.0.0",
-    "@types/node": "^24.10.1",
-    "eslint": "^10.0.0",
-    "nuxt": "^4.2.1",
-    "vue-tsc": "^3.1.5"
+    "@types/node": "^24.11.0",
+    "eslint": "^10.0.2",
+    "nuxt": "^4.3.1",
+    "vue-tsc": "^3.2.5"
   }
 }
