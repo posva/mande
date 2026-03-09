@@ -87,7 +87,7 @@
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
-    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-terser": "^1.0.0",
     "@size-limit/preset-small-lib": "^12.0.0",
     "@vitest/coverage-v8": "^4.0.16",
     "camelcase": "^9.0.0",
