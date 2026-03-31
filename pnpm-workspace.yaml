@@ -1,6 +1,8 @@
 packages:
   - nuxt-module
 
+ignoredBuiltDependencies:
+  - unrs-resolver
+
 onlyBuiltDependencies:
-  # - esbuild
-  # - unrs-resolver
+  - esbuild
