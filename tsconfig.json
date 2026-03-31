@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "target": "esnext",
     "module": "esnext",
     "noEmit": true,
@@ -7,11 +8,7 @@
     "composite": true,
     "esModuleInterop": true,
     "moduleResolution": "Bundler",
-    "skipLibCheck": true,
-    "rootDir": ".",
-    "baseUrl": "."
+    "skipLibCheck": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
