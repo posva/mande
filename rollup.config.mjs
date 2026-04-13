@@ -34,7 +34,7 @@ function createEntry(
     env: 'development',
     minify: false,
     isBrowser: false,
-  }
+  },
 ) {
   // force production mode when minifying
   if (minify) env = 'production'
@@ -88,7 +88,7 @@ function createEntry(
           target: format === 'es' && !isBrowser ? 'esnext' : 'es2015',
         },
       },
-    })
+    }),
   )
 
   tsChecked = true
@@ -97,7 +97,7 @@ function createEntry(
     config.plugins.push(
       terser({
         module: format === 'es',
-      })
+      }),
     )
     config.output.file = config.output.file.replace(/\.([mc]?js)$/i, '.prod.$1')
   }
@@ -113,11 +113,12 @@ const builds = [
   createEntry({ format: 'cjs', minify: true }),
 ]
 
-if (pkg.unpkg)
+if (pkg.unpkg) {
   builds.push(
     createEntry({ format: 'iife' }),
     createEntry({ format: 'iife', minify: true }),
-    createEntry({ format: 'es', minify: true })
+    createEntry({ format: 'es', minify: true }),
   )
+}
 
 export default builds

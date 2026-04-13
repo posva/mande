@@ -1,8 +1,7 @@
 /**
  * Allowed options for a request. Extends native `RequestInit`.
  */
-export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes>
-  extends RequestInit {
+export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes> extends RequestInit {
   /**
    * Optional query object. Does not support arrays. Will get stringified
    */
@@ -27,8 +26,10 @@ export interface Options<ResponseAs extends ResponseAsTypes = ResponseAsTypes>
 
 export type ResponseAsTypes = 'json' | 'text' | 'response'
 
-export interface OptionsRaw<R extends ResponseAsTypes = ResponseAsTypes>
-  extends Omit<Options<R>, 'headers' | 'signal'> {
+export interface OptionsRaw<R extends ResponseAsTypes = ResponseAsTypes> extends Omit<
+  Options<R>,
+  'headers' | 'signal'
+> {
   /**
    * Headers sent alongside the request. Set any header to null to remove it.
    */
@@ -61,15 +62,8 @@ export function isMandeError(err: any): err is MandeError {
  * Response type of a Mande request based on `responseAs` option. . If `responseAs` is set to `response`, it will return
    the raw `Response` object.
  */
-export type MandeResponse<
-  T = unknown,
-  ResponseType extends ResponseAsTypes = 'json',
-> = Promise<
-  ResponseType extends 'response'
-    ? Response
-    : ResponseType extends 'text'
-      ? string
-      : T
+export type MandeResponse<T = unknown, ResponseType extends ResponseAsTypes = 'json'> = Promise<
+  ResponseType extends 'response' ? Response : ResponseType extends 'text' ? string : T
 >
 
 /**
@@ -90,9 +84,7 @@ export interface MandeInstance {
    * ```
    * @param options - optional {@link Options}
    */
-  get<T = unknown, R extends ResponseAsTypes = 'json'>(
-    options?: Options<R>
-  ): MandeResponse<T, R>
+  get<T = unknown, R extends ResponseAsTypes = 'json'>(options?: Options<R>): MandeResponse<T, R>
 
   /**
    * Sends a GET request to the given url.
@@ -106,7 +98,7 @@ export interface MandeInstance {
    */
   get<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
 
   /**
@@ -121,7 +113,7 @@ export interface MandeInstance {
    */
   post<T = unknown, R extends ResponseAsTypes = 'json'>(
     data?: any,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
   /**
    * Sends a POST request to the given url.
@@ -137,7 +129,7 @@ export interface MandeInstance {
   post<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
 
   /**
@@ -152,7 +144,7 @@ export interface MandeInstance {
    */
   put<T = unknown, R extends ResponseAsTypes = 'json'>(
     data?: any,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
   /**
    * Sends a PUT request to the given url.
@@ -168,7 +160,7 @@ export interface MandeInstance {
   put<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
 
   /**
@@ -183,7 +175,7 @@ export interface MandeInstance {
    */
   patch<T = unknown, R extends ResponseAsTypes = 'json'>(
     data?: any,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
   /**
    * Sends a PATCH request to the given url.
@@ -196,7 +188,7 @@ export interface MandeInstance {
   patch<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
     data?: any,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
 
   /**
@@ -208,9 +200,7 @@ export interface MandeInstance {
    * ```
    * @param options - optional {@link Options}
    */
-  delete<T = unknown, R extends ResponseAsTypes = 'json'>(
-    options?: Options<R>
-  ): MandeResponse<T, R>
+  delete<T = unknown, R extends ResponseAsTypes = 'json'>(options?: Options<R>): MandeResponse<T, R>
   /**
    * Sends a DELETE request to the given url.
    *
@@ -223,7 +213,7 @@ export interface MandeInstance {
    */
   delete<T = unknown, R extends ResponseAsTypes = 'json'>(
     url: string | number,
-    options?: Options<R>
+    options?: Options<R>,
   ): MandeResponse<T, R>
 }
 
@@ -250,7 +240,7 @@ function joinURL(base: string, url: string): string {
 }
 
 function removeNullishValues(
-  headers: Exclude<OptionsRaw['headers'], undefined>
+  headers: Exclude<OptionsRaw['headers'], undefined>,
 ): Exclude<Options['headers'], undefined> {
   return Object.keys(headers).reduce(
     (newHeaders, headerName) => {
@@ -260,7 +250,7 @@ function removeNullishValues(
       }
       return newHeaders
     },
-    {} as Exclude<Options['headers'], undefined>
+    {} as Exclude<Options['headers'], undefined>,
   )
 }
 
@@ -292,8 +282,7 @@ export const defaults: _OptionsDefaults = {
  *
  * @internal
  */
-export type _OptionsMerged = _OptionsDefaults &
-  Pick<Required<Options>, 'method'>
+export type _OptionsMerged = _OptionsDefaults & Pick<Required<Options>, 'method'>
 
 /**
  * Create a Mande instance
@@ -312,7 +301,7 @@ export type _OptionsMerged = _OptionsDefaults &
 export function mande(
   baseURL: string,
   passedInstanceOptions: OptionsRaw = {},
-  fetchPolyfill?: Window['fetch']
+  fetchPolyfill?: Window['fetch'],
 ): MandeInstance {
   function _fetch(
     method: string,
@@ -320,7 +309,7 @@ export function mande(
     urlOrDataOrOptions?: string | number | Options | any,
     // data for POST/PUT/PATCH, and options for all (without url or data)
     dataOrOptions?: Options | any,
-    localOptions: Options = {}
+    localOptions: Options = {},
   ) {
     let url: string | number
     let data: any
@@ -374,17 +363,14 @@ export function mande(
     // only stringify body if it's a POST/PUT/PATCH, otherwise it could be the options object
     // it's not used by GET/DELETE but it would also be wasteful
     if (method[0] === 'P' && data && !mergedOptions.body) {
-      mergedOptions.body =
-        data instanceof FormData ? data : mergedOptions.stringify(data)
+      mergedOptions.body = data instanceof FormData ? data : mergedOptions.stringify(data)
     }
 
     // we check the localFetch here to account for global fetch polyfills and msw in tests
     const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
 
     if (!localFetch) {
-      throw new Error(
-        'No fetch function exists. Make sure to include a polyfill on Node.js.'
-      )
+      throw new Error('No fetch function exists. Make sure to include a polyfill on Node.js.')
     }
 
     return localFetch(url, mergedOptions)
@@ -396,14 +382,12 @@ export function mande(
             ? response
             : // TODO: propagate error data to MandeError
               response[responseAs]().catch(() => null),
-        ])
+        ]),
       )
       .then(([response, dataOrError]) => {
         if (response.status >= 200 && response.status < 300) {
           // data is a raw response when responseAs is response
-          return responseAs !== 'response' && response.status == 204
-            ? null
-            : dataOrError
+          return responseAs !== 'response' && response.status == 204 ? null : dataOrError
         }
         // Has better browser support and is way smaller than `class MandeError extends Error`
         let err = new Error(response.statusText) as MandeError
@@ -426,8 +410,7 @@ export function mande(
     patch: _fetch.bind(null, 'PATCH'),
 
     // these two have no body
-    get: (url?: string | number | Options, options?: Options) =>
-      _fetch('GET', url, null, options),
+    get: (url?: string | number | Options, options?: Options) => _fetch('GET', url, null, options),
     delete: (url?: string | number | Options, options?: Options) =>
       _fetch('DELETE', url, null, options),
   }
@@ -451,30 +434,29 @@ export function mande(
  * @param api - Mande instance to wrap
  * @param fn - function to be wrapped
  */
-export function nuxtWrap<
-  M extends MandeInstance,
-  F extends (api: M, ...args: any[]) => any,
->(api: M, fn: F): (...args: Parameters<F>) => ReturnType<F> {
+export function nuxtWrap<M extends MandeInstance, F extends (api: M, ...args: any[]) => any>(
+  api: M,
+  fn: F,
+): (...args: Parameters<F>) => ReturnType<F> {
   // args for the api call + 1 because of api parameter
   const argsAmount = fn.length
 
-  const wrappedCall: (...args: Parameters<F>) => ReturnType<F> =
-    function _wrappedCall() {
-      let apiInstance: M = api
-      let args = Array.from(arguments) as Parameters<F>
-      // call from nuxt server with a function to augment the api instance
-      if (arguments.length === argsAmount) {
-        apiInstance = { ...api }
+  const wrappedCall: (...args: Parameters<F>) => ReturnType<F> = function _wrappedCall() {
+    let apiInstance: M = api
+    let args = Array.from(arguments) as Parameters<F>
+    // call from nuxt server with a function to augment the api instance
+    if (arguments.length === argsAmount) {
+      apiInstance = { ...api }
 
-        // remove the first argument
-        const [augmentApiInstance] = args.splice(0, 1) as [(api: M) => void]
+      // remove the first argument
+      const [augmentApiInstance] = args.splice(0, 1) as [(api: M) => void]
 
-        // let the caller augment the instance
-        augmentApiInstance(apiInstance)
-      }
-
-      return fn.call(null, apiInstance, ...args)
+      // let the caller augment the instance
+      augmentApiInstance(apiInstance)
     }
+
+    return fn(apiInstance, ...args)
+  }
 
   return wrappedCall
 }

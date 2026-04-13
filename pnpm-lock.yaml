@@ -47,6 +47,12 @@ importers:
       oxfmt:
         specifier: ^0.44.0
         version: 0.44.0
+      oxlint:
+        specifier: ^1.59.0
+        version: 1.59.0
+      oxlint-plugin-posva:
+        specifier: ^0.0.1
+        version: 0.0.1
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
@@ -1420,6 +1426,10 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [win32]
+
+  '@oxlint/plugins@1.59.0':
+    resolution: {integrity: sha512-KIEedExMc60HKrkZi79403NbSgnJUyC9w6dCsqrY45ygIPzEyFdpxboiTyI8ZjeEw6Os03bspgZBfm6/fZbkOg==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   '@parcel/watcher-android-arm64@2.4.1':
     resolution: {integrity: sha512-LOi/WTbbh3aTn2RYddrO8pnapixAziFl6SMxHM69r3tvdSm94JtCenaKgk1GRg5FJ5wpMCpHeW+7yqPlvZv7kg==}
@@ -4122,6 +4132,9 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
+  oxlint-plugin-posva@0.0.1:
+    resolution: {integrity: sha512-2zwUbkaH/wmd44Q2Bhr71Yyi28Y2LR/LACp6iRQvqvFxNDjoIW2B4i6oivVO5xTvdwgerATEtVInMCaF5JwEdg==}
+
   oxlint@1.59.0:
     resolution: {integrity: sha512-0xBLeGGjP4vD9pygRo8iuOkOzEU1MqOnfiOl7KYezL/QvWL8NUg6n03zXc7ZVqltiOpUxBk2zgHI3PnRIEdAvw==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -6820,6 +6833,8 @@ snapshots:
 
   '@oxlint/binding-win32-x64-msvc@1.59.0':
     optional: true
+
+  '@oxlint/plugins@1.59.0': {}
 
   '@parcel/watcher-android-arm64@2.4.1':
     optional: true
@@ -9879,6 +9894,10 @@ snapshots:
       '@oxfmt/binding-win32-ia32-msvc': 0.44.0
       '@oxfmt/binding-win32-x64-msvc': 0.44.0
 
+  oxlint-plugin-posva@0.0.1:
+    dependencies:
+      '@oxlint/plugins': 1.59.0
+
   oxlint@1.59.0:
     optionalDependencies:
       '@oxlint/binding-android-arm-eabi': 1.59.0
@@ -9900,7 +9919,6 @@ snapshots:
       '@oxlint/binding-win32-arm64-msvc': 1.59.0
       '@oxlint/binding-win32-ia32-msvc': 1.59.0
       '@oxlint/binding-win32-x64-msvc': 1.59.0
-    optional: true
 
   p-limit@2.3.0:
     dependencies:
