@@ -1,4 +1,4 @@
-import { MandeError, MandeInstance, _OptionsMerged } from './mande'
+import type { MandeError, MandeInstance, _OptionsMerged } from './mande'
 
 /**
  * Mande instance with interceptors.

@@ -1,5 +1,4 @@
-export {
-  // types
+export type {
   MandeError,
   MandeInstance,
   MandeResponse,
@@ -10,9 +9,6 @@ export {
   // internal types
   _OptionsDefaults,
   _OptionsMerged,
-
-  // values
-  defaults,
-  mande,
-  nuxtWrap,
 } from './mande'
+
+export { defaults, mande, nuxtWrap, isMandeError } from './mande'
