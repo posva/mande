@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "target": "esnext",
-    "module": "esnext",
-    "noEmit": true,
-    "strict": true,
-    "composite": true,
-    "esModuleInterop": true,
-    "moduleResolution": "Bundler",
-    "skipLibCheck": true
+    "lib": ["esnext", "dom"],
+    "module": "Preserve",
+    "moduleResolution": "Bundler"
   },
-  "include": ["src"]
+  "references": [
+    {
+      "path": "./tsconfig.build.json"
+    }
+  ],
+  "files": []
 }
