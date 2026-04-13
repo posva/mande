@@ -1,0 +1,112 @@
+name: Publish to npm
+
+# When releasing for the first time, you first need to publish manually a 0.0.0
+#
+# npm login
+# npm publish
+#
+# Add "repository": "posva/mande", to package.json
+# Go to the settings page on npm: https://www.npmjs.com/package/mande/access
+# Set the Trusted Published, add an environment if added on GitHub repository settings / Environments
+# Disallow tokens
+#
+# Update this file:
+# - use environment if set
+# - Adapt the if condition that prevents running on forks
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: |
+      startsWith(github.ref_name, 'v') &&
+      github.repository == 'posva/mande'
+
+    environment: release
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Resolve tag info
+        id: resolve
+        run: |
+          echo "Resolving tag info…"
+
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "Current tag: $TAG"
+          echo "TAG=$TAG" >>$GITHUB_OUTPUT
+
+          # Compute previous tag (skip current tag)
+          echo "Finding previous tag using: git describe --match 'v*'"
+
+          set +e
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 --match "v*" "${TAG}^" 2>/dev/null)
+          STATUS=$?
+          set -e
+
+          if [[ $STATUS -eq 0 ]]; then
+            echo "Found previous tag: $PREVIOUS_TAG"
+          else
+            echo "No previous tag found. Using first commit."
+            PREVIOUS_TAG=$(git rev-list --max-parents=0 HEAD)
+          fi
+
+          echo "PREVIOUS_TAG=$PREVIOUS_TAG" >>$GITHUB_OUTPUT
+
+          # Determine npm dist-tag
+          VERSION="${TAG#v}"
+          if [[ "$VERSION" =~ -beta ]]; then
+            NPM_TAG="beta"
+          elif [[ "$VERSION" =~ -alpha ]]; then
+            NPM_TAG="alpha"
+          elif [[ "$VERSION" =~ -rc ]]; then
+            NPM_TAG="rc"
+          else
+            NPM_TAG="latest"
+          fi
+
+          echo "NPM_TAG=$NPM_TAG" >>$GITHUB_OUTPUT
+
+          echo "Resolved:"
+          echo "  TAG=$TAG"
+          echo "  PREVIOUS_TAG=$PREVIOUS_TAG"
+          echo "  NPM_TAG=$NPM_TAG"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        shell: bash
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build && pnpm run build:dts
+
+      - name: Publish to NPM
+        run: pnpm publish --access public --no-git-checks --tag ${{ steps.resolve.outputs.NPM_TAG }}
+
+      - name: Generate GitHub Changelog
+        run: pnpx changelogithub@14.0.0 --from "$FROM_TAG" --to "$TAG"
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.resolve.outputs.TAG }}
+          FROM_TAG: ${{ steps.resolve.outputs.PREVIOUS_TAG }}

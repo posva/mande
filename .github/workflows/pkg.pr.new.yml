@@ -1,0 +1,47 @@
+# Requires the pkg.pr.new GitHub App installed on your repo:
+# https://github.com/apps/pkg-pr-new/installations/select_target
+name: Publish Any Commit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'rollup.config.mjs'
+
+  push:
+    branches:
+      - main
+    tags:
+      - '!**'
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'rollup.config.mjs'
+
+jobs:
+  build:
+    if: "!startsWith(github.event.pull_request.title, 'renovate/')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build && pnpm run build:dts
+
+      - name: Release
+        run: pnpm dlx pkg-pr-new publish --compact --pnpm .
