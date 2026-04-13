@@ -9,7 +9,7 @@ on:
     paths:
       - 'src/**'
       - 'package.json'
-      - 'rollup.config.mjs'
+      - 'tsdown.config.ts'
 
   push:
     branches:
@@ -19,7 +19,7 @@ on:
     paths:
       - 'src/**'
       - 'package.json'
-      - 'rollup.config.mjs'
+      - 'tsdown.config.ts'
 
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm run build && pnpm run build:dts
+        run: pnpm run build
 
       - name: Release
         run: pnpm dlx pkg-pr-new publish --compact --pnpm .

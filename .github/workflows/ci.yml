@@ -24,7 +24,7 @@ jobs:
       - run: pnpm -C nuxt-module dev:prepare
       - run: pnpm run test:unit --coverage
       - run: pnpm run build
-      - run: pnpm run build:dts
+      - run: pnpm run test:types
       - run: pnpm run size
 
       - uses: codecov/codecov-action@v6
