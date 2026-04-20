@@ -37,8 +37,8 @@
     "@nuxt/schema": "^4.4.2",
     "@nuxt/test-utils": "^4.0.2",
     "@types/node": "^24.12.2",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "nuxt": "^4.4.2",
-    "vue-tsc": "^3.2.6"
+    "vue-tsc": "^3.2.7"
   }
 }
