@@ -2,7 +2,7 @@
   "name": "mande",
   "version": "2.0.9",
   "description": "800 bytes modern wrapper around fetch with smart defaults",
-  "packageManager": "pnpm@10.34.4",
+  "packageManager": "pnpm@11.9.0",
   "type": "module",
   "sideEffects": false,
   "types": "./dist/index.d.mts",
