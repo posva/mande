@@ -1,3 +1,13 @@
+## [2.0.10](https://github.com/posva/mande/compare/v2.0.9...v2.0.10) (2026-06-29)
+
+### Bug Fixes
+
+- always use the passed fetch function, assume it exists ([bcbb9d5](https://github.com/posva/mande/commit/bcbb9d507365d5163a4ce8e3ee899f14685bb9e5))
+
+### Features
+
+- add isMandeError ([e3d6cf7](https://github.com/posva/mande/commit/e3d6cf732d32e9172510524661ffb2c94dcb47a1))
+
 ## [2.0.9](https://github.com/posva/mande/compare/v2.0.8...v2.0.9) (2024-05-12)
 
 ### Reverts
