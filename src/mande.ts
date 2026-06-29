@@ -301,9 +301,9 @@ export type _OptionsMerged = _OptionsDefaults & Pick<Required<Options>, 'method'
 export function mande(
   baseURL: string,
   passedInstanceOptions: OptionsRaw = {},
-  fetchPolyfill?: Window['fetch'],
+  localFetch: Window['fetch'] = globalThis.fetch,
 ): MandeInstance {
-  function _fetch(
+  function fetcher(
     method: string,
     // url can be any method, data for POST/PUT/PATCH, and options for all (without url or data)
     urlOrDataOrOptions?: string | number | Options | any,
@@ -366,13 +366,6 @@ export function mande(
       mergedOptions.body = data instanceof FormData ? data : mergedOptions.stringify(data)
     }
 
-    // we check the localFetch here to account for global fetch polyfills and msw in tests
-    const localFetch = typeof fetch != 'undefined' ? fetch : fetchPolyfill!
-
-    if (!localFetch) {
-      throw new Error('No fetch function exists. Make sure to include a polyfill on Node.js.')
-    }
-
     return localFetch(url, mergedOptions)
       .then((response) =>
         // This is to get the response directly in the next then
@@ -405,14 +398,14 @@ export function mande(
 
   return {
     options: instanceOptions,
-    post: _fetch.bind(null, 'POST'),
-    put: _fetch.bind(null, 'PUT'),
-    patch: _fetch.bind(null, 'PATCH'),
+    post: fetcher.bind(null, 'POST'),
+    put: fetcher.bind(null, 'PUT'),
+    patch: fetcher.bind(null, 'PATCH'),
 
     // these two have no body
-    get: (url?: string | number | Options, options?: Options) => _fetch('GET', url, null, options),
+    get: (url?: string | number | Options, options?: Options) => fetcher('GET', url, null, options),
     delete: (url?: string | number | Options, options?: Options) =>
-      _fetch('DELETE', url, null, options),
+      fetcher('DELETE', url, null, options),
   }
 }
 
