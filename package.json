@@ -59,7 +59,7 @@
     "@size-limit/preset-small-lib": "^12.1.0",
     "@types/semver": "^7.7.1",
     "@vitest/coverage-v8": "^4.1.9",
-    "conventional-changelog": "^7.2.1",
+    "conventional-changelog": "^8.0.0",
     "conventional-changelog-angular": "^8.3.1",
     "happy-dom": "^20.10.6",
     "lint-staged": "^17.0.8",
