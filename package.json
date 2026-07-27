@@ -56,7 +56,7 @@
   "license": "MIT",
   "devDependencies": {
     "@posva/prompts": "^2.4.4",
-    "@size-limit/preset-small-lib": "^12.1.0",
+    "@size-limit/preset-small-lib": "^13.0.1",
     "@types/semver": "^7.7.1",
     "@vitest/coverage-v8": "^4.1.9",
     "conventional-changelog": "^8.0.0",
@@ -68,7 +68,7 @@
     "oxlint-plugin-posva": "^0.0.2",
     "semver": "^7.8.5",
     "simple-git-hooks": "^2.13.1",
-    "size-limit": "^12.1.0",
+    "size-limit": "^13.0.1",
     "tsdown": "^0.22.3",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
