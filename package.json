@@ -58,7 +58,7 @@
     "@posva/prompts": "^2.4.4",
     "@size-limit/preset-small-lib": "^13.0.1",
     "@types/semver": "^7.7.1",
-    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/coverage-v8": "^5.0.0",
     "conventional-changelog": "^8.0.0",
     "conventional-changelog-angular": "^9.2.0",
     "happy-dom": "^20.10.6",
@@ -72,7 +72,7 @@
     "tsdown": "^0.22.3",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^5.0.0"
   },
   "repository": {
     "type": "git",
