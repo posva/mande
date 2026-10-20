@@ -128,8 +128,8 @@ importers:
         specifier: ^9.2.0
         version: 9.2.0
       happy-dom:
-        specifier: ^20.10.6
-        version: 20.10.6
+        specifier: ^21.0.4
+        version: 21.0.4
       lint-staged:
         specifier: ^17.0.8
         version: 17.0.8
@@ -162,7 +162,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@25.5.0)(@vitest/coverage-v8@5.0.0)(happy-dom@20.10.6)(vite@7.3.3(@types/node@25.5.0)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
+        version: 5.0.0(@types/node@25.5.0)(@vitest/coverage-v8@5.0.0)(happy-dom@21.0.4)(vite@7.3.3(@types/node@25.5.0)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
 
   nuxt-module:
     dependencies:
@@ -184,7 +184,7 @@ importers:
         version: 4.4.8
       '@nuxt/test-utils':
         specifier: ^4.0.3
-        version: 4.0.3(happy-dom@20.10.6)(magicast@0.5.2)(typescript@6.0.3)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))(vitest@4.1.9)
+        version: 4.0.3(happy-dom@21.0.4)(magicast@0.5.2)(typescript@6.0.3)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))(vitest@4.1.9)
       '@types/node':
         specifier: ^24.13.2
         version: 24.13.2
@@ -4468,8 +4468,8 @@ packages:
       crossws:
         optional: true
 
-  happy-dom@20.10.6:
-    resolution: {integrity: sha512-6QD0ilzDDt93tX44y8tbmZdAcdTRYDhUP+Asgi6pC8Pp5IA3cvaZGyoVN/EGtlq9ziT65iPuBBn3ASLr6hCgVw==}
+  happy-dom@21.0.4:
+    resolution: {integrity: sha512-tFm+GaLBgo6o0awHnvHaNoraVo27qJ+2tZEtZ+cIa08hXbeitrxAJajLI05hsUy/2/YTKcUjQYzHe5mCcraLBw==}
     engines: {node: '>=20.0.0'}
 
   has-flag@4.0.0:
@@ -8016,7 +8016,7 @@ snapshots:
       rc9: 3.0.1
       std-env: 4.1.0
 
-  '@nuxt/test-utils@4.0.3(happy-dom@20.10.6)(magicast@0.5.2)(typescript@6.0.3)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))(vitest@4.1.9)':
+  '@nuxt/test-utils@4.0.3(happy-dom@21.0.4)(magicast@0.5.2)(typescript@6.0.3)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))(vitest@4.1.9)':
     dependencies:
       '@clack/prompts': 1.2.0
       '@nuxt/devtools-kit': 2.7.0(magicast@0.5.2)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
@@ -8048,8 +8048,8 @@ snapshots:
       vitest-environment-nuxt: 2.0.0
       vue: 3.5.34(typescript@6.0.3)
     optionalDependencies:
-      happy-dom: 20.10.6
-      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(happy-dom@20.10.6)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
+      happy-dom: 21.0.4
+      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(happy-dom@21.0.4)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
     transitivePeerDependencies:
       - crossws
       - magicast
@@ -9273,7 +9273,7 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(happy-dom@20.10.6)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
+      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(happy-dom@21.0.4)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
     optional: true
 
   '@vitest/coverage-v8@5.0.0(vitest@5.0.0)':
@@ -9286,7 +9286,7 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 5.0.0(@types/node@25.5.0)(@vitest/coverage-v8@5.0.0)(happy-dom@20.10.6)(vite@7.3.3(@types/node@25.5.0)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
+      vitest: 5.0.0(@types/node@25.5.0)(@vitest/coverage-v8@5.0.0)(happy-dom@21.0.4)(vite@7.3.3(@types/node@25.5.0)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
 
   '@vitest/expect@4.1.9':
     dependencies:
@@ -10817,7 +10817,7 @@ snapshots:
       rou3: 0.8.1
       srvx: 0.11.15
 
-  happy-dom@20.10.6:
+  happy-dom@21.0.4:
     dependencies:
       '@types/node': 24.13.2
       '@types/whatwg-mimetype': 3.0.2
@@ -13241,9 +13241,9 @@ snapshots:
 
   vitest-environment-nuxt@2.0.0:
     dependencies:
-      '@nuxt/test-utils': 4.0.3(happy-dom@20.10.6)(magicast@0.5.2)(typescript@6.0.3)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))(vitest@4.1.9)
+      '@nuxt/test-utils': 4.0.3(happy-dom@21.0.4)(magicast@0.5.2)(typescript@6.0.3)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))(vitest@4.1.9)
 
-  vitest@4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(happy-dom@20.10.6)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0)):
+  vitest@4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(happy-dom@21.0.4)(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.9
       '@vitest/mocker': 4.1.9(vite@7.3.3(@types/node@24.13.2)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
@@ -13268,12 +13268,12 @@ snapshots:
     optionalDependencies:
       '@types/node': 24.13.2
       '@vitest/coverage-v8': 4.1.9(vitest@4.1.9)
-      happy-dom: 20.10.6
+      happy-dom: 21.0.4
     transitivePeerDependencies:
       - msw
     optional: true
 
-  vitest@5.0.0(@types/node@25.5.0)(@vitest/coverage-v8@5.0.0)(happy-dom@20.10.6)(vite@7.3.3(@types/node@25.5.0)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0)):
+  vitest@5.0.0(@types/node@25.5.0)(@vitest/coverage-v8@5.0.0)(happy-dom@21.0.4)(vite@7.3.3(@types/node@25.5.0)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0)):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/mocker': 5.0.0(vite@7.3.3(@types/node@25.5.0)(jiti@2.7.0)(terser@5.31.6)(yaml@2.9.0))
@@ -13292,7 +13292,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.5.0
       '@vitest/coverage-v8': 5.0.0(vitest@5.0.0)
-      happy-dom: 20.10.6
+      happy-dom: 21.0.4
     transitivePeerDependencies:
       - msw
 
