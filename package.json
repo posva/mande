@@ -61,7 +61,7 @@
     "@vitest/coverage-v8": "^5.0.0",
     "conventional-changelog": "^8.0.0",
     "conventional-changelog-angular": "^9.2.0",
-    "happy-dom": "^20.10.6",
+    "happy-dom": "^21.0.4",
     "lint-staged": "^17.0.8",
     "oxfmt": "^0.56.0",
     "oxlint": "^1.71.0",
